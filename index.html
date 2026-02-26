@@ -344,6 +344,14 @@
                 <button class="filter-btn" onclick="toggleFilter('genre', 'رياضة', this)">رياضة</button>
             </div>
 
+            <div class="filter-title">المساحة (جيجابايت):</div>
+            <div class="filter-group" id="sizeFilters">
+                <button class="filter-btn" onclick="toggleFilter('size', 10, this)">أقل من 10</button>
+                <button class="filter-btn" onclick="toggleFilter('size', 50, this)">أقل من 50</button>
+                <button class="filter-btn" onclick="toggleFilter('size', 100, this)">أقل من 100</button>
+                <button class="filter-btn" onclick="toggleFilter('size', 101, this)">أكبر من 100</button>
+            </div>
+
             <div class="filter-title">عدد اللاعبين:</div>
             <div class="filter-group" id="playerFilters">
                 <button class="filter-btn" onclick="toggleFilter('players', 1, this)">لاعب واحد</button>
@@ -371,13 +379,13 @@
 
             <div class="cart-summary">
                 <h3>إجمالي المساحة التقديرية</h3>
-                <h2 style="margin:0;" dir="ltr"><span id="minSize">0</span> - <span id="maxSize">0</span> GB</h2>
+                <h2 style="margin:0;" dir="ltr" id="totalSizeUI">0 GB</h2>
             </div>
 
             <div class="whatsapp-buttons">
-                <button class="btn-whatsapp" onclick="sendWhatsApp('201555886990')">إرسال الطلب (رقم 1) 💬</button>
-                <button class="btn-whatsapp" onclick="sendWhatsApp('201010763503')">إرسال الطلب (رقم 2) 💬</button>
-                <button class="btn-whatsapp" onclick="sendWhatsApp('201277675487')">إرسال الطلب (رقم 3) 💬</button>
+                <button class="btn-whatsapp" onclick="sendWhatsApp('201555886990')">إرسال الطلب (محمود شوقي) 💬</button>
+                <button class="btn-whatsapp" onclick="sendWhatsApp('201010763503')">إرسال الطلب (احمد يسري) 💬</button>
+                <button class="btn-whatsapp" onclick="sendWhatsApp('201277675487')">إرسال الطلب (عمر ياسر) 💬</button>
             </div>
         </div>
     </div>
@@ -675,6 +683,7 @@
         let cart = [];
         let activeGenres = [];
         let activePlayers = [];
+        let activeSizes = [];
 
         function toggleFilter(type, value, btnElement) {
             btnElement.classList.toggle('active');
@@ -685,6 +694,9 @@
             } else if (type === 'players') {
                 if(activePlayers.includes(value)) activePlayers = activePlayers.filter(p => p !== value);
                 else activePlayers.push(value);
+            } else if (type === 'size') {
+                if(activeSizes.includes(value)) activeSizes = activeSizes.filter(s => s !== value);
+                else activeSizes.push(value);
             }
             renderGames();
         }
@@ -725,10 +737,24 @@
                     if (!matchPlayer) return;
                 }
 
+                // فلترة المساحة
+                if (activeSizes.length > 0) {
+                    const matchSize = activeSizes.some(s => {
+                        if (s === 10) return game.maxSize <= 10;
+                        if (s === 50) return game.maxSize <= 50;
+                        if (s === 100) return game.maxSize <= 100;
+                        if (s === 101) return game.maxSize > 100;
+                    });
+                    if (!matchSize) return;
+                }
+
                 const inCart = cart.some(c => c.id === game.id);
                 const ytLink = `https://www.youtube.com/results?search_query=${encodeURIComponent(game.name + " review")}`;
                 
                 let tagsHTML = game.genres.map(g => `<span class="tag">${g}</span>`).join('');
+                
+                // دمج المساحة إذا كانت متطابقة
+                let sizeText = (game.minSize === game.maxSize) ? `${game.minSize} GB` : `${game.minSize} - ${game.maxSize} GB`;
 
                 const cardHTML = `
                     <div class="card">
@@ -738,7 +764,7 @@
                         <div class="card-content">
                             <div class="tags">${tagsHTML}</div>
                             <div class="info-text">🎮 اللاعبين: ${game.playersTxt}</div>
-                            <div class="info-text">💾 المساحة: ${game.minSize} - ${game.maxSize} GB</div>
+                            <div class="info-text">💾 المساحة: ${sizeText}</div>
                             
                             <div class="card-actions">
                                 <button class="btn ${inCart ? 'btn-add added' : 'btn-add'}" onclick="toggleCart(${game.id})">
@@ -769,16 +795,20 @@
             cart.forEach(game => {
                 minTotal += game.minSize;
                 maxTotal += game.maxSize;
+                
+                let itemSizeText = (game.minSize === game.maxSize) ? `${game.minSize} GB` : `${game.minSize}-${game.maxSize} GB`;
+
                 list.innerHTML += `
                     <div class="cart-item">
                         <span>${game.name}</span>
-                        <span style="color:var(--primary-color);" dir="ltr">${game.minSize}-${game.maxSize} GB</span>
+                        <span style="color:var(--primary-color);" dir="ltr">${itemSizeText}</span>
                     </div>
                 `;
             });
 
-            document.getElementById('minSize').innerText = minTotal;
-            document.getElementById('maxSize').innerText = maxTotal;
+            // تحديث الإجمالي التقديري في السلة
+            let totalText = (minTotal === maxTotal) ? `${minTotal} GB` : `${minTotal} - ${maxTotal} GB`;
+            document.getElementById('totalSizeUI').innerText = totalText;
         }
 
         function openCart() { document.getElementById('cartModal').style.display = 'flex'; }
@@ -795,12 +825,14 @@
             
             let text = "مرحباً LevelUP،\n أود تثبيت هذه الألعاب على جهازي\n";
             cart.forEach((game, index) => {
-                text += ` ${index + 1}. ${game.name} (${game.minSize}-${game.maxSize} GB)\n`;
+                let sizeTxt = (game.minSize === game.maxSize) ? `${game.minSize} GB` : `${game.minSize}-${game.maxSize} GB`;
+                text += ` ${index + 1}. ${game.name} (${sizeTxt})\n`;
                 minTotal += game.minSize;
                 maxTotal += game.maxSize;
             });
 
-            text += ` إجمالي المساحة المطلوبة: من ${minTotal} إلى ${maxTotal} جيجابايت.`;
+            let finalTotalTxt = (minTotal === maxTotal) ? `${minTotal} جيجابايت` : `من ${minTotal} إلى ${maxTotal} جيجابايت`;
+            text += `\n إجمالي المساحة المطلوبة: ${finalTotalTxt}.`;
 
             const encodedText = encodeURIComponent(text);
             const whatsappUrl = `https://wa.me/${phone}?text=${encodedText}`;
