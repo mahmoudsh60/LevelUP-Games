@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LevelUP Mod Games | باقات الألعاب</title>
+    <title>LevelUP Mod Games</title>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #0f0f13;
+            --bg-color: #121212;
             --card-bg: #1e1e24;
             --primary-color: #00ffcc;
             --primary-hover: #00ccaa;
-            --accent-color: #7000ff;
+            --accent-color: #ffcc00; /* لون مميز للباقات */
             --text-main: #ffffff;
             --text-muted: #a0a0a0;
             --danger: #ff4757;
@@ -23,6 +23,7 @@
             color: var(--text-main);
             font-family: 'Tajawal', sans-serif;
             margin: 0;
+            padding: 0;
             padding-bottom: 80px;
         }
 
@@ -37,6 +38,8 @@
             border-bottom: 1px solid #333;
         }
 
+        .top-info-bar a { color: var(--primary-color); text-decoration: none; font-weight: bold; }
+
         header {
             background-color: #0d0d0d;
             padding: 20px 15px;
@@ -47,286 +50,648 @@
             z-index: 100;
         }
 
-        header h1 { margin: 0; font-size: 26px; font-weight: 900; }
+        header h1 { margin: 0; font-size: 26px; font-weight: 900; letter-spacing: 1px; }
         header span { color: var(--primary-color); }
+
+        .fb-link {
+            display: inline-block;
+            margin-top: 10px;
+            background-color: var(--fb-color);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 13px;
+            text-decoration: none;
+            font-weight: bold;
+        }
 
         .container { max-width: 1200px; margin: auto; padding: 15px; }
 
-        /* تصميم قسم الباقات */
+        /* ======== تصميم الباقات ======== */
+        .packages-section {
+            margin-bottom: 40px;
+        }
+        
         .section-title {
             text-align: center;
-            margin: 30px 0 20px;
-            font-size: 22px;
+            font-size: 24px;
             color: var(--primary-color);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
+            margin-bottom: 20px;
+            font-weight: 900;
         }
 
         .packages-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            margin-bottom: 40px;
+            gap: 15px;
         }
 
         .pkg-card {
-            background: linear-gradient(145deg, #1e1e24, #141418);
+            background-color: #1a1a20;
             border: 2px solid #333;
-            border-radius: 15px;
+            border-radius: 12px;
             padding: 20px;
+            text-align: center;
             transition: 0.3s;
-            position: relative;
-            overflow: hidden;
+            display: flex;
+            flex-direction: column;
         }
 
         .pkg-card:hover { border-color: var(--primary-color); transform: translateY(-5px); }
+        .pkg-card.premium { border-color: #7000ff; }
+        .pkg-card.mega { border-color: var(--accent-color); }
 
-        .pkg-card.premium { border-color: var(--accent-color); }
+        .pkg-title { font-size: 22px; font-weight: bold; color: var(--primary-color); margin-bottom: 10px; }
+        .pkg-card.premium .pkg-title { color: #b785ff; }
+        .pkg-card.mega .pkg-title { color: var(--accent-color); }
 
-        .pkg-title { color: var(--primary-color); font-size: 20px; font-weight: 900; margin-bottom: 10px; }
-        .pkg-size { background: #333; padding: 5px 10px; border-radius: 5px; font-size: 14px; font-weight: bold; }
-        
-        .pkg-games-list { 
-            font-size: 13px; 
-            color: var(--text-muted); 
-            margin: 15px 0; 
+        .pkg-size {
+            background-color: #000;
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            border: 1px solid #444;
+        }
+
+        .pkg-desc {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
             line-height: 1.6;
-            height: 80px;
-            overflow: hidden;
-            mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+            flex-grow: 1;
         }
 
         .btn-pkg {
-            width: 100%;
             background-color: var(--primary-color);
             color: #000;
             border: none;
-            padding: 10px;
+            padding: 12px;
             border-radius: 8px;
             font-weight: bold;
+            font-family: 'Tajawal', sans-serif;
+            font-size: 15px;
             cursor: pointer;
-            font-family: 'Tajawal';
+            width: 100%;
+        }
+        .pkg-card.premium .btn-pkg { background-color: #7000ff; color: white; }
+        .pkg-card.mega .btn-pkg { background-color: var(--accent-color); color: #000; }
+
+        .divider {
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+            margin: 40px 0;
+            border-radius: 5px;
         }
 
-        .pkg-card.premium .btn-pkg { background-color: var(--accent-color); color: white; }
-
-        hr.separator {
-            border: 0;
-            height: 2px;
-            background: linear-gradient(to right, transparent, var(--primary-color), transparent);
-            margin: 50px 0;
+        /* ======== البحث والفلترة ======== */
+        .search-box { display: flex; gap: 8px; margin-bottom: 15px; }
+        .search-box input {
+            flex: 1; padding: 10px 12px; border-radius: 6px; border: 1px solid #444;
+            background-color: var(--card-bg); color: white; font-family: 'Tajawal', sans-serif; font-size: 15px;
+        }
+        .search-box button {
+            background-color: var(--primary-color); color: #000; border: none; padding: 0 15px;
+            border-radius: 6px; font-weight: bold; font-family: 'Tajawal', sans-serif; cursor: pointer; font-size: 15px;
         }
 
-        /* تنسيقات البحث والفلترة */
-        .search-box { display: flex; gap: 8px; margin-bottom: 25px; }
-        .search-box input { flex: 1; padding: 12px; border-radius: 8px; border: 1px solid #444; background: var(--card-bg); color: #fff; }
-        
-        .filter-group { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
-        .filter-btn { background: #2a2a35; color: #fff; border: 1px solid #444; padding: 6px 15px; border-radius: 20px; cursor: pointer; font-size: 13px; }
-        .filter-btn.active { background: var(--primary-color); color: #000; border-color: var(--primary-color); font-weight: bold; }
+        .filter-section { margin-bottom: 15px; }
+        .filter-title { font-size: 13px; color: var(--text-muted); margin-bottom: 8px; }
+        .filter-group { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 10px; }
+        .filter-btn {
+            background-color: #2a2a35; color: var(--text-main); border: 1px solid #444;
+            padding: 6px 12px; border-radius: 15px; cursor: pointer; font-family: 'Tajawal', sans-serif; font-size: 13px; transition: 0.2s;
+        }
+        .filter-btn.active { background-color: var(--primary-color); color: #000; border-color: var(--primary-color); font-weight: bold; }
 
-        /* كروت الألعاب */
-        .grid-layout { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 15px; }
-        .card { background: var(--card-bg); border-radius: 10px; border: 1px solid #333; overflow: hidden; display: flex; flex-direction: column; }
-        .card-header { padding: 15px; background: #17171c; text-align: center; }
-        .game-title { color: var(--primary-color); font-size: 16px; margin: 0; }
-        .card-content { padding: 15px; flex: 1; display: flex; flex-direction: column; text-align: center; }
-        .info-text { font-size: 12px; color: #aaa; margin: 4px 0; }
+        /* ======== كروت الألعاب ======== */
+        .grid-layout { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; }
+        .card { background-color: var(--card-bg); border-radius: 8px; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.4); display: flex; flex-direction: column; border: 1px solid #333; }
+        .card-header { background-color: #17171c; padding: 12px 10px; border-bottom: 1px solid #333; text-align: center; }
+        .game-title { color: var(--primary-color); font-size: 15px; font-weight: 700; margin: 0; line-height: 1.4; }
+        .card-content { padding: 10px; flex: 1; display: flex; flex-direction: column; }
+        .tags { margin-bottom: 8px; text-align: center; }
+        .tag { display: inline-block; background-color: #333; font-size: 11px; padding: 3px 6px; border-radius: 4px; margin: 2px; color: var(--primary-color); }
+        .info-text { font-size: 13px; color: #ddd; margin-bottom: 5px; text-align: center; }
         
-        .card-actions { display: flex; gap: 5px; margin-top: 15px; }
-        .btn { flex: 1; padding: 8px; border-radius: 5px; border: none; cursor: pointer; font-weight: bold; font-size: 12px; font-family: 'Tajawal'; }
-        .btn-add { background: var(--primary-color); color: #000; }
-        .btn-add.added { background: var(--danger); color: #fff; }
-        .btn-yt { background: #d32f2f; color: #fff; text-decoration: none; }
+        .card-actions { margin-top: auto; padding-top: 10px; display: flex; gap: 8px; }
+        .btn { flex: 1; padding: 8px; border: none; border-radius: 6px; font-family: 'Tajawal', sans-serif; font-weight: bold; cursor: pointer; text-align: center; text-decoration: none; font-size: 13px; }
+        .btn-add { background-color: var(--primary-color); color: #000; }
+        .btn-add.added { background-color: var(--danger); color: white; }
+        .btn-yt { background-color: #d32f2f; color: white; }
 
-        /* سلة المشتريات */
-        .cart-float { position: fixed; bottom: 20px; left: 20px; background: var(--primary-color); color: #000; padding: 15px 25px; border-radius: 30px; font-weight: 900; border: none; cursor: pointer; z-index: 1000; box-shadow: 0 5px 15px rgba(0,255,204,0.4); }
-        
-        .cart-modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.9); z-index: 2000; justify-content: center; align-items: center; padding: 15px; }
-        .cart-content { background: var(--card-bg); width: 100%; max-width: 500px; border-radius: 15px; padding: 20px; max-height: 85vh; overflow-y: auto; border: 1px solid var(--primary-color); }
-        .cart-item { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #333; font-size: 14px; }
-
-        .whatsapp-buttons { margin-top: 20px; display: flex; flex-direction: column; gap: 10px; }
-        .btn-wa { background: #25D366; color: #fff; padding: 12px; border-radius: 8px; border: none; font-weight: bold; cursor: pointer; font-family: 'Tajawal'; }
+        /* ======== السلة ======== */
+        .cart-float { position: fixed; bottom: 15px; left: 15px; background-color: var(--primary-color); color: #000; padding: 12px 20px; border-radius: 25px; font-weight: bold; font-family: 'Tajawal', sans-serif; font-size: 15px; box-shadow: 0 4px 10px rgba(0, 255, 204, 0.3); cursor: pointer; border: none; z-index: 1000; display: flex; align-items: center; gap: 8px; }
+        .cart-modal { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.85); z-index: 1001; justify-content: center; align-items: center; padding: 15px; }
+        .cart-content { background-color: var(--card-bg); width: 100%; max-width: 450px; border-radius: 10px; padding: 15px; max-height: 90vh; overflow-y: auto; border: 1px solid var(--primary-color); }
+        .cart-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #444; padding-bottom: 10px; margin-bottom: 15px; }
+        .user-info-section { margin-bottom: 15px; display: flex; flex-direction: column; gap: 10px; }
+        .user-info-section input { padding: 10px; border-radius: 6px; border: 1px solid #444; background-color: #2a2a35; color: white; font-family: 'Tajawal', sans-serif; }
+        .cart-item { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 14px; border-bottom: 1px dashed #333; padding-bottom: 5px; }
+        .cart-summary { background-color: #2a2a35; padding: 12px; border-radius: 6px; margin-top: 15px; text-align: center; }
+        .cart-summary h3 { margin: 0 0 8px 0; color: var(--primary-color); font-size: 15px; }
+        .whatsapp-buttons { display: flex; flex-direction: column; gap: 10px; margin-top: 15px; }
+        .btn-whatsapp { background-color: #25D366; color: white; width: 100%; padding: 12px; border: none; border-radius: 6px; font-family: 'Tajawal', sans-serif; font-weight: bold; font-size: 14px; cursor: pointer; transition: 0.2s; }
+        .btn-whatsapp:hover { background-color: #128C7E; }
+        .close-cart { background: none; border: none; color: white; font-size: 22px; cursor: pointer; }
 
         @media (max-width: 600px) {
-            .packages-grid { grid-template-columns: 1fr; }
+            .top-info-bar { flex-direction: column; gap: 5px; text-align: center; }
+            header h1 { font-size: 22px; }
         }
     </style>
 </head>
 <body>
 
     <div class="top-info-bar">
-        <div>📞 01555886990 - 01010763503</div>
-        <div>📍 أرض الجمعيات, الإسماعيلية</div>
+        <div class="phones">📞 01555886990 - 01010763503</div>
+        <div class="address">📍 شارع الابراج, ارض الجمعيات, الاسماعيلية</div>
     </div>
 
     <header>
         <h1>Level<span>UP</span> Mod Games</h1>
+        <a href="https://www.facebook.com/LevelUP.Ismailia" target="_blank" class="fb-link">f | LevelUP Ismailia</a>
     </header>
 
     <div class="container">
         
-        <div class="section-title">📦 باقات LevelUP الحصرية</div>
-        <div class="packages-grid" id="packagesGrid">
-            <div class="pkg-card">
-                <div class="pkg-title">باقة رقم 1</div>
-                <span class="pkg-size">373 GB</span>
-                <div class="pkg-games-list">Black Ops 3, PES 26, Crash Racing, FC 26, PES 21, PES 19, GTA V</div>
-                <button class="btn-pkg" onclick="addPackage(1)">✅ اختيار الباقة</button>
-            </div>
-            <div class="pkg-card">
-                <div class="pkg-title">باقة رقم 2</div>
-                <span class="pkg-size">375 GB</span>
-                <div class="pkg-games-list">Black Ops 3, Mortal Kombat, Crash Racing, FC 26, PES 21, PES 19, God of War, GTA V</div>
-                <button class="btn-pkg" onclick="addPackage(2)">✅ اختيار الباقة</button>
-            </div>
-            <div class="pkg-card premium">
-                <div class="pkg-title">التيرا بريميوم 🔥</div>
-                <span class="pkg-size">804 GB</span>
-                <div class="pkg-games-list">Uncharted 4, WWE 2K25, PES 19, NFS Payback, Mortal 11, Spider-Man, It Takes Two, GTA V...</div>
-                <button class="btn-pkg" onclick="addPackage(3)">🔥 اختيار البريميوم</button>
-            </div>
-             <div class="pkg-card premium" style="border-color: #ffcc00;">
-                <div class="pkg-title" style="color:#ffcc00;">التيرا ميجا ⚡</div>
-                <span class="pkg-size">786 GB</span>
-                <div class="pkg-games-list">3D Billiards, Aladdin, Spider-Man, Batman, Assassin's Creed Mirage, Crash Bandicoot 4, Cuphead, FC 25...</div>
-                <button class="btn-pkg" style="background:#ffcc00;" onclick="addPackage(4)">⚡ اختيار الميجا</button>
+        <div class="packages-section">
+            <h2 class="section-title">🔥 باقات الألعاب الجاهزة</h2>
+            <div class="packages-grid">
+                
+                <div class="pkg-card">
+                    <div class="pkg-title">باقة رقم 1</div>
+                    <div class="pkg-size">💾 مساحة: 373 GB</div>
+                    <div class="pkg-desc">
+                        Black Ops 3, PES 26, Crash Racing, FC 26, PES 21, PES 19, GTA V
+                    </div>
+                    <button class="btn-pkg" onclick="addPackage(1)">➕ إضافة الباقة للسلة</button>
+                </div>
+
+                <div class="pkg-card">
+                    <div class="pkg-title">باقة رقم 2</div>
+                    <div class="pkg-size">💾 مساحة: 375 GB</div>
+                    <div class="pkg-desc">
+                        Black Ops 3, Mortal Kombat 11, Crash Racing, FC 26, PES 21, PES 19, God of War, GTA V
+                    </div>
+                    <button class="btn-pkg" onclick="addPackage(2)">➕ إضافة الباقة للسلة</button>
+                </div>
+
+                <div class="pkg-card premium">
+                    <div class="pkg-title">باقة التيرا البريميوم 💎</div>
+                    <div class="pkg-size">💾 مساحة: 804 GB</div>
+                    <div class="pkg-desc">
+                        Uncharted 4, WWE 2K25, PES 19, NFS Payback, Mortal 11, Minecraft, Marvel Spider-Man, It Takes Two, GTA V, Gran Turismo Sports, God of War 2018, PES 26, FC 26, Crash Racing, Black Ops 3
+                    </div>
+                    <button class="btn-pkg" onclick="addPackage(3)">➕ إضافة البريميوم للسلة</button>
+                </div>
+
+                <div class="pkg-card mega">
+                    <div class="pkg-title">باقة التيرا الميجا ⚡</div>
+                    <div class="pkg-size">💾 مساحة: 786 GB</div>
+                    <div class="pkg-desc">
+                        تحتوي على أكثر من 80 لعبة من أقوى ألعاب الأكشن والمغامرات والعائلة. (اضغط للإضافة للتعرف على القائمة كاملة داخل السلة).
+                    </div>
+                    <button class="btn-pkg" onclick="addPackage(4)">➕ إضافة الميجا للسلة</button>
+                </div>
+
             </div>
         </div>
 
-        <hr class="separator">
+        <div class="divider"></div>
 
-        <div class="section-title">🎮 اختر ألعابك بشكل فردي</div>
-        
+        <h2 class="section-title" style="color: white; font-size: 20px;">🎮 اختر ألعابك بشكل فردي</h2>
+
         <div class="search-box">
-            <input type="text" id="searchInput" placeholder="ابحث عن اسم اللعبة..." oninput="renderGames()">
+            <input type="text" id="searchInput" placeholder="ابحث عن لعبة..." onkeypress="handleEnter(event)">
+            <button onclick="renderGames()">أبحث</button>
         </div>
 
-        <div class="filter-group" id="genreFilters">
-            <button class="filter-btn active" onclick="setGenreFilter('الكل', this)">الكل</button>
-            <button class="filter-btn" onclick="setGenreFilter('أكشن', this)">أكشن</button>
-            <button class="filter-btn" onclick="setGenreFilter('مغامرات', this)">مغامرات</button>
-            <button class="filter-btn" onclick="setGenreFilter('رعب', this)">رعب</button>
-            <button class="filter-btn" onclick="setGenreFilter('رياضة', this)">رياضة</button>
-            <button class="filter-btn" onclick="setGenreFilter('العاب عائلية', this)">عائلية</button>
+        <div class="filter-section">
+            <div class="filter-title">نوع اللعبة:</div>
+            <div class="filter-group" id="genreFilters">
+                <button class="filter-btn" onclick="toggleFilter('genre', 'أكشن', this)">أكشن</button>
+                <button class="filter-btn" onclick="toggleFilter('genre', 'مغامرات', this)">مغامرات</button>
+                <button class="filter-btn" onclick="toggleFilter('genre', 'عالم مفتوح', this)">عالم مفتوح</button>
+                <button class="filter-btn" onclick="toggleFilter('genre', 'رعب', this)">رعب</button>
+                <button class="filter-btn" onclick="toggleFilter('genre', 'العاب عائلية', this)">ألعاب عائلية</button>
+                <button class="filter-btn" onclick="toggleFilter('genre', 'سباق', this)">سباق</button>
+                <button class="filter-btn" onclick="toggleFilter('genre', 'رياضة', this)">رياضة</button>
+            </div>
         </div>
 
         <div class="grid-layout" id="gamesGrid"></div>
     </div>
 
     <button class="cart-float" onclick="openCart()">
-        🛒 السلة (<span id="cartCount">0</span>)
+        🛒 الألعاب المختارة (<span id="cartCount">0</span>)
     </button>
 
     <div class="cart-modal" id="cartModal">
         <div class="cart-content">
-            <h2 style="color:var(--primary-color); text-align:center;">قائمة طلبك</h2>
-            <input type="text" id="userName" placeholder="اسمك الثنائي" style="width:100%; padding:10px; margin-bottom:10px; background:#111; border:1px solid #444; color:#fff;">
-            <input type="tel" id="userPhone" placeholder="رقم موبايلك" style="width:100%; padding:10px; margin-bottom:15px; background:#111; border:1px solid #444; color:#fff;">
+            <div class="cart-header">
+                <h2>سلة الألعاب</h2>
+                <button class="close-cart" onclick="closeCart()">✖</button>
+            </div>
             
+            <div class="user-info-section">
+                <input type="text" id="userName" placeholder="اسمك الثنائي...">
+                <input type="tel" id="userPhone" placeholder="رقم الموبايل...">
+            </div>
+
             <div id="cartItemsList"></div>
-            
-            <div style="margin-top:20px; text-align:center; border-top:2px solid var(--primary-color); padding-top:15px;">
-                <div style="font-size:14px; color:#aaa;">إجمالي المساحة</div>
-                <div id="totalSizeUI" style="font-size:24px; font-weight:900; color:var(--primary-color);">0 GB</div>
+
+            <div class="cart-summary">
+                <h3>إجمالي المساحة التقديرية</h3>
+                <h2 style="margin:0;" dir="ltr" id="totalSizeUI">0 GB</h2>
             </div>
 
             <div class="whatsapp-buttons">
-                <button class="btn-wa" onclick="sendWhatsApp('201555886990')">إرسال الطلب (محمود شوقي) 💬</button>
-                <button class="btn-wa" onclick="sendWhatsApp('201010763503')">إرسال الطلب (أحمد يسري) 💬</button>
-                <button class="close-btn" style="background:none; border:none; color:#ff4757; cursor:pointer; margin-top:10px;" onclick="closeCart()">إغلاق القائمة</button>
+                <button class="btn-whatsapp" onclick="sendWhatsApp('201555886990')">إرسال الطلب (محمود شوقي) 💬</button>
+                <button class="btn-whatsapp" onclick="sendWhatsApp('201010763503')">إرسال الطلب (احمد يسري) 💬</button>
+                <button class="btn-whatsapp" onclick="sendWhatsApp('201277675487')">إرسال الطلب (عمر ياسر) 💬</button>
             </div>
         </div>
     </div>
 
     <script>
-        // داتابيز الألعاب المذكورة في طلبك
+        // الداتابيز كاملة مع إضافة PES 26 (eFootball 2026) كـ ID 300
         const gamesDB = [
-            { id: 1, name: "3D Billiards: Billiards and Snooker", genres: ["العاب عائلية"], minSize: 1, maxSize: 1 },
-            { id: 24, name: "Call of Duty: Black Ops 3", genres: ["أكشن"], minSize: 64, maxSize: 96 },
-            { id: 68, name: "EA SPORTS FC 26", genres: ["أكشن", "رياضة"], minSize: 14, maxSize: 74 },
-            { id: 45, name: "Crash Team Racing", genres: ["العاب عائلية", "سباق"], minSize: 12, maxSize: 30 },
-            { id: 73, name: "PES 2021", genres: ["أكشن", "رياضة"], minSize: 30, maxSize: 38 },
-            { id: 72, name: "PES 2019", genres: ["أكشن", "رياضة"], minSize: 19, maxSize: 25 },
-            { id: 103, name: "GTA V", genres: ["أكشن", "عالم مفتوح"], minSize: 49, maxSize: 49 },
-            { id: 168, name: "Mortal Kombat X", genres: ["أكشن"], minSize: 37, maxSize: 39 },
-            { id: 98, name: "God of War (2018)", genres: ["أكشن", "مغامرات"], minSize: 36, maxSize: 36 },
-            { id: 269, name: "Uncharted 4", genres: ["أكشن", "مغامرات"], minSize: 59, maxSize: 59 },
-            { id: 283, name: "WWE 2K24", genres: ["أكشن", "رياضة"], minSize: 44, maxSize: 71 },
-            { id: 284, name: "WWE 2K25", genres: ["أكشن", "رياضة"], minSize: 38, maxSize: 82 },
-            { id: 178, name: "NFS Payback", genres: ["أكشن", "سباق"], minSize: 21, maxSize: 21 },
-            { id: 169, name: "Mortal Kombat 11", genres: ["أكشن"], minSize: 63, maxSize: 69 },
-            { id: 161, name: "Minecraft", genres: ["العاب عائلية"], minSize: 1, maxSize: 1 },
-            { id: 156, name: "Spider-Man 1", genres: ["أكشن", "عالم مفتوح"], minSize: 44, maxSize: 50 },
-            { id: 130, name: "It Takes Two", genres: ["العاب عائلية", "مغامرات"], minSize: 34, maxSize: 34 },
-            { id: 101, name: "Gran Turismo Sport", genres: ["أكشن", "سباق"], minSize: 40, maxSize: 90 },
-            { id: 9, name: "Assassin's Creed Mirage", genres: ["مغامرات", "عالم مفتوح"], minSize: 21, maxSize: 31 },
-            { id: 67, name: "EA SPORTS FC 25", genres: ["أكشن", "رياضة"], minSize: 41, maxSize: 47 }
-            // يمكن إضافة باقي الألعاب هنا بنفس النمط
+            { id: 1, name: "3D Billiards: Billiards and Snooker", genres: ["العاب عائلية"], playersTxt: "1 - 2", maxPlayers: 2, minSize: 1, maxSize: 1 },
+            { id: 2, name: "A Plague Tale: Innocence", genres: ["مغامرات"], playersTxt: "1", maxPlayers: 1, minSize: 34, maxSize: 34 },
+            { id: 3, name: "A Way Out", genres: ["مغامرات"], playersTxt: "2", maxPlayers: 2, minSize: 15, maxSize: 15 },
+            { id: 4, name: "Aladdin and The Lion King", genres: ["العاب عائلية"], playersTxt: "1 - 2", maxPlayers: 2, minSize: 1, maxSize: 1 },
+            { id: 5, name: "Amazing Spider-Man", genres: ["أكشن", "عالم مفتوح"], playersTxt: "1", maxPlayers: 1, minSize: 8, maxSize: 8 },
+            { id: 6, name: "Angry Birds Star Wars", genres: ["العاب عائلية"], playersTxt: "1", maxPlayers: 1, minSize: 1, maxSize: 1 },
+            { id: 7, name: "Assassin's Creed IV: Black Flag", genres: ["أكشن", "عالم مفتوح"], playersTxt: "1", maxPlayers: 1, minSize: 17, maxSize: 17 },
+            { id: 8, name: "Assassin's Creed Origins", genres: ["مغامرات", "عالم مفتوح"], playersTxt: "1", maxPlayers: 1, minSize: 39, maxSize: 46 },
+            { id: 9, name: "Assassin's Creed Mirage", genres: ["مغامرات", "عالم مفتوح"], playersTxt: "1", maxPlayers: 1, minSize: 21, maxSize: 31 },
+            { id: 10, name: "Assassin's Creed Odyssey", genres: ["مغامرات", "عالم مفتوح"], playersTxt: "1", maxPlayers: 1, minSize: 41, maxSize: 41 },
+            { id: 11, name: "Assassin's Creed Unity", genres: ["مغامرات", "عالم مفتوح"], playersTxt: "1", maxPlayers: 1, minSize: 38, maxSize: 38 },
+            { id: 12, name: "Assassin's Creed Syndicate", genres: ["مغامرات", "عالم مفتوح"], playersTxt: "1", maxPlayers: 1, minSize: 37, maxSize: 37 },
+            { id: 13, name: "Assassin's Creed Freedom Cry", genres: ["أكشن", "مغامرات"], playersTxt: "1", maxPlayers: 1, minSize: 6, maxSize: 6 },
+            { id: 14, name: "Asterix & Obelix: Slap them All!", genres: ["أكشن", "العاب عائلية"], playersTxt: "1 - 2", maxPlayers: 2, minSize: 1, maxSize: 1 },
+            { id: 15, name: "Attack of the Toy Tanks", genres: ["أكشن"], playersTxt: "1 - 2", maxPlayers: 2, minSize: 1, maxSize: 1 },
+            { id: 16, name: "Baby Shark: Sing and Swim Party", genres: ["العاب عائلية"], playersTxt: "1 - 4", maxPlayers: 4, minSize: 1, maxSize: 1 },
+            { id: 17, name: "Batman: Return to Arkham", genres: ["أكشن", "عالم مفتوح"], playersTxt: "1", maxPlayers: 1, minSize: 18, maxSize: 52 },
+            { id: 18, name: "Batman: Arkham Knight", genres: ["أكشن", "عالم مفتوح"], playersTxt: "1", maxPlayers: 1, minSize: 45, maxSize: 45 },
+            { id: 19, name: "Battlefield 1", genres: ["أكشن"], playersTxt: "1", maxPlayers: 1, minSize: 38, maxSize: 38 },
+            { id: 20, name: "Battlefield 4", genres: ["أكشن"], playersTxt: "1", maxPlayers: 1, minSize: 30, maxSize: 33 },
+            { id: 21, name: "Battlefield V", genres: ["أكشن"], playersTxt: "1", maxPlayers: 1, minSize: 31, maxSize: 31 },
+            { id: 22, name: "Ben 10: Power Trip", genres: ["العاب عائلية"], playersTxt: "1 - 2", maxPlayers: 2, minSize: 1, maxSize: 1 },
+            { id: 23, name: "Big Rumble Boxing: Creed", genres: ["أكشن"], playersTxt: "1 - 2", maxPlayers: 2, minSize: 6, maxSize: 6 },
+            { id: 24, name: "Call of Duty: Black Ops 3", genres: ["أكشن"], playersTxt: "1 - 4", maxPlayers: 4, minSize: 64, maxSize: 96 },
+            { id: 25, name: "Call of Duty: Black Ops 4", genres: ["أكشن"], playersTxt: "1 - 4", maxPlayers: 4, minSize: 87, maxSize: 87 },
+            { id: 26, name: "Call of Duty: Black Ops 6", genres: ["أكشن"], playersTxt: "1 - 2", maxPlayers: 2, minSize: 54, maxSize: 306 },
+            { id: 27, name: "Call of Duty: Cold War", genres: ["أكشن"], playersTxt: "1 - 2", maxPlayers: 2, minSize: 94, maxSize: 147 },
+            { id: 28, name: "Call of Duty: Modern Warfare (2019)", genres: ["أكشن"], playersTxt: "1 - 2", maxPlayers: 2, minSize: 72, maxSize: 157 },
+            { id: 29, name: "Call of Duty: MW Remastered", genres: ["أكشن"], playersTxt: "1 - 2", maxPlayers: 2, minSize: 45, maxSize: 45 },
+            { id: 30, name: "Call of Duty: Vanguard", genres: ["أكشن"], playersTxt: "1 - 2", maxPlayers: 2, minSize: 45, maxSize: 70 },
+            { id: 31, name: "Call of Duty: Advanced Warfare", genres: ["أكشن"], playersTxt: "1 - 2", maxPlayers: 2, minSize: 38, maxSize: 63 },
+            { id: 32, name: "Bloodborne", genres: ["أكشن", "رعب"], playersTxt: "1", maxPlayers: 1, minSize: 29, maxSize: 29 },
+            { id: 33, name: "Blue Estate", genres: ["أكشن"], playersTxt: "1 - 2", maxPlayers: 2, minSize: 2, maxSize: 2 },
+            { id: 34, name: "Bramble: The Mountain King", genres: ["رعب", "مغامرات"], playersTxt: "1", maxPlayers: 1, minSize: 5, maxSize: 11 },
+            { id: 35, name: "Brothers: A Tale of Two Sons", genres: ["مغامرات"], playersTxt: "1 - 2", maxPlayers: 2, minSize: 3, maxSize: 3 },
+            { id: 36, name: "The Callisto Protocol", genres: ["رعب"], playersTxt: "1", maxPlayers: 1, minSize: 27, maxSize: 53 },
+            { id: 37, name: "Cartoon Network Battle Crashers", genres: ["العاب عائلية"], playersTxt: "1 - 4", maxPlayers: 4, minSize: 1, maxSize: 1 },
+            { id: 38, name: "Castle Crashers Remastered", genres: ["أكشن"], playersTxt: "1 - 4", maxPlayers: 4, minSize: 1, maxSize: 1 },
+            { id: 39, name: "Cat Rescue Story", genres: ["العاب عائلية"], playersTxt: "1", maxPlayers: 1, minSize: 1, maxSize: 1 },
+            { id: 40, name: "Circus Electrique", genres: ["مغامرات"], playersTxt: "1", maxPlayers: 1, minSize: 3, maxSize: 3 },
+            { id: 41, name: "Construction Simulator 2", genres: ["العاب عائلية"], playersTxt: "1", maxPlayers: 1, minSize: 1, maxSize: 1 },
+            { id: 42, name: "Control", genres: ["أكشن", "مغامرات"], playersTxt: "1", maxPlayers: 1, minSize: 22, maxSize: 35 },
+            { id: 43, name: "Crash Bandicoot 4", genres: ["العاب عائلية"], playersTxt: "1 - 4", maxPlayers: 4, minSize: 20, maxSize: 20 },
+            { id: 44, name: "Crash Bandicoot Trilogy", genres: ["العاب عائلية"], playersTxt: "1", maxPlayers: 1, minSize: 21, maxSize: 21 },
+            { id: 45, name: "Crash Team Racing", genres: ["العاب عائلية", "سباق"], playersTxt: "1 - 4", maxPlayers: 4, minSize: 12, maxSize: 30 },
+            { id: 46, name: "Crash of the Titans", genres: ["العاب عائلية"], playersTxt: "1 - 2", maxPlayers: 2, minSize: 1, maxSize: 1 },
+            { id: 47, name: "Cuphead", genres: ["أكشن", "العاب عائلية"], playersTxt: "1 - 2", maxPlayers: 2, minSize: 3, maxSize: 4 },
+            { id: 48, name: "Cyberpunk 2077", genres: ["أكشن", "عالم مفتوح"], playersTxt: "1", maxPlayers: 1, minSize: 59, maxSize: 99 },
+            { id: 49, name: "Darksiders II", genres: ["أكشن", "مغامرات"], playersTxt: "1", maxPlayers: 1, minSize: 14, maxSize: 14 },
+            { id: 50, name: "Days Gone", genres: ["رعب", "عالم مفتوح"], playersTxt: "1", maxPlayers: 1, minSize: 33, maxSize: 39 },
+            { id: 51, name: "DC Super-Pets", genres: ["العاب عائلية"], playersTxt: "1", maxPlayers: 1, minSize: 1, maxSize: 1 },
+            { id: 52, name: "Dead or Alive 6", genres: ["أكشن"], playersTxt: "1 - 2", maxPlayers: 2, minSize: 26, maxSize: 60 },
+            { id: 53, name: "Death Stranding", genres: ["مغامرات"], playersTxt: "1", maxPlayers: 1, minSize: 44, maxSize: 44 },
+            { id: 54, name: "Def Jam: Fight for NY", genres: ["أكشن"], playersTxt: "1 - 4", maxPlayers: 4, minSize: 2, maxSize: 2 },
+            { id: 55, name: "Demon Slayer", genres: ["أكشن"], playersTxt: "1 - 2", maxPlayers: 2, minSize: 21, maxSize: 21 },
+            { id: 56, name: "Detroit: Become Human", genres: ["مغامرات"], playersTxt: "1", maxPlayers: 1, minSize: 39, maxSize: 39 },
+            { id: 57, name: "Devil May Cry 5", genres: ["أكشن"], playersTxt: "1", maxPlayers: 1, minSize: 29, maxSize: 40 },
+            { id: 58, name: "Disney's Tarzan", genres: ["العاب عائلية"], playersTxt: "1", maxPlayers: 1, minSize: 1, maxSize: 1 },
+            { id: 59, name: "Disney Epic Mickey", genres: ["العاب عائلية"], playersTxt: "1", maxPlayers: 1, minSize: 10, maxSize: 20 },
+            { id: 60, name: "Toy Story 3", genres: ["العاب عائلية"], playersTxt: "1", maxPlayers: 1, minSize: 1, maxSize: 1 },
+            { id: 61, name: "Dolphin Spirit", genres: ["العاب عائلية"], playersTxt: "1", maxPlayers: 1, minSize: 1, maxSize: 1 },
+            { id: 62, name: "Don't Starve Together", genres: ["مغامرات"], playersTxt: "1 - 2", maxPlayers: 2, minSize: 1, maxSize: 1 },
+            { id: 63, name: "Dragons: Legends", genres: ["العاب عائلية"], playersTxt: "1", maxPlayers: 1, minSize: 3, maxSize: 3 },
+            { id: 64, name: "Dying Light 1", genres: ["رعب", "عالم مفتوح"], playersTxt: "1", maxPlayers: 1, minSize: 14, maxSize: 20 },
+            { id: 65, name: "Dying Light 2", genres: ["رعب", "عالم مفتوح"], playersTxt: "1", maxPlayers: 1, minSize: 19, maxSize: 59 },
+            { id: 66, name: "EA SPORTS FC 24", genres: ["أكشن", "رياضة"], playersTxt: "1 - 4", maxPlayers: 4, minSize: 41, maxSize: 53 },
+            { id: 67, name: "EA SPORTS FC 25", genres: ["أكشن", "رياضة"], playersTxt: "1 - 4", maxPlayers: 4, minSize: 41, maxSize: 47 },
+            { id: 68, name: "EA SPORTS FC 26", genres: ["أكشن", "رياضة"], playersTxt: "1 - 4", maxPlayers: 4, minSize: 14, maxSize: 74 },
+            { id: 69, name: "EA SPORTS UFC 3", genres: ["أكشن", "رياضة"], playersTxt: "1 - 2", maxPlayers: 2, minSize: 17, maxSize: 17 },
+            { id: 70, name: "EA SPORTS UFC 4", genres: ["أكشن", "رياضة"], playersTxt: "1 - 2", maxPlayers: 2, minSize: 22, maxSize: 30 },
+            { id: 71, name: "PES 2018", genres: ["أكشن", "رياضة"], playersTxt: "1 - 4", maxPlayers: 4, minSize: 17, maxSize: 17 },
+            { id: 72, name: "PES 2019", genres: ["أكشن", "رياضة"], playersTxt: "1 - 4", maxPlayers: 4, minSize: 19, maxSize: 25 },
+            { id: 73, name: "PES 2021", genres: ["أكشن", "رياضة"], playersTxt: "1 - 4", maxPlayers: 4, minSize: 30, maxSize: 38 },
+            { id: 74, name: "eFootball 2022", genres: ["أكشن", "رياضة"], playersTxt: "1 - 4", maxPlayers: 4, minSize: 34, maxSize: 34 },
+            { id: 75, name: "eFootball 2023", genres: ["أكشن", "رياضة"], playersTxt: "1 - 4", maxPlayers: 4, minSize: 34, maxSize: 59 },
+            { id: 76, name: "eFootball 2024", genres: ["أكشن", "رياضة"], playersTxt: "1 - 4", maxPlayers: 4, minSize: 34, maxSize: 61 },
+            { id: 77, name: "eFootball 2025", genres: ["أكشن", "رياضة"], playersTxt: "1 - 4", maxPlayers: 4, minSize: 11, maxSize: 68 },
+            { id: 300, name: "eFootball 2026 (PES 26)", genres: ["أكشن", "رياضة"], playersTxt: "1 - 4", maxPlayers: 4, minSize: 45, maxSize: 55 },
+            { id: 78, name: "Elden Ring", genres: ["أكشن", "عالم مفتوح"], playersTxt: "1", maxPlayers: 1, minSize: 29, maxSize: 60 },
+            { id: 79, name: "Evil West", genres: ["أكشن"], playersTxt: "1", maxPlayers: 1, minSize: 25, maxSize: 25 },
+            { id: 80, name: "Far Cry 5", genres: ["أكشن", "عالم مفتوح"], playersTxt: "1", maxPlayers: 1, minSize: 29, maxSize: 41 },
+            { id: 81, name: "Far Cry 6", genres: ["أكشن", "عالم مفتوح"], playersTxt: "1", maxPlayers: 1, minSize: 33, maxSize: 89 },
+            { id: 82, name: "Far Cry New Dawn", genres: ["أكشن", "عالم مفتوح"], playersTxt: "1", maxPlayers: 1, minSize: 19, maxSize: 19 },
+            { id: 83, name: "Far Cry Primal", genres: ["أكشن", "عالم مفتوح"], playersTxt: "1", maxPlayers: 1, minSize: 10, maxSize: 10 },
+            { id: 84, name: "Farming Simulator 22", genres: ["العاب عائلية"], playersTxt: "1", maxPlayers: 1, minSize: 11, maxSize: 17 },
+            { id: 85, name: "FIFA 23", genres: ["أكشن", "رياضة"], playersTxt: "1 - 4", maxPlayers: 4, minSize: 37, maxSize: 44 },
+            { id: 86, name: "Final Fantasy XV", genres: ["أكشن", "مغامرات"], playersTxt: "1", maxPlayers: 1, minSize: 40, maxSize: 67 },
+            { id: 87, name: "FNAF: Security Breach", genres: ["رعب"], playersTxt: "1", maxPlayers: 1, minSize: 9, maxSize: 23 },
+            { id: 88, name: "Flame Over", genres: ["أكشن"], playersTxt: "1", maxPlayers: 1, minSize: 1, maxSize: 1 },
+            { id: 89, name: "FullBlast", genres: ["أكشن"], playersTxt: "1 - 2", maxPlayers: 2, minSize: 1, maxSize: 1 },
+            { id: 90, name: "Gang Beasts", genres: ["العاب عائلية"], playersTxt: "1 - 4", maxPlayers: 4, minSize: 1, maxSize: 2 },
+            { id: 91, name: "Garfield Lasagna Party", genres: ["العاب عائلية"], playersTxt: "1 - 4", maxPlayers: 4, minSize: 1, maxSize: 1 },
+            { id: 92, name: "Get Even", genres: ["رعب"], playersTxt: "1", maxPlayers: 1, minSize: 15, maxSize: 15 },
+            { id: 93, name: "Ghost Recon Wildlands", genres: ["أكشن", "عالم مفتوح"], playersTxt: "1", maxPlayers: 1, minSize: 35, maxSize: 58 },
+            { id: 94, name: "Ghost of Tsushima", genres: ["أكشن", "عالم مفتوح"], playersTxt: "1", maxPlayers: 1, minSize: 32, maxSize: 47 },
+            { id: 95, name: "Ghostrunner", genres: ["أكشن"], playersTxt: "1", maxPlayers: 1, minSize: 8, maxSize: 17 },
+            { id: 96, name: "God Hand", genres: ["أكشن"], playersTxt: "1", maxPlayers: 1, minSize: 1, maxSize: 1 },
+            { id: 97, name: "God of War III", genres: ["أكشن", "مغامرات"], playersTxt: "1", maxPlayers: 1, minSize: 38, maxSize: 38 },
+            { id: 98, name: "God of War (2018)", genres: ["أكشن", "مغامرات"], playersTxt: "1", maxPlayers: 1, minSize: 36, maxSize: 36 },
+            { id: 99, name: "God of War Ragnarök", genres: ["أكشن", "مغامرات"], playersTxt: "1", maxPlayers: 1, minSize: 84, maxSize: 114 },
+            { id: 100, name: "Gran Turismo 7", genres: ["أكشن", "سباق"], playersTxt: "1 - 2", maxPlayers: 2, minSize: 79, maxSize: 121 },
+            { id: 101, name: "Gran Turismo Sport", genres: ["أكشن", "سباق"], playersTxt: "1 - 2", maxPlayers: 2, minSize: 40, maxSize: 90 },
+            { id: 102, name: "GTA III", genres: ["أكشن", "عالم مفتوح"], playersTxt: "1", maxPlayers: 1, minSize: 4, maxSize: 4 },
+            { id: 103, name: "GTA V", genres: ["أكشن", "عالم مفتوح"], playersTxt: "1", maxPlayers: 1, minSize: 49, maxSize: 49 },
+            { id: 104, name: "GTA: San Andreas", genres: ["أكشن", "عالم مفتوح"], playersTxt: "1 - 2", maxPlayers: 2, minSize: 21, maxSize: 21 },
+            { id: 105, name: "GTA: Vice City", genres: ["أكشن", "عالم مفتوح"], playersTxt: "1", maxPlayers: 1, minSize: 10, maxSize: 10 },
+            { id: 106, name: "GRIP", genres: ["أكشن", "سباق"], playersTxt: "1 - 4", maxPlayers: 4, minSize: 3, maxSize: 3 },
+            { id: 107, name: "Guilty Gear -Strive-", genres: ["أكشن"], playersTxt: "1 - 2", maxPlayers: 2, minSize: 10, maxSize: 24 },
+            { id: 108, name: "Handball 17", genres: ["أكشن", "رياضة"], playersTxt: "1 - 2", maxPlayers: 2, minSize: 1, maxSize: 1 },
+            { id: 109, name: "Hasbro Family Pack", genres: ["العاب عائلية"], playersTxt: "1 - 4", maxPlayers: 4, minSize: 3, maxSize: 3 },
+            { id: 110, name: "Hellblade", genres: ["رعب", "مغامرات"], playersTxt: "1", maxPlayers: 1, minSize: 13, maxSize: 21 },
+            { id: 111, name: "Helldivers", genres: ["أكشن"], playersTxt: "1 - 4", maxPlayers: 4, minSize: 3, maxSize: 3 },
+            { id: 112, name: "Hello Neighbor 1", genres: ["رعب", "مغامرات"], playersTxt: "1", maxPlayers: 1, minSize: 1, maxSize: 1 },
+            { id: 113, name: "Hello Neighbor 2", genres: ["رعب", "مغامرات"], playersTxt: "1", maxPlayers: 1, minSize: 4, maxSize: 8 },
+            { id: 114, name: "Hitman 2", genres: ["أكشن", "مغامرات"], playersTxt: "1", maxPlayers: 1, minSize: 29, maxSize: 29 },
+            { id: 115, name: "Hitman 3", genres: ["أكشن", "مغامرات"], playersTxt: "1", maxPlayers: 1, minSize: 21, maxSize: 21 },
+            { id: 116, name: "Hitman: Absolution", genres: ["أكشن", "مغامرات"], playersTxt: "1", maxPlayers: 1, minSize: 25, maxSize: 25 },
+            { id: 117, name: "Hitman: Blood Money", genres: ["أكشن", "مغامرات"], playersTxt: "1", maxPlayers: 1, minSize: 5, maxSize: 6 },
+            { id: 118, name: "Hogwarts Legacy", genres: ["مغامرات", "عالم مفتوح"], playersTxt: "1", maxPlayers: 1, minSize: 36, maxSize: 65 },
+            { id: 119, name: "Hollow Knight", genres: ["مغامرات"], playersTxt: "1", maxPlayers: 1, minSize: 1, maxSize: 1 },
+            { id: 120, name: "Hollow Knight: Silksong", genres: ["مغامرات"], playersTxt: "1", maxPlayers: 1, minSize: 2, maxSize: 2 },
+            { id: 121, name: "Horizon Forbidden West", genres: ["أكشن", "عالم مفتوح"], playersTxt: "1", maxPlayers: 1, minSize: 80, maxSize: 81 },
+            { id: 122, name: "Horizon Zero Dawn", genres: ["أكشن", "عالم مفتوح"], playersTxt: "1", maxPlayers: 1, minSize: 43, maxSize: 43 },
+            { id: 123, name: "Hot Wheels 2", genres: ["العاب عائلية"], playersTxt: "1 - 2", maxPlayers: 2, minSize: 10, maxSize: 36 },
+            { id: 124, name: "Hotel Transylvania", genres: ["العاب عائلية"], playersTxt: "1", maxPlayers: 1, minSize: 2, maxSize: 2 },
+            { id: 125, name: "Human: Fall Flat", genres: ["العاب عائلية"], playersTxt: "1 - 2", maxPlayers: 2, minSize: 2, maxSize: 6 },
+            { id: 126, name: "I Am Bread", genres: ["العاب عائلية"], playersTxt: "1", maxPlayers: 1, minSize: 1, maxSize: 1 },
+            { id: 127, name: "inFAMOUS Second Son", genres: ["أكشن", "عالم مفتوح"], playersTxt: "1", maxPlayers: 1, minSize: 22, maxSize: 22 },
+            { id: 128, name: "inFAMOUS First Light", genres: ["أكشن", "عالم مفتوح"], playersTxt: "1", maxPlayers: 1, minSize: 8, maxSize: 10 },
+            { id: 129, name: "Injustice 2", genres: ["أكشن"], playersTxt: "1 - 2", maxPlayers: 2, minSize: 30, maxSize: 30 },
+            { id: 130, name: "It Takes Two", genres: ["العاب عائلية", "مغامرات"], playersTxt: "2", maxPlayers: 2, minSize: 34, maxSize: 34 },
+            { id: 131, name: "Kingdom Come", genres: ["مغامرات", "عالم مفتوح"], playersTxt: "1", maxPlayers: 1, minSize: 41, maxSize: 41 },
+            { id: 132, name: "L.A. Noire", genres: ["مغامرات", "عالم مفتوح"], playersTxt: "1", maxPlayers: 1, minSize: 15, maxSize: 15 },
+            { id: 133, name: "Lara Croft GO", genres: ["مغامرات"], playersTxt: "1", maxPlayers: 1, minSize: 1, maxSize: 1 },
+            { id: 134, name: "LEGO Worlds", genres: ["العاب عائلية"], playersTxt: "1 - 2", maxPlayers: 2, minSize: 1, maxSize: 1 },
+            { id: 135, name: "LEGO DC Villains", genres: ["العاب عائلية"], playersTxt: "1 - 2", maxPlayers: 2, minSize: 15, maxSize: 15 },
+            { id: 136, name: "LEGO Party", genres: ["العاب عائلية"], playersTxt: "1 - 4", maxPlayers: 4, minSize: 5, maxSize: 8 },
+            { id: 137, name: "LEGO Marvel Super Heroes", genres: ["العاب عائلية"], playersTxt: "1 - 2", maxPlayers: 2, minSize: 5, maxSize: 5 },
+            { id: 138, name: "Lies of P", genres: ["أكشن", "مغامرات"], playersTxt: "1", maxPlayers: 1, minSize: 14, maxSize: 26 },
+            { id: 139, name: "Life is Strange 2", genres: ["مغامرات"], playersTxt: "1", maxPlayers: 1, minSize: 9, maxSize: 23 },
+            { id: 140, name: "Life is Strange: Before the Storm", genres: ["مغامرات"], playersTxt: "1", maxPlayers: 1, minSize: 19, maxSize: 32 },
+            { id: 141, name: "Like A Dragon Gaiden", genres: ["أكشن", "مغامرات"], playersTxt: "1", maxPlayers: 1, minSize: 41, maxSize: 58 },
+            { id: 142, name: "Little Nightmares 1", genres: ["رعب"], playersTxt: "1", maxPlayers: 1, minSize: 3, maxSize: 3 },
+            { id: 143, name: "Little Nightmares 2", genres: ["رعب"], playersTxt: "1", maxPlayers: 1, minSize: 3, maxSize: 3 },
+            { id: 144, name: "Little Nightmares 3", genres: ["رعب"], playersTxt: "1", maxPlayers: 1, minSize: 11, maxSize: 20 },
+            { id: 145, name: "Lonely Mountains", genres: ["العاب عائلية"], playersTxt: "1", maxPlayers: 1, minSize: 1, maxSize: 1 },
+            { id: 146, name: "Lords of the Fallen", genres: ["أكشن", "مغامرات"], playersTxt: "1", maxPlayers: 1, minSize: 5, maxSize: 5 },
+            { id: 147, name: "Lost Judgment", genres: ["أكشن", "مغامرات"], playersTxt: "1", maxPlayers: 1, minSize: 38, maxSize: 38 },
+            { id: 148, name: "Mad Max", genres: ["أكشن", "عالم مفتوح"], playersTxt: "1", maxPlayers: 1, minSize: 30, maxSize: 30 },
+            { id: 149, name: "Mafia 3", genres: ["أكشن", "عالم مفتوح"], playersTxt: "1", maxPlayers: 1, minSize: 44, maxSize: 44 },
+            { id: 150, name: "Mafia: Definitive Edition", genres: ["أكشن", "عالم مفتوح"], playersTxt: "1", maxPlayers: 1, minSize: 34, maxSize: 40 },
+            { id: 151, name: "Maneater", genres: ["أكشن"], playersTxt: "1", maxPlayers: 1, minSize: 5, maxSize: 5 },
+            { id: 152, name: "Maria The Witch", genres: ["العاب عائلية"], playersTxt: "1", maxPlayers: 1, minSize: 1, maxSize: 1 },
+            { id: 153, name: "Marsupilami", genres: ["العاب عائلية"], playersTxt: "1", maxPlayers: 1, minSize: 1, maxSize: 2 },
+            { id: 154, name: "Marvel's Avengers", genres: ["أكشن"], playersTxt: "1", maxPlayers: 1, minSize: 43, maxSize: 61 },
+            { id: 155, name: "Guardians of the Galaxy", genres: ["أكشن", "مغامرات"], playersTxt: "1", maxPlayers: 1, minSize: 41, maxSize: 41 },
+            { id: 156, name: "Spider-Man 1", genres: ["أكشن", "عالم مفتوح"], playersTxt: "1", maxPlayers: 1, minSize: 44, maxSize: 50 },
+            { id: 157, name: "Spider-Man 2", genres: ["أكشن", "عالم مفتوح"], playersTxt: "1", maxPlayers: 1, minSize: 18, maxSize: 18 },
+            { id: 158, name: "Metal Gear Solid V", genres: ["أكشن", "عالم مفتوح"], playersTxt: "1", maxPlayers: 1, minSize: 30, maxSize: 30 },
+            { id: 159, name: "Metro Exodus", genres: ["رعب", "أكشن"], playersTxt: "1", maxPlayers: 1, minSize: 44, maxSize: 51 },
+            { id: 160, name: "Power Rangers", genres: ["أكشن"], playersTxt: "1 - 4", maxPlayers: 4, minSize: 1, maxSize: 1 },
+            { id: 161, name: "Minecraft", genres: ["العاب عائلية"], playersTxt: "1 - 4", maxPlayers: 4, minSize: 1, maxSize: 1 },
+            { id: 162, name: "Minecraft Dungeons", genres: ["العاب عائلية"], playersTxt: "1 - 4", maxPlayers: 4, minSize: 1, maxSize: 3 },
+            { id: 163, name: "Minecraft Legends", genres: ["العاب عائلية"], playersTxt: "1 - 4", maxPlayers: 4, minSize: 6, maxSize: 8 },
+            { id: 164, name: "Minecraft: Story Mode", genres: ["العاب عائلية"], playersTxt: "1", maxPlayers: 1, minSize: 7, maxSize: 7 },
+            { id: 165, name: "Miraculous", genres: ["العاب عائلية"], playersTxt: "1 - 2", maxPlayers: 2, minSize: 3, maxSize: 4 },
+            { id: 166, name: "Monster Blast", genres: ["أكشن"], playersTxt: "1", maxPlayers: 1, minSize: 1, maxSize: 1 },
+            { id: 167, name: "Monster Jam", genres: ["العاب عائلية"], playersTxt: "1 - 2", maxPlayers: 2, minSize: 9, maxSize: 29 },
+            { id: 168, name: "Mortal Kombat X", genres: ["أكشن"], playersTxt: "1 - 2", maxPlayers: 2, minSize: 37, maxSize: 39 },
+            { id: 169, name: "Mortal Kombat 11", genres: ["أكشن"], playersTxt: "1 - 2", maxPlayers: 2, minSize: 63, maxSize: 69 },
+            { id: 170, name: "Moto Racer 4", genres: ["أكشن", "سباق"], playersTxt: "1 - 2", maxPlayers: 2, minSize: 2, maxSize: 2 },
+            { id: 171, name: "MotoGP 17", genres: ["أكشن", "سباق"], playersTxt: "1", maxPlayers: 1, minSize: 10, maxSize: 10 },
+            { id: 172, name: "Moving Out 2", genres: ["العاب عائلية"], playersTxt: "1 - 4", maxPlayers: 4, minSize: 1, maxSize: 1 },
+            { id: 173, name: "My Friend Pedro", genres: ["أكشن"], playersTxt: "1 - 2", maxPlayers: 2, minSize: 1, maxSize: 2 },
+            { id: 174, name: "My Little Pony", genres: ["العاب عائلية"], playersTxt: "1 - 2", maxPlayers: 2, minSize: 2, maxSize: 2 },
+            { id: 175, name: "Naruto Storm 4", genres: ["أكشن"], playersTxt: "1 - 2", maxPlayers: 2, minSize: 35, maxSize: 38 },
+            { id: 176, name: "NBA 2K21", genres: ["أكشن", "رياضة"], playersTxt: "1 - 4", maxPlayers: 4, minSize: 41, maxSize: 41 },
+            { id: 177, name: "NFS Heat", genres: ["أكشن", "سباق"], playersTxt: "1", maxPlayers: 1, minSize: 24, maxSize: 24 },
+            { id: 178, name: "NFS Payback", genres: ["أكشن", "سباق"], playersTxt: "1", maxPlayers: 1, minSize: 21, maxSize: 21 },
+            { id: 179, name: "NFS Most Wanted", genres: ["أكشن", "سباق"], playersTxt: "1", maxPlayers: 1, minSize: 3, maxSize: 3 },
+            { id: 180, name: "Neighbours from Hell", genres: ["العاب عائلية"], playersTxt: "1", maxPlayers: 1, minSize: 1, maxSize: 1 },
+            { id: 181, name: "Nickelodeon Brawl 2", genres: ["العاب عائلية"], playersTxt: "1 - 4", maxPlayers: 4, minSize: 5, maxSize: 10 },
+            { id: 182, name: "Overcooked! 2", genres: ["العاب عائلية"], playersTxt: "1 - 4", maxPlayers: 4, minSize: 2, maxSize: 2 },
+            { id: 183, name: "P.T.", genres: ["رعب"], playersTxt: "1", maxPlayers: 1, minSize: 1, maxSize: 1 },
+            { id: 184, name: "PAC-MAN 256", genres: ["العاب عائلية"], playersTxt: "1 - 4", maxPlayers: 4, minSize: 1, maxSize: 1 },
+            { id: 185, name: "PAW Patrol World", genres: ["العاب عائلية"], playersTxt: "1 - 2", maxPlayers: 2, minSize: 4, maxSize: 4 },
+            { id: 186, name: "Pepsiman", genres: ["أكشن"], playersTxt: "1", maxPlayers: 1, minSize: 1, maxSize: 1 },
+            { id: 187, name: "Persona 5", genres: ["مغامرات"], playersTxt: "1", maxPlayers: 1, minSize: 18, maxSize: 18 },
+            { id: 188, name: "Poppy Playtime", genres: ["رعب"], playersTxt: "1", maxPlayers: 1, minSize: 3, maxSize: 5 },
+            { id: 189, name: "Postal 4", genres: ["أكشن"], playersTxt: "1", maxPlayers: 1, minSize: 10, maxSize: 10 },
+            { id: 190, name: "Project CARS", genres: ["أكشن", "سباق"], playersTxt: "1", maxPlayers: 1, minSize: 22, maxSize: 22 },
+            { id: 191, name: "Prototype 1", genres: ["أكشن", "عالم مفتوح"], playersTxt: "1", maxPlayers: 1, minSize: 7, maxSize: 7 },
+            { id: 192, name: "Prototype 2", genres: ["أكشن", "عالم مفتوح"], playersTxt: "1", maxPlayers: 1, minSize: 8, maxSize: 8 },
+            { id: 193, name: "Puyo Puyo Tetris", genres: ["العاب عائلية"], playersTxt: "1 - 4", maxPlayers: 4, minSize: 1, maxSize: 1 },
+            { id: 194, name: "Rabbids Party", genres: ["العاب عائلية"], playersTxt: "1 - 4", maxPlayers: 4, minSize: 4, maxSize: 4 },
+            { id: 195, name: "Rayman Legends", genres: ["العاب عائلية"], playersTxt: "1 - 4", maxPlayers: 4, minSize: 7, maxSize: 7 },
+            { id: 196, name: "Red Dead 2", genres: ["مغامرات", "عالم مفتوح"], playersTxt: "1", maxPlayers: 1, minSize: 79, maxSize: 98 },
+            { id: 197, name: "Resident Evil 2", genres: ["رعب"], playersTxt: "1", maxPlayers: 1, minSize: 21, maxSize: 22 },
+            { id: 198, name: "Resident Evil 3", genres: ["رعب"], playersTxt: "1", maxPlayers: 1, minSize: 20, maxSize: 20 },
+            { id: 199, name: "Resident Evil 4", genres: ["رعب"], playersTxt: "1", maxPlayers: 1, minSize: 24, maxSize: 36 },
+            { id: 200, name: "Resident Evil 5", genres: ["رعب"], playersTxt: "1 - 2", maxPlayers: 2, minSize: 15, maxSize: 15 },
+            { id: 201, name: "Resident Evil 7", genres: ["رعب"], playersTxt: "1", maxPlayers: 1, minSize: 28, maxSize: 31 },
+            { id: 202, name: "RE Revelations 2", genres: ["رعب"], playersTxt: "1 - 2", maxPlayers: 2, minSize: 5, maxSize: 11 },
+            { id: 203, name: "Resident Evil Village", genres: ["رعب"], playersTxt: "1", maxPlayers: 1, minSize: 26, maxSize: 26 },
+            { id: 204, name: "Rise of Tomb Raider", genres: ["أكشن", "مغامرات"], playersTxt: "1", maxPlayers: 1, minSize: 17, maxSize: 17 },
+            { id: 205, name: "Rise to Honor", genres: ["أكشن"], playersTxt: "1", maxPlayers: 1, minSize: 2, maxSize: 2 },
+            { id: 206, name: "Road Redemption", genres: ["أكشن", "سباق"], playersTxt: "1 - 4", maxPlayers: 4, minSize: 3, maxSize: 5 },
+            { id: 207, name: "Rocket League", genres: ["العاب عائلية", "رياضة"], playersTxt: "1 - 4", maxPlayers: 4, minSize: 30, maxSize: 30 },
+            { id: 208, name: "Rollerdrome", genres: ["أكشن"], playersTxt: "1", maxPlayers: 1, minSize: 1, maxSize: 1 },
+            { id: 209, name: "Sackboy", genres: ["العاب عائلية"], playersTxt: "1 - 4", maxPlayers: 4, minSize: 33, maxSize: 33 },
+            { id: 210, name: "Saints Row", genres: ["أكشن", "عالم مفتوح"], playersTxt: "1", maxPlayers: 1, minSize: 36, maxSize: 50 },
+            { id: 211, name: "Saints Row: Gat", genres: ["أكشن", "عالم مفتوح"], playersTxt: "1", maxPlayers: 1, minSize: 6, maxSize: 6 },
+            { id: 212, name: "Samurai Jack", genres: ["أكشن"], playersTxt: "1", maxPlayers: 1, minSize: 4, maxSize: 4 },
+            { id: 213, name: "Sekiro", genres: ["أكشن", "مغامرات"], playersTxt: "1", maxPlayers: 1, minSize: 11, maxSize: 14 },
+            { id: 214, name: "Shadow of Mordor", genres: ["أكشن", "عالم مفتوح"], playersTxt: "1", maxPlayers: 1, minSize: 40, maxSize: 58 },
+            { id: 215, name: "Shadow of Colossus", genres: ["مغامرات"], playersTxt: "1", maxPlayers: 1, minSize: 12, maxSize: 12 },
+            { id: 216, name: "Shadow of Tomb Raider", genres: ["أكشن", "مغامرات"], playersTxt: "1", maxPlayers: 1, minSize: 30, maxSize: 30 },
+            { id: 217, name: "Shovel Knight", genres: ["أكشن"], playersTxt: "1 - 2", maxPlayers: 2, minSize: 1, maxSize: 1 },
+            { id: 218, name: "Civilization VII", genres: ["مغامرات"], playersTxt: "1", maxPlayers: 1, minSize: 6, maxSize: 10 },
+            { id: 219, name: "Sifu", genres: ["أكشن"], playersTxt: "1", maxPlayers: 1, minSize: 7, maxSize: 21 },
+            { id: 220, name: "Sky Force", genres: ["أكشن"], playersTxt: "1 - 2", maxPlayers: 2, minSize: 1, maxSize: 1 },
+            { id: 221, name: "Slaps and Beans 2", genres: ["العاب عائلية"], playersTxt: "1 - 4", maxPlayers: 4, minSize: 1, maxSize: 1 },
+            { id: 222, name: "Sleeping Dogs", genres: ["أكشن", "عالم مفتوح"], playersTxt: "1", maxPlayers: 1, minSize: 16, maxSize: 16 },
+            { id: 223, name: "Slice Rice", genres: ["أكشن"], playersTxt: "1 - 2", maxPlayers: 2, minSize: 1, maxSize: 1 },
+            { id: 224, name: "Smoots Games", genres: ["العاب عائلية"], playersTxt: "1 - 4", maxPlayers: 4, minSize: 1, maxSize: 1 },
+            { id: 225, name: "Sniper Elite 3", genres: ["أكشن"], playersTxt: "1", maxPlayers: 1, minSize: 22, maxSize: 22 },
+            { id: 226, name: "Sniper Elite 4", genres: ["أكشن"], playersTxt: "1", maxPlayers: 1, minSize: 7, maxSize: 7 },
+            { id: 227, name: "Sniper Elite 5", genres: ["أكشن"], playersTxt: "1", maxPlayers: 1, minSize: 27, maxSize: 37 },
+            { id: 228, name: "Sniper Warrior 3", genres: ["أكشن"], playersTxt: "1", maxPlayers: 1, minSize: 36, maxSize: 36 },
+            { id: 229, name: "Sociable Soccer 25", genres: ["أكشن", "رياضة"], playersTxt: "1 - 2", maxPlayers: 2, minSize: 1, maxSize: 1 },
+            { id: 230, name: "Sonic Forces", genres: ["العاب عائلية"], playersTxt: "1", maxPlayers: 1, minSize: 16, maxSize: 16 },
+            { id: 231, name: "Sonic Frontiers", genres: ["العاب عائلية"], playersTxt: "1", maxPlayers: 1, minSize: 17, maxSize: 27 },
+            { id: 232, name: "Sonic Racing Cross", genres: ["العاب عائلية"], playersTxt: "1 - 4", maxPlayers: 4, minSize: 11, maxSize: 23 },
+            { id: 233, name: "Sonic Superstars", genres: ["العاب عائلية"], playersTxt: "1 - 4", maxPlayers: 4, minSize: 4, maxSize: 4 },
+            { id: 234, name: "SpongeBob", genres: ["العاب عائلية"], playersTxt: "1 - 2", maxPlayers: 2, minSize: 8, maxSize: 8 },
+            { id: 235, name: "Spyro Trilogy", genres: ["العاب عائلية"], playersTxt: "1", maxPlayers: 1, minSize: 33, maxSize: 33 },
+            { id: 236, name: "Jedi Fallen Order", genres: ["أكشن", "مغامرات"], playersTxt: "1", maxPlayers: 1, minSize: 44, maxSize: 44 },
+            { id: 237, name: "Jedi Survivor", genres: ["أكشن", "مغامرات"], playersTxt: "1", maxPlayers: 1, minSize: 51, maxSize: 51 },
+            { id: 238, name: "Stick Fight", genres: ["العاب عائلية"], playersTxt: "1 - 4", maxPlayers: 4, minSize: 1, maxSize: 1 },
+            { id: 239, name: "Stikbold!", genres: ["العاب عائلية"], playersTxt: "1 - 4", maxPlayers: 4, minSize: 1, maxSize: 1 },
+            { id: 240, name: "Stray", genres: ["مغامرات"], playersTxt: "1", maxPlayers: 1, minSize: 6, maxSize: 18 },
+            { id: 241, name: "Street Fighter V", genres: ["أكشن"], playersTxt: "1 - 2", maxPlayers: 2, minSize: 27, maxSize: 67 },
+            { id: 242, name: "Streets of Rage 4", genres: ["أكشن"], playersTxt: "1 - 4", maxPlayers: 4, minSize: 5, maxSize: 8 },
+            { id: 243, name: "Super Bomberman R 2", genres: ["العاب عائلية"], playersTxt: "1 - 4", maxPlayers: 4, minSize: 4, maxSize: 4 },
+            { id: 244, name: "Super Mario 64", genres: ["العاب عائلية"], playersTxt: "1", maxPlayers: 1, minSize: 1, maxSize: 1 },
+            { id: 245, name: "Taxi Chaos", genres: ["العاب عائلية"], playersTxt: "1", maxPlayers: 1, minSize: 1, maxSize: 1 },
+            { id: 246, name: "Team Sonic Racing", genres: ["العاب عائلية"], playersTxt: "1 - 4", maxPlayers: 4, minSize: 13, maxSize: 28 },
+            { id: 247, name: "TMNT", genres: ["أكشن"], playersTxt: "1 - 4", maxPlayers: 4, minSize: 1, maxSize: 1 },
+            { id: 248, name: "Tekken 7", genres: ["أكشن"], playersTxt: "1 - 2", maxPlayers: 2, minSize: 38, maxSize: 48 },
+            { id: 249, name: "Tennis", genres: ["أكشن", "رياضة"], playersTxt: "1 - 2", maxPlayers: 2, minSize: 3, maxSize: 3 },
+            { id: 250, name: "Tennis World Tour 2", genres: ["أكشن", "رياضة"], playersTxt: "1 - 4", maxPlayers: 4, minSize: 6, maxSize: 7 },
+            { id: 251, name: "House of Ashes", genres: ["رعب"], playersTxt: "1 - 5", maxPlayers: 5, minSize: 28, maxSize: 28 },
+            { id: 252, name: "Little Hope", genres: ["رعب"], playersTxt: "1 - 5", maxPlayers: 5, minSize: 32, maxSize: 59 },
+            { id: 253, name: "Disney Afternoon", genres: ["العاب عائلية"], playersTxt: "1 - 2", maxPlayers: 2, minSize: 1, maxSize: 1 },
+            { id: 254, name: "Evil Within 1", genres: ["رعب"], playersTxt: "1", maxPlayers: 1, minSize: 33, maxSize: 33 },
+            { id: 255, name: "Evil Within 2", genres: ["رعب"], playersTxt: "1", maxPlayers: 1, minSize: 27, maxSize: 27 },
+            { id: 256, name: "House of Dead 2", genres: ["رعب"], playersTxt: "1 - 2", maxPlayers: 2, minSize: 3, maxSize: 3 },
+            { id: 257, name: "TLOU Part 1", genres: ["رعب", "مغامرات"], playersTxt: "1", maxPlayers: 1, minSize: 43, maxSize: 43 },
+            { id: 258, name: "TLOU Part 2", genres: ["رعب", "مغامرات"], playersTxt: "1", maxPlayers: 1, minSize: 86, maxSize: 86 },
+            { id: 259, name: "The Order: 1886", genres: ["أكشن"], playersTxt: "1", maxPlayers: 1, minSize: 29, maxSize: 29 },
+            { id: 260, name: "The Warriors", genres: ["أكشن"], playersTxt: "1 - 2", maxPlayers: 2, minSize: 2, maxSize: 2 },
+            { id: 261, name: "The Witcher 3", genres: ["مغامرات", "عالم مفتوح"], playersTxt: "1", maxPlayers: 1, minSize: 37, maxSize: 37 },
+            { id: 262, name: "Tomb Raider", genres: ["أكشن", "مغامرات"], playersTxt: "1", maxPlayers: 1, minSize: 18, maxSize: 18 },
+            { id: 263, name: "Trackmania Turbo", genres: ["أكشن", "سباق"], playersTxt: "1 - 4", maxPlayers: 4, minSize: 3, maxSize: 3 },
+            { id: 264, name: "Trek to Yomi", genres: ["أكشن"], playersTxt: "1", maxPlayers: 1, minSize: 5, maxSize: 5 },
+            { id: 265, name: "Tricky Towers", genres: ["العاب عائلية"], playersTxt: "1 - 4", maxPlayers: 4, minSize: 1, maxSize: 1 },
+            { id: 266, name: "Tropico 6", genres: ["مغامرات"], playersTxt: "1", maxPlayers: 1, minSize: 6, maxSize: 10 },
+            { id: 267, name: "Truck Driver", genres: ["العاب عائلية"], playersTxt: "1 - 2", maxPlayers: 2, minSize: 1, maxSize: 2 },
+            { id: 268, name: "Uncharted Trilogy", genres: ["أكشن", "مغامرات"], playersTxt: "1", maxPlayers: 1, minSize: 40, maxSize: 40 },
+            { id: 269, name: "Uncharted 4", genres: ["أكشن", "مغامرات"], playersTxt: "1", maxPlayers: 1, minSize: 59, maxSize: 59 },
+            { id: 270, name: "Uncharted Lost Legacy", genres: ["أكشن", "مغامرات"], playersTxt: "1", maxPlayers: 1, minSize: 45, maxSize: 45 },
+            { id: 271, name: "UNO", genres: ["العاب عائلية"], playersTxt: "1 - 4", maxPlayers: 4, minSize: 1, maxSize: 1 },
+            { id: 272, name: "Unravel", genres: ["العاب عائلية", "مغامرات"], playersTxt: "1 - 2", maxPlayers: 2, minSize: 2, maxSize: 2 },
+            { id: 273, name: "Unravel Two", genres: ["العاب عائلية", "مغامرات"], playersTxt: "1 - 2", maxPlayers: 2, minSize: 2, maxSize: 2 },
+            { id: 274, name: "Until Dawn", genres: ["رعب"], playersTxt: "1", maxPlayers: 1, minSize: 35, maxSize: 35 },
+            { id: 275, name: "Urban Trial Tricky", genres: ["أكشن"], playersTxt: "1", maxPlayers: 1, minSize: 1, maxSize: 1 },
+            { id: 276, name: "Virtua Fighter V", genres: ["أكشن"], playersTxt: "1 - 2", maxPlayers: 2, minSize: 10, maxSize: 14 },
+            { id: 277, name: "Wanted: Dead", genres: ["أكشن"], playersTxt: "1", maxPlayers: 1, minSize: 19, maxSize: 34 },
+            { id: 278, name: "Watch Dogs 1", genres: ["أكشن", "عالم مفتوح"], playersTxt: "1", maxPlayers: 1, minSize: 17, maxSize: 17 },
+            { id: 279, name: "Watch Dogs 2", genres: ["أكشن", "عالم مفتوح"], playersTxt: "1", maxPlayers: 1, minSize: 26, maxSize: 35 },
+            { id: 280, name: "Watch Dogs Legion", genres: ["أكشن", "عالم مفتوح"], playersTxt: "1", maxPlayers: 1, minSize: 28, maxSize: 29 },
+            { id: 281, name: "Worms W.M.D", genres: ["العاب عائلية"], playersTxt: "1 - 6", maxPlayers: 6, minSize: 1, maxSize: 1 },
+            { id: 282, name: "WWE 2K23", genres: ["أكشن", "رياضة"], playersTxt: "1 - 4", maxPlayers: 4, minSize: 44, maxSize: 59 },
+            { id: 283, name: "WWE 2K24", genres: ["أكشن", "رياضة"], playersTxt: "1 - 4", maxPlayers: 4, minSize: 44, maxSize: 71 },
+            { id: 284, name: "WWE 2K25", genres: ["أكشن", "رياضة"], playersTxt: "1 - 4", maxPlayers: 4, minSize: 38, maxSize: 82 },
+            { id: 285, name: "Xenon Racer", genres: ["أكشن", "سباق"], playersTxt: "1 - 2", maxPlayers: 2, minSize: 3, maxSize: 3 },
+            { id: 286, name: "Xeodrifter", genres: ["أكشن"], playersTxt: "1", maxPlayers: 1, minSize: 1, maxSize: 1 }
         ];
 
         let cart = [];
-        let genreFilter = "الكل";
+        let activeGenres = [];
+        let activePlayers = [];
+        let activeSizes = [];
 
-        // تعريف ألعاب كل باقة (بالأيدي)
+        // تعريف الألعاب بدقة للأسماء المذكورة
         const packages = {
-            1: [24, 68, 45, 68, 73, 72, 103],
-            2: [24, 168, 45, 68, 73, 72, 98, 103],
-            3: [269, 284, 72, 178, 169, 161, 156, 130, 103, 101, 98, 68, 68, 45, 24],
-            4: [1, 4, 5, 6, 9, 14, 15, 16, 18, 22, 23, 24, 34, 35, 37, 38, 39, 40, 43, 45, 46, 47, 51, 61, 62, 63, 67, 75, 88, 89, 91, 98, 103, 108, 109, 124, 126, 130, 133, 134, 136, 145, 152, 153, 156, 157, 160, 161, 166, 169, 170, 172, 174, 178, 181, 182, 183, 184, 186, 72, 193, 208, 217, 220, 221, 223, 229, 238, 239, 244, 245, 253, 256, 260, 262, 265, 267, 269, 271, 275, 281, 286]
+            1: [24, 300, 45, 68, 73, 72, 103], 
+            2: [24, 169, 45, 68, 73, 72, 98, 103],
+            3: [269, 284, 72, 178, 169, 161, 156, 130, 103, 101, 98, 300, 68, 45, 24],
+            4: [1, 4, 5, 6, 9, 14, 15, 16, 18, 22, 23, 24, 34, 35, 37, 38, 39, 40, 43, 45, 46, 47, 51, 61, 62, 63, 67, 75, 88, 89, 91, 98, 103, 108, 109, 124, 126, 130, 133, 134, 136, 145, 152, 153, 156, 157, 161, 166, 169, 170, 172, 174, 178, 181, 182, 184, 186, 72, 193, 208, 217, 220, 221, 223, 229, 238, 239, 244, 245, 253, 256, 260, 60, 264, 265, 267, 269, 271, 275, 281, 286]
         };
 
+        function toggleFilter(type, value, btnElement) {
+            btnElement.classList.toggle('active');
+            if(type === 'genre') {
+                if(activeGenres.includes(value)) activeGenres = activeGenres.filter(g => g !== value);
+                else activeGenres.push(value);
+            }
+            renderGames();
+        }
+
+        function handleEnter(e) { if(e.key === 'Enter') renderGames(); }
+
+        function toggleCart(id) {
+            const index = cart.findIndex(g => g.id === id);
+            if(index > -1) cart.splice(index, 1);
+            else {
+                const game = gamesDB.find(g => g.id === id);
+                if (game) cart.push(game);
+            }
+            updateCartUI();
+            renderGames();
+        }
+
+        // دالة الإضافة التلقائية للباقات
         function addPackage(pkgId) {
             const gameIds = packages[pkgId];
+            let addedCount = 0;
+            
             gameIds.forEach(id => {
                 const game = gamesDB.find(g => g.id === id);
                 if (game && !cart.some(c => c.id === id)) {
                     cart.push(game);
+                    addedCount++;
                 }
             });
+
             updateCartUI();
             renderGames();
-            alert("تم إضافة ألعاب الباقة إلى السلة!");
-        }
-
-        function setGenreFilter(genre, btn) {
-            genreFilter = genre;
-            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            renderGames();
-        }
-
-        function toggleCart(id) {
-            const index = cart.findIndex(g => g.id === id);
-            if (index > -1) cart.splice(index, 1);
-            else cart.push(gamesDB.find(g => g.id === id));
-            updateCartUI();
-            renderGames();
+            
+            if (addedCount > 0) {
+                alert(`تمت الإضافة بنجاح! تم وضع ${addedCount} لعبة في السلة.`);
+            } else {
+                alert("الألعاب دي موجودة بالفعل في السلة!");
+            }
         }
 
         function renderGames() {
             const grid = document.getElementById('gamesGrid');
-            const search = document.getElementById('searchInput').value.toLowerCase();
+            const searchText = document.getElementById('searchInput').value.toLowerCase();
             grid.innerHTML = '';
-
+            
             gamesDB.forEach(game => {
-                if (search && !game.name.toLowerCase().includes(search)) return;
-                if (genreFilter !== "الكل" && !game.genres.includes(genreFilter)) return;
+                if (searchText && !game.name.toLowerCase().includes(searchText)) return;
+                if (activeGenres.length > 0 && !game.genres.some(g => activeGenres.includes(g))) return;
 
                 const inCart = cart.some(c => c.id === game.id);
+                const ytLink = `https://www.youtube.com/results?search_query=${encodeURIComponent(game.name + " review")}`;
+                let tagsHTML = game.genres.map(g => `<span class="tag">${g}</span>`).join('');
+                let sizeDisplay = (game.minSize === game.maxSize) ? `${game.minSize} GB` : `${game.minSize} - ${game.maxSize} GB`;
+                
                 grid.innerHTML += `
                     <div class="card">
                         <div class="card-header"><h3 class="game-title">${game.name}</h3></div>
                         <div class="card-content">
-                            <div class="info-text">💾 ${game.minSize}-${game.maxSize} GB</div>
+                            <div class="tags">${tagsHTML}</div>
+                            <div class="info-text">🎮 اللاعبين: ${game.playersTxt}</div>
+                            <div class="info-text">💾 المساحة: ${sizeDisplay}</div>
                             <div class="card-actions">
                                 <button class="btn ${inCart ? 'btn-add added' : 'btn-add'}" onclick="toggleCart(${game.id})">
                                     ${inCart ? '❌ إزالة' : '➕ إضافة'}
                                 </button>
-                                <a href="https://www.youtube.com/results?search_query=${game.name}+ps4+gameplay" target="_blank" class="btn btn-yt">▶ مراجعة</a>
+                                <a href="${ytLink}" target="_blank" class="btn btn-yt">▶ مراجعة</a>
                             </div>
                         </div>
                     </div>`;
@@ -338,30 +703,45 @@
             const list = document.getElementById('cartItemsList');
             list.innerHTML = '';
             let minTotal = 0, maxTotal = 0;
-
+            
+            if(cart.length === 0) {
+                list.innerHTML = '<p style="text-align:center; color:#aaa;">السلة فارغة حالياً</p>';
+            }
+            
             cart.forEach(game => {
                 minTotal += game.minSize; maxTotal += game.maxSize;
-                list.innerHTML += `<div class="cart-item"><span>${game.name}</span><span style="color:var(--primary-color)">${game.maxSize} GB</span></div>`;
+                let itemSizeText = (game.minSize === game.maxSize) ? `${game.minSize} GB` : `${game.minSize}-${game.maxSize} GB`;
+                list.innerHTML += `<div class="cart-item"><span>${game.name}</span><span style="color:var(--primary-color);" dir="ltr">${itemSizeText}</span></div>`;
             });
-
-            document.getElementById('totalSizeUI').innerText = `${minTotal} - ${maxTotal} GB`;
+            
+            document.getElementById('totalSizeUI').innerText = (minTotal === maxTotal) ? `${minTotal} GB` : `${minTotal} - ${maxTotal} GB`;
         }
 
         function openCart() { document.getElementById('cartModal').style.display = 'flex'; }
         function closeCart() { document.getElementById('cartModal').style.display = 'none'; }
 
         function sendWhatsApp(phone) {
-            const name = document.getElementById('userName').value;
-            const phoneUser = document.getElementById('userPhone').value;
-            if(!name || !phoneUser) return alert("اكتب اسمك ورقمك!");
+            const name = document.getElementById('userName').value.trim();
+            const contact = document.getElementById('userPhone').value.trim();
+            if(!name || !contact) { alert("من فضلك اكتب اسمك ورقم تليفونك أولاً!"); return; }
+            if(cart.length === 0) { alert("يرجى اختيار ألعاب أولاً!"); return; }
+
+            let minTotal = 0, maxTotal = 0;
+            let text = `مرحباً LevelUP،\nأنا ${name} (رقمي: ${contact})\nأود تثبيت هذه الألعاب على جهازي:\n`;
             
-            let text = `طلب جديد من: ${name}\nالرقم: ${phoneUser}\nالألعاب المطلوبة:\n`;
-            cart.forEach((g, i) => text += `${i+1}. ${g.name}\n`);
-            text += `\nالإجمالي: ${document.getElementById('totalSizeUI').innerText}`;
-            window.open(`https://wa.me/${phone}?text=${encodeURIComponent(text)}`);
+            cart.forEach((game, index) => {
+                let sizeTxt = (game.minSize === game.maxSize) ? `${game.minSize} GB` : `${game.minSize}-${game.maxSize} GB`;
+                text += ` ${index + 1}. ${game.name} (${sizeTxt})\n`;
+                minTotal += game.minSize; maxTotal += game.maxSize;
+            });
+            
+            let finalTotalTxt = (minTotal === maxTotal) ? `${minTotal} جيجابايت` : `من ${minTotal} إلى ${maxTotal} جيجابايت`;
+            text += `\nإجمالي المساحة المطلوبة: ${finalTotalTxt}.`;
+            window.open(`https://wa.me/${phone}?text=${encodeURIComponent(text)}`, '_blank');
         }
 
-        renderGames();
+        renderGames(); 
+        updateCartUI();
     </script>
 </body>
 </html>
