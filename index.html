@@ -7,137 +7,370 @@
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #121212;
-            --card-bg: #1e1e24;
-            --primary-color: #00ffcc;
-            --primary-hover: #00ccaa;
-            --accent-color: #ffcc00;
-            --text-main: #ffffff;
-            --text-muted: #a0a0a0;
-            --danger: #ff4757;
-            --danger-hover: #e03e4d;
-            --fb-color: #1877F2;
+            --bg-color: #121212; --card-bg: #1e1e24; --primary-color: #00ffcc;
+            --primary-hover: #00ccaa; --accent-color: #ffcc00; --text-main: #ffffff;
+            --text-muted: #a0a0a0; --danger: #ff4757; --danger-hover: #e03e4d; --fb-color: #1877F2;
         }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            font-family: 'Tajawal', sans-serif;
-            margin: 0;
-            padding: 0;
-            padding-bottom: 80px;
-        }
-
-        .top-info-bar {
-            background-color: #000;
-            color: var(--primary-color);
-            padding: 8px 15px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 12px;
-            border-bottom: 1px solid #333;
-        }
-
+        body { background-color: var(--bg-color); color: var(--text-main); font-family: 'Tajawal', sans-serif; margin: 0; padding: 0; padding-bottom: 80px; }
+        .top-info-bar { background-color: #000; color: var(--primary-color); padding: 8px 15px; display: flex; justify-content: space-between; align-items: center; font-size: 12px; border-bottom: 1px solid #333; }
         .top-info-bar a { color: var(--primary-color); text-decoration: none; font-weight: bold; }
-
-        header {
-            background-color: #0d0d0d;
-            padding: 20px 15px;
-            text-align: center;
-            border-bottom: 2px solid var(--primary-color);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
+        header { background-color: #0d0d0d; padding: 20px 15px; text-align: center; border-bottom: 2px solid var(--primary-color); position: sticky; top: 0; z-index: 100; }
         header h1 { margin: 0; font-size: 26px; font-weight: 900; letter-spacing: 1px; }
         header span { color: var(--primary-color); }
-
-        .fb-link {
-            display: inline-block;
-            margin-top: 10px;
-            background-color: var(--fb-color);
-            color: white;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 13px;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
+        .fb-link { display: inline-block; margin-top: 10px; background-color: var(--fb-color); color: white; padding: 5px 15px; border-radius: 20px; font-size: 13px; text-decoration: none; font-weight: bold; }
         .container { max-width: 1200px; margin: auto; padding: 15px; }
-
-        /* ======== تصميم الباقات ======== */
         .packages-section { margin-bottom: 40px; }
-        
-        .section-title {
-            text-align: center; font-size: 24px; color: var(--primary-color);
-            margin-bottom: 20px; font-weight: 900;
-        }
-
-        .packages-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px;
-        }
-
-        .pkg-card {
-            background-color: #1a1a20; border: 2px solid #333; border-radius: 12px;
-            padding: 20px; text-align: center; transition: 0.3s; display: flex; flex-direction: column;
-        }
-
+        .section-title { text-align: center; font-size: 24px; color: var(--primary-color); margin-bottom: 20px; font-weight: 900; }
+        .packages-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; }
+        .pkg-card { background-color: #1a1a20; border: 2px solid #333; border-radius: 12px; padding: 20px; text-align: center; transition: 0.3s; display: flex; flex-direction: column; }
         .pkg-card:hover { border-color: var(--primary-color); transform: translateY(-5px); }
         .pkg-card.premium { border-color: #7000ff; }
         .pkg-card.mega { border-color: var(--accent-color); }
-
         .pkg-title { font-size: 22px; font-weight: bold; color: var(--primary-color); margin-bottom: 10px; }
         .pkg-card.premium .pkg-title { color: #b785ff; }
         .pkg-card.mega .pkg-title { color: var(--accent-color); }
-
-        .pkg-size {
-            background-color: #000; display: inline-block; padding: 5px 15px;
-            border-radius: 20px; font-size: 16px; font-weight: bold; margin-bottom: 15px; border: 1px solid #444;
-        }
-
+        .pkg-size { background-color: #000; display: inline-block; padding: 5px 15px; border-radius: 20px; font-size: 16px; font-weight: bold; margin-bottom: 15px; border: 1px solid #444; }
         .pkg-desc { font-size: 13px; color: var(--text-muted); margin-bottom: 20px; line-height: 1.6; flex-grow: 1; }
-
-        .btn-pkg {
-            background-color: var(--primary-color); color: #000; border: none; padding: 12px;
-            border-radius: 8px; font-weight: bold; font-family: 'Tajawal', sans-serif; font-size: 15px; cursor: pointer; width: 100%;
-        }
+        .btn-pkg { background-color: var(--primary-color); color: #000; border: none; padding: 12px; border-radius: 8px; font-weight: bold; font-family: 'Tajawal', sans-serif; font-size: 15px; cursor: pointer; width: 100%; }
         .pkg-card.premium .btn-pkg { background-color: #7000ff; color: white; }
         .pkg-card.mega .btn-pkg { background-color: var(--accent-color); color: #000; }
-
-        .divider {
-            height: 3px; background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
-            margin: 40px 0; border-radius: 5px;
-        }
-
-        /* ======== البحث والفلترة ======== */
+        .divider { height: 3px; background: linear-gradient(90deg, transparent, var(--primary-color), transparent); margin: 40px 0; border-radius: 5px; }
         .search-box { display: flex; gap: 8px; margin-bottom: 15px; }
-        .search-box input {
-            flex: 1; padding: 10px 12px; border-radius: 6px; border: 1px solid #444;
-            background-color: var(--card-bg); color: white; font-family: 'Tajawal', sans-serif; font-size: 15px;
-        }
-        .search-box button {
-            background-color: var(--primary-color); color: #000; border: none; padding: 0 15px;
-            border-radius: 6px; font-weight: bold; font-family: 'Tajawal', sans-serif; cursor: pointer; font-size: 15px;
-        }
-
+        .search-box input { flex: 1; padding: 10px 12px; border-radius: 6px; border: 1px solid #444; background-color: var(--card-bg); color: white; font-family: 'Tajawal', sans-serif; font-size: 15px; }
+        .search-box button { background-color: var(--primary-color); color: #000; border: none; padding: 0 15px; border-radius: 6px; font-weight: bold; font-family: 'Tajawal', sans-serif; cursor: pointer; font-size: 15px; }
         .filter-section { margin-bottom: 25px; background: #1a1a20; padding: 15px; border-radius: 8px; border: 1px solid #333; }
         .filter-title { font-size: 14px; color: var(--primary-color); margin-bottom: 10px; font-weight: bold; }
         .filter-group { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 15px; }
         .filter-group:last-child { margin-bottom: 0; }
-        .filter-btn {
-            background-color: #2a2a35; color: var(--text-main); border: 1px solid #444;
-            padding: 6px 12px; border-radius: 15px; cursor: pointer; font-family: 'Tajawal', sans-serif; font-size: 13px; transition: 0.2s;
-        }
+        .filter-btn { background-color: #2a2a35; color: var(--text-main); border: 1px solid #444; padding: 6px 12px; border-radius: 15px; cursor: pointer; font-family: 'Tajawal', sans-serif; font-size: 13px; transition: 0.2s; }
         .filter-btn.active { background-color: var(--primary-color); color: #000; border-color: var(--primary-color); font-weight: bold; }
-
-        /* ======== كروت الألعاب ======== */
         .grid-layout { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; }
         .card { background-color: var(--card-bg); border-radius: 8px; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.4); display: flex; flex-direction: column; border: 1px solid #333; }
         .card-header { background-color: #17171c; padding: 12px 10px; border-bottom: 1px solid #333; text-align: center; }
         .game-title { color: var(--primary-color); font-size: 15px; font-weight: 700; margin: 0; line-height: 1.4; }
         .card-content { padding: 10px; flex: 1; display: flex; flex-direction: column; }
         .tags { margin-bottom: 8px; text-align: center; }
-        .tag { display: inline-block; background-color: #333; font-size: 11px; padding: 3px 6px; border-radius: 4px; margin:
+        .tag { display: inline-block; background-color: #333; font-size: 11px; padding: 3px 6px; border-radius: 4px; margin: 2px; color: var(--primary-color); }
+        .info-text { font-size: 13px; color: #ddd; margin-bottom: 5px; text-align: center; }
+        .card-actions { margin-top: auto; padding-top: 10px; display: flex; gap: 8px; }
+        .btn { flex: 1; padding: 8px; border: none; border-radius: 6px; font-family: 'Tajawal', sans-serif; font-weight: bold; cursor: pointer; text-align: center; text-decoration: none; font-size: 13px; }
+        .btn-add { background-color: var(--primary-color); color: #000; }
+        .btn-add.added { background-color: var(--danger); color: white; }
+        .btn-yt { background-color: #d32f2f; color: white; }
+        .cart-float { position: fixed; bottom: 15px; left: 15px; background-color: var(--primary-color); color: #000; padding: 12px 20px; border-radius: 25px; font-weight: bold; font-family: 'Tajawal', sans-serif; font-size: 15px; box-shadow: 0 4px 10px rgba(0, 255, 204, 0.3); cursor: pointer; border: none; z-index: 1000; display: flex; align-items: center; gap: 8px; }
+        .cart-modal { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.85); z-index: 1001; justify-content: center; align-items: center; padding: 15px; }
+        .cart-content { background-color: var(--card-bg); width: 100%; max-width: 450px; border-radius: 10px; padding: 15px; max-height: 90vh; overflow-y: auto; border: 1px solid var(--primary-color); display: flex; flex-direction: column; }
+        .cart-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #444; padding-bottom: 10px; margin-bottom: 15px; }
+        .user-info-section { margin-bottom: 15px; display: flex; flex-direction: column; gap: 10px; }
+        .user-info-section input { padding: 10px; border-radius: 6px; border: 1px solid #444; background-color: #2a2a35; color: white; font-family: 'Tajawal', sans-serif; }
+        .cart-controls { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px dashed #333; }
+        .btn-empty-cart { background-color: transparent; color: var(--danger); border: 1px solid var(--danger); padding: 5px 10px; border-radius: 4px; font-family: 'Tajawal', sans-serif; font-size: 12px; cursor: pointer; transition: 0.2s; }
+        .btn-empty-cart:hover { background-color: var(--danger); color: white; }
+        .cart-item { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 14px; border-bottom: 1px dashed #333; padding-bottom: 5px; }
+        .cart-summary { background-color: #2a2a35; padding: 12px; border-radius: 6px; margin-top: 15px; text-align: center; }
+        .cart-summary h3 { margin: 0 0 8px 0; color: var(--primary-color); font-size: 15px; }
+        .whatsapp-buttons { display: flex; flex-direction: column; gap: 10px; margin-top: 15px; }
+        .btn-whatsapp { background-color: #25D366; color: white; width: 100%; padding: 12px; border: none; border-radius: 6px; font-family: 'Tajawal', sans-serif; font-weight: bold; font-size: 14px; cursor: pointer; transition: 0.2s; }
+        .btn-whatsapp:hover { background-color: #128C7E; }
+        .close-cart { background: none; border: none; color: white; font-size: 22px; cursor: pointer; }
+        @media (max-width: 600px) { .top-info-bar { flex-direction: column; gap: 5px; text-align: center; } header h1 { font-size: 22px; } }
+    </style>
+</head>
+<body>
+
+    <div class="top-info-bar">
+        <div class="phones">📞 01555886990 - 01010763503</div>
+        <div class="address">📍 شارع الابراج, ارض الجمعيات, الاسماعيلية</div>
+    </div>
+
+    <header>
+        <h1>Level<span>UP</span> Mod Games</h1>
+        <a href="https://www.facebook.com/LevelUP.Ismailia" target="_blank" class="fb-link">f | LevelUP Ismailia</a>
+    </header>
+
+    <div class="container">
+        
+        <div class="packages-section">
+            <h2 class="section-title">🔥 باقات الألعاب الجاهزة</h2>
+            <div class="packages-grid">
+                <div class="pkg-card">
+                    <div class="pkg-title">باقة رقم 1</div>
+                    <div class="pkg-size">💾 مساحة: 373 GB</div>
+                    <div class="pkg-desc">Black Ops 3, PES 26, Crash Racing, FC 26, PES 21, PES 19, GTA V</div>
+                    <button class="btn-pkg" onclick="addPackage(1)">➕ إضافة الباقة للسلة</button>
+                </div>
+                <div class="pkg-card">
+                    <div class="pkg-title">باقة رقم 2</div>
+                    <div class="pkg-size">💾 مساحة: 375 GB</div>
+                    <div class="pkg-desc">Black Ops 3, Mortal Kombat 11, Crash Racing, FC 26, PES 21, PES 19, God of War, GTA V</div>
+                    <button class="btn-pkg" onclick="addPackage(2)">➕ إضافة الباقة للسلة</button>
+                </div>
+                <div class="pkg-card premium">
+                    <div class="pkg-title">باقة التيرا البريميوم 💎</div>
+                    <div class="pkg-size">💾 مساحة: 804 GB</div>
+                    <div class="pkg-desc">Uncharted 4, WWE 2K25, PES 19, NFS Payback, Mortal 11, Minecraft, Marvel Spider-Man, It Takes Two, GTA V, Gran Turismo Sports, God of War 2018, PES 26, FC 26, Crash Racing, Black Ops 3</div>
+                    <button class="btn-pkg" onclick="addPackage(3)">➕ إضافة البريميوم للسلة</button>
+                </div>
+                <div class="pkg-card mega">
+                    <div class="pkg-title">باقة التيرا الميجا ⚡</div>
+                    <div class="pkg-size">💾 مساحة: 786 GB</div>
+                    <div class="pkg-desc">تحتوي على أكثر من 80 لعبة من أقوى ألعاب الأكشن والمغامرات والعائلة. (اضغط للإضافة للتعرف على القائمة كاملة داخل السلة).</div>
+                    <button class="btn-pkg" onclick="addPackage(4)">➕ إضافة الميجا للسلة</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <h2 class="section-title" style="color: white; font-size: 20px;">🎮 اختر ألعابك بشكل فردي</h2>
+
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="ابحث عن لعبة..." onkeypress="handleEnter(event)">
+            <button onclick="renderGames()">أبحث</button>
+        </div>
+
+        <div class="filter-section">
+            <div class="filter-title">📌 نوع اللعبة:</div>
+            <div class="filter-group" id="genreFilters">
+                <button class="filter-btn" onclick="toggleFilter('genre', 'أكشن', this)">أكشن</button>
+                <button class="filter-btn" onclick="toggleFilter('genre', 'مغامرات', this)">مغامرات</button>
+                <button class="filter-btn" onclick="toggleFilter('genre', 'عالم مفتوح', this)">عالم مفتوح</button>
+                <button class="filter-btn" onclick="toggleFilter('genre', 'رعب', this)">رعب</button>
+                <button class="filter-btn" onclick="toggleFilter('genre', 'العاب عائلية', this)">ألعاب عائلية</button>
+                <button class="filter-btn" onclick="toggleFilter('genre', 'سباق', this)">سباق</button>
+                <button class="filter-btn" onclick="toggleFilter('genre', 'رياضة', this)">رياضة</button>
+            </div>
+            <div class="filter-title" style="margin-top: 15px;">💾 مساحة اللعبة:</div>
+            <div class="filter-group" id="sizeFilters">
+                <button class="filter-btn" onclick="toggleFilter('size', 'small', this)">أقل من 15 جيجا</button>
+                <button class="filter-btn" onclick="toggleFilter('size', 'medium', this)">من 15 إلى 40 جيجا</button>
+                <button class="filter-btn" onclick="toggleFilter('size', 'large', this)">أكثر من 40 جيجا</button>
+            </div>
+        </div>
+
+        <div class="grid-layout" id="gamesGrid"></div>
+    </div>
+
+    <button class="cart-float" onclick="openCart()">
+        🛒 الألعاب المختارة (<span id="cartCount">0</span>)
+    </button>
+
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-content">
+            <div class="cart-header">
+                <h2 style="margin: 0;">سلة الألعاب</h2>
+                <button class="close-cart" onclick="closeCart()">✖</button>
+            </div>
+            
+            <div class="user-info-section">
+                <input type="text" id="userName" placeholder="اسمك الثنائي...">
+                <input type="tel" id="userPhone" placeholder="رقم الموبايل...">
+            </div>
+
+            <div class="cart-controls">
+                <span style="font-size: 14px; color: var(--primary-color);">الألعاب مرتبة أبجدياً</span>
+                <button class="btn-empty-cart" onclick="clearCart()">🗑️ إفراغ السلة</button>
+            </div>
+
+            <div id="cartItemsList"></div>
+
+            <div class="cart-summary">
+                <h3>إجمالي المساحة التقديرية</h3>
+                <h2 style="margin:0;" dir="ltr" id="totalSizeUI">0 GB</h2>
+            </div>
+
+            <div class="whatsapp-buttons">
+                <button class="btn-whatsapp" onclick="sendWhatsApp('201555886990')">إرسال الطلب (محمود شوقي) 💬</button>
+                <button class="btn-whatsapp" onclick="sendWhatsApp('201010763503')">إرسال الطلب (احمد يسري) 💬</button>
+                <button class="btn-whatsapp" onclick="sendWhatsApp('201277675487')">إرسال الطلب (عمر ياسر) 💬</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // رابط جوجل شيت الجديد الخاص بك
+        const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbwF_iYswSvpyirHWy0PXeBUkTi6CX-vFqJRksaS3_Rz6uzfJdEXvgk-gKfaoK1NFxgX/exec';
+
+        const packages = {
+            1: [24, 300, 45, 68, 73, 72, 103], 
+            2: [24, 169, 45, 68, 73, 72, 98, 103],
+            3: [269, 284, 72, 178, 169, 161, 156, 130, 103, 101, 98, 300, 68, 45, 24],
+            4: [1, 4, 5, 6, 9, 14, 15, 16, 18, 22, 23, 24, 34, 35, 37, 38, 39, 40, 43, 45, 46, 47, 51, 61, 62, 63, 67, 75, 88, 89, 91, 98, 103, 108, 109, 124, 126, 130, 133, 134, 136, 145, 152, 153, 156, 157, 161, 166, 169, 170, 172, 174, 178, 181, 182, 184, 186, 72, 193, 208, 217, 220, 221, 223, 229, 238, 239, 244, 245, 253, 256, 260, 60, 264, 265, 267, 269, 271, 275, 281, 286]
+        };
+
+        const gamesDB = [
+            // >>>>>>>>>>>>>>>>> انسخ قائمة ألعاب الـ PS4 / PS5 الخاصة بك كاملة هنا <<<<<<<<<<<<<<<<<
+        ];
+
+        let cart = [];
+        let activeGenres = [];
+        let activeSizes = [];
+
+        function toggleFilter(type, value, btnElement) {
+            btnElement.classList.toggle('active');
+            if(type === 'genre') {
+                if(activeGenres.includes(value)) activeGenres = activeGenres.filter(g => g !== value);
+                else activeGenres.push(value);
+            } 
+            else if (type === 'size') {
+                if(activeSizes.includes(value)) activeSizes = activeSizes.filter(s => s !== value);
+                else activeSizes.push(value);
+            }
+            renderGames();
+        }
+
+        function handleEnter(e) { if(e.key === 'Enter') renderGames(); }
+
+        function sortCartAlphabetically() {
+            cart.sort((a, b) => a.name.localeCompare(b.name, 'en', { sensitivity: 'base' }));
+        }
+
+        function toggleCart(id) {
+            const index = cart.findIndex(g => g.id === id);
+            if(index > -1) {
+                cart.splice(index, 1);
+            } else {
+                const game = gamesDB.find(g => g.id === id);
+                if (game) cart.push(game);
+            }
+            sortCartAlphabetically();
+            updateCartUI();
+            renderGames();
+        }
+
+        function clearCart() {
+            cart = [];
+            updateCartUI();
+            renderGames();
+        }
+
+        function addPackage(pkgId) {
+            const gameIds = packages[pkgId];
+            let addedCount = 0;
+            
+            gameIds.forEach(id => {
+                const game = gamesDB.find(g => g.id === id);
+                if (game && !cart.some(c => c.id === id)) {
+                    cart.push(game);
+                    addedCount++;
+                }
+            });
+
+            sortCartAlphabetically();
+            updateCartUI();
+            renderGames();
+            
+            if (addedCount > 0) alert(`تمت الإضافة بنجاح! تم وضع ${addedCount} لعبة في السلة.`);
+            else alert("الألعاب دي موجودة بالفعل في السلة!");
+        }
+
+        function renderGames() {
+            const grid = document.getElementById('gamesGrid');
+            const searchText = document.getElementById('searchInput').value.toLowerCase();
+            grid.innerHTML = '';
+            
+            gamesDB.forEach(game => {
+                if (searchText && !game.name.toLowerCase().includes(searchText)) return;
+                if (activeGenres.length > 0 && !game.genres.some(g => activeGenres.includes(g))) return;
+
+                if (activeSizes.length > 0) {
+                    const matchesSize = activeSizes.some(sizeType => {
+                        if (sizeType === 'small') return game.maxSize < 15;
+                        if (sizeType === 'medium') return game.maxSize >= 15 && game.maxSize <= 40;
+                        if (sizeType === 'large') return game.maxSize > 40;
+                        return false;
+                    });
+                    if (!matchesSize) return;
+                }
+
+                const inCart = cart.some(c => c.id === game.id);
+                const ytLink = `https://www.youtube.com/results?search_query=${encodeURIComponent(game.name + " review")}`;
+                let tagsHTML = game.genres.map(g => `<span class="tag">${g}</span>`).join('');
+                let sizeDisplay = (game.minSize === game.maxSize) ? `${game.minSize} GB` : `${game.minSize} - ${game.maxSize} GB`;
+                
+                grid.innerHTML += `
+                    <div class="card">
+                        <div class="card-header"><h3 class="game-title">${game.name}</h3></div>
+                        <div class="card-content">
+                            <div class="tags">${tagsHTML}</div>
+                            <div class="info-text">🎮 اللاعبين: ${game.playersTxt}</div>
+                            <div class="info-text">💾 المساحة: ${sizeDisplay}</div>
+                            <div class="card-actions">
+                                <button class="btn ${inCart ? 'btn-add added' : 'btn-add'}" onclick="toggleCart(${game.id})">
+                                    ${inCart ? '❌ إزالة' : '➕ إضافة'}
+                                </button>
+                                <a href="${ytLink}" target="_blank" class="btn btn-yt">▶ مراجعة</a>
+                            </div>
+                        </div>
+                    </div>`;
+            });
+        }
+
+        function updateCartUI() {
+            document.getElementById('cartCount').innerText = cart.length;
+            const list = document.getElementById('cartItemsList');
+            list.innerHTML = '';
+            let minTotal = 0, maxTotal = 0;
+            
+            if(cart.length === 0) {
+                list.innerHTML = '<p style="text-align:center; color:#aaa; font-size:14px;">السلة فارغة حالياً</p>';
+            }
+            
+            cart.forEach(game => {
+                minTotal += game.minSize; maxTotal += game.maxSize;
+                let itemSizeText = (game.minSize === game.maxSize) ? `${game.minSize} GB` : `${game.minSize}-${game.maxSize} GB`;
+                list.innerHTML += `<div class="cart-item"><span>${game.name}</span><span style="color:var(--primary-color);" dir="ltr">${itemSizeText}</span></div>`;
+            });
+            
+            document.getElementById('totalSizeUI').innerText = (minTotal === maxTotal) ? `${minTotal} GB` : `${minTotal} - ${maxTotal} GB`;
+        }
+
+        function openCart() { document.getElementById('cartModal').style.display = 'flex'; }
+        function closeCart() { document.getElementById('cartModal').style.display = 'none'; }
+
+        function sendWhatsApp(phone) {
+            const name = document.getElementById('userName').value.trim();
+            const contact = document.getElementById('userPhone').value.trim();
+            
+            if(!name || !contact) { alert("من فضلك اكتب اسمك ورقم تليفونك أولاً!"); return; }
+            if(cart.length === 0) { alert("يرجى اختيار ألعاب أولاً!"); return; }
+
+            let minTotal = 0, maxTotal = 0;
+            let text = `مرحباً LevelUP،\nأنا ${name} (رقمي: ${contact})\nأود تثبيت هذه الألعاب على جهازي (PS4 / PS5):\n`;
+            let gamesForSheet = ""; 
+            
+            cart.forEach((game, index) => {
+                let sizeTxt = (game.minSize === game.maxSize) ? `${game.minSize} GB` : `${game.minSize}-${game.maxSize} GB`;
+                text += ` ${index + 1}. ${game.name} (${sizeTxt})\n`;
+                gamesForSheet += `${index + 1}. ${game.name}\n`;
+                minTotal += game.minSize; maxTotal += game.maxSize;
+            });
+            
+            let finalTotalTxt = (minTotal === maxTotal) ? `${minTotal} GB` : `من ${minTotal} إلى ${maxTotal} GB`;
+            text += `\nإجمالي المساحة المطلوبة: ${finalTotalTxt}.`;
+
+            // إرسال البيانات لجوجل شيت بالترتيب: الاسم، الموبايل، الجهاز، الألعاب، المساحة
+            fetch(GOOGLE_SHEET_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    name: name,
+                    phone: contact,
+                    deviceType: "PS4 / PS5",
+                    games: gamesForSheet,
+                    totalSize: finalTotalTxt
+                })
+            }).catch(error => console.log('خطأ في التسجيل:', error));
+
+            alert("تم تسجيل طلبك بنجاح! جاري تحويلك للواتساب لإتمام الحجز...");
+            clearCart();
+            closeCart();
+            window.open(`https://wa.me/${phone}?text=${encodeURIComponent(text)}`, '_blank');
+        }
+
+        renderGames(); 
+        updateCartUI();
+    </script>
+</body>
+</html>
