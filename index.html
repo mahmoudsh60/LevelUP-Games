@@ -50,7 +50,7 @@
         /* تنسيق الكروت المعدل لحل مشكلة الـ Scale */
         .card { background-color: var(--card-bg); border-radius: 8px; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.4); display: flex; flex-direction: column; border: 1px solid #333; }
         .card-img-container { width: 100%; height: 180px; background-color: #08080a; border-bottom: 1px solid #333; display: flex; justify-content: center; align-items: center; overflow: hidden; }
-        .card-img { max-width: 100%; max-height: 100%; object-fit: contain; } /* هذا هو السطر السحري لحل مشكلة الـ scale */
+        .card-img { max-width: 100%; max-height: 100%; object-fit: contain; } 
         
         .card-header { background-color: #17171c; padding: 12px 10px; border-bottom: 1px solid #333; text-align: center; }
         .game-title { color: var(--primary-color); font-size: 15px; font-weight: 700; margin: 0; line-height: 1.4; }
@@ -195,7 +195,7 @@
         </div>
     </div>
 
-    <script src="images/image_map.js" onerror="alert('خطأCritical: ملف images/image_map.js غير موجود! الصور لن تظهر والألعاب قد تختفي. تأكد من رفعه في الفولدر الصحيح.')"></script>
+    <script src="images/image_map.js" onerror="console.warn('ملف images/image_map.js غير موجود!')"></script>
 
     <script>
         const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbwF_iYswSvpyirHWy0PXeBUkTi6CX-vFqJRksaS3_Rz6uzfJdEXvgk-gKfaoK1NFxgX/exec';
@@ -207,7 +207,6 @@
             4: [1, 4, 5, 6, 9, 14, 15, 16, 18, 22, 23, 24, 34, 35, 37, 38, 39, 40, 43, 45, 46, 47, 51, 61, 62, 63, 67, 75, 88, 89, 91, 98, 103, 108, 109, 124, 126, 130, 133, 134, 136, 145, 152, 153, 156, 157, 161, 166, 169, 170, 172, 174, 178, 181, 182, 184, 186, 72, 193, 208, 217, 220, 221, 223, 229, 238, 239, 244, 245, 253, 256, 260, 60, 264, 265, 267, 269, 271, 275, 281, 286]
         };
 
-        // تم إصلاح الـ 24 لعبة هنا لتتطابق مع أسماء ملفات الصور لديك
         const gamesDB = [
             { id: 1, name: "3D Billiards: Billiards and Snooker", genres: ["العاب عائلية"], playersTxt: "1 - 2", maxPlayers: 2, minSize: 1, maxSize: 1 },
             { id: 2, name: "A Plague Tale: Innocence", genres: ["مغامرات"], playersTxt: "1", maxPlayers: 1, minSize: 34, maxSize: 34 },
@@ -237,7 +236,7 @@
             { id: 26, name: "Call of Duty: Black Ops 6", genres: ["أكشن"], playersTxt: "1 - 2", maxPlayers: 2, minSize: 54, maxSize: 306 },
             { id: 27, name: "Call of Duty: Cold War", genres: ["أكشن"], playersTxt: "1 - 2", maxPlayers: 2, minSize: 94, maxSize: 147 },
             { id: 28, name: "Call of Duty: Modern Warfare (2019)", genres: ["أكشن"], playersTxt: "1 - 2", maxPlayers: 2, minSize: 72, maxSize: 157 },
-            { id: 29, name: "Call of Duty Modern Warfare Remastered", genres: ["أكشن"], playersTxt: "1 - 2", maxPlayers: 2, minSize: 45, maxSize: 45 }, // إصلاح 1
+            { id: 29, name: "Call of Duty: MW Remastered", genres: ["أكشن"], playersTxt: "1 - 2", maxPlayers: 2, minSize: 45, maxSize: 45 }, 
             { id: 30, name: "Call of Duty: Vanguard", genres: ["أكشن"], playersTxt: "1 - 2", maxPlayers: 2, minSize: 45, maxSize: 70 },
             { id: 31, name: "Call of Duty: Advanced Warfare", genres: ["أكشن"], playersTxt: "1 - 2", maxPlayers: 2, minSize: 38, maxSize: 63 },
             { id: 32, name: "Bloodborne", genres: ["أكشن", "رعب"], playersTxt: "1", maxPlayers: 1, minSize: 29, maxSize: 29 },
@@ -259,7 +258,7 @@
             { id: 48, name: "Cyberpunk 2077", genres: ["أكشن", "عالم مفتوح"], playersTxt: "1", maxPlayers: 1, minSize: 59, maxSize: 99 },
             { id: 49, name: "Darksiders II", genres: ["أكشن", "مغامرات" ,"عالم مفتوح"], playersTxt: "1", maxPlayers: 1, minSize: 14, maxSize: 14 },
             { id: 50, name: "Days Gone", genres: ["رعب", "عالم مفتوح"], playersTxt: "1", maxPlayers: 1, minSize: 33, maxSize: 39 },
-            { id: 51, name: "DC League of Super-Pets", genres: ["العاب عائلية"], playersTxt: "1", maxPlayers: 1, minSize: 1, maxSize: 1 }, // إصلاح 2
+            { id: 51, name: "DC Super-Pets", genres: ["العاب عائلية"], playersTxt: "1", maxPlayers: 1, minSize: 1, maxSize: 1 },
             { id: 52, name: "Dead or Alive 6", genres: ["أكشن" ,"قتال زوجي"], playersTxt: "1 - 2", maxPlayers: 2, minSize: 26, maxSize: 60 },
             { id: 53, name: "Death Stranding", genres: ["مغامرات"], playersTxt: "1", maxPlayers: 1, minSize: 44, maxSize: 44 },
             { id: 54, name: "Def Jam: Fight for NY", genres: ["أكشن" ,"قتال زوجي" ,"بلايستيشن 2"], playersTxt: "1 - 4", maxPlayers: 4, minSize: 2, maxSize: 2 },
@@ -318,7 +317,7 @@
             { id: 106, name: "GRIP", genres: ["أكشن", "سباق"], playersTxt: "1 - 4", maxPlayers: 4, minSize: 3, maxSize: 3 },
             { id: 107, name: "Guilty Gear -Strive-", genres: ["أكشن" ,"قتال زوجي"], playersTxt: "1 - 2", maxPlayers: 2, minSize: 10, maxSize: 24 },
             { id: 108, name: "Handball 17", genres: ["أكشن", "رياضة"], playersTxt: "1 - 2", maxPlayers: 2, minSize: 1, maxSize: 1 },
-            { id: 109, name: "Hasbro Family Fun Pack", genres: ["العاب عائلية"], playersTxt: "1 - 4", maxPlayers: 4, minSize: 3, maxSize: 3 }, // إصلاح 3
+            { id: 109, name: "Hasbro Family Pack", genres: ["العاب عائلية"], playersTxt: "1 - 4", maxPlayers: 4, minSize: 3, maxSize: 3 },
             { id: 110, name: "Hellblade", genres: ["رعب", "مغامرات"], playersTxt: "1", maxPlayers: 1, minSize: 13, maxSize: 21 },
             { id: 111, name: "Helldivers", genres: ["أكشن"], playersTxt: "1 - 4", maxPlayers: 4, minSize: 3, maxSize: 3 },
             { id: 112, name: "Hello Neighbor 1", genres: ["رعب", "مغامرات"], playersTxt: "1", maxPlayers: 1, minSize: 1, maxSize: 1 },
@@ -326,13 +325,13 @@
             { id: 114, name: "Hitman 2", genres: ["أكشن", "مغامرات"], playersTxt: "1", maxPlayers: 1, minSize: 29, maxSize: 29 },
             { id: 115, name: "Hitman 3", genres: ["أكشن", "مغامرات"], playersTxt: "1", maxPlayers: 1, minSize: 21, maxSize: 21 },
             { id: 116, name: "Hitman: Absolution", genres: ["أكشن", "مغامرات"], playersTxt: "1", maxPlayers: 1, minSize: 25, maxSize: 25 },
-            { id: 117, name: "HitmanBlood Money HD", genres: ["أكشن", "مغامرات"], playersTxt: "1", maxPlayers: 1, minSize: 5, maxSize: 6 }, // إصلاح 4
+            { id: 117, name: "Hitman: Blood Money", genres: ["أكشن", "مغامرات"], playersTxt: "1", maxPlayers: 1, minSize: 5, maxSize: 6 },
             { id: 118, name: "Hogwarts Legacy", genres: ["مغامرات", "عالم مفتوح"], playersTxt: "1", maxPlayers: 1, minSize: 36, maxSize: 65 },
             { id: 119, name: "Hollow Knight", genres: ["مغامرات"], playersTxt: "1", maxPlayers: 1, minSize: 1, maxSize: 1 },
             { id: 120, name: "Hollow Knight: Silksong", genres: ["مغامرات"], playersTxt: "1", maxPlayers: 1, minSize: 2, maxSize: 2 },
             { id: 121, name: "Horizon Forbidden West", genres: ["أكشن", "عالم مفتوح"], playersTxt: "1", maxPlayers: 1, minSize: 80, maxSize: 81 },
             { id: 122, name: "Horizon Zero Dawn", genres: ["أكشن", "عالم مفتوح"], playersTxt: "1", maxPlayers: 1, minSize: 43, maxSize: 43 },
-            { id: 123, name: "Hot Wheels Unleashed 2", genres: ["العاب عائلية"], playersTxt: "1 - 2", maxPlayers: 2, minSize: 10, maxSize: 36 }, // إصلاح 5
+            { id: 123, name: "Hot Wheels 2", genres: ["العاب عائلية"], playersTxt: "1 - 2", maxPlayers: 2, minSize: 10, maxSize: 36 },
             { id: 124, name: "Hotel Transylvania", genres: ["العاب عائلية"], playersTxt: "1", maxPlayers: 1, minSize: 2, maxSize: 2 },
             { id: 125, name: "Human: Fall Flat", genres: ["العاب عائلية"], playersTxt: "1 - 2", maxPlayers: 2, minSize: 2, maxSize: 6 },
             { id: 126, name: "I Am Bread", genres: ["العاب عائلية"], playersTxt: "1", maxPlayers: 1, minSize: 1, maxSize: 1 },
@@ -344,7 +343,7 @@
             { id: 132, name: "L.A. Noire", genres: ["مغامرات", "عالم مفتوح"], playersTxt: "1", maxPlayers: 1, minSize: 15, maxSize: 15 },
             { id: 133, name: "Lara Croft GO", genres: ["مغامرات"], playersTxt: "1", maxPlayers: 1, minSize: 1, maxSize: 1 },
             { id: 134, name: "LEGO Worlds", genres: ["العاب عائلية"], playersTxt: "1 - 2", maxPlayers: 2, minSize: 1, maxSize: 1 },
-            { id: 135, name: "LEGO DC Super-Villains", genres: ["العاب عائلية" ,"مغامرات"], playersTxt: "1 - 2", maxPlayers: 2, minSize: 15, maxSize: 15 }, // إصلاح 6
+            { id: 135, name: "LEGO DC Villains", genres: ["العاب عائلية" ,"مغامرات"], playersTxt: "1 - 2", maxPlayers: 2, minSize: 15, maxSize: 15 },
             { id: 136, name: "LEGO Party", genres: ["العاب عائلية"], playersTxt: "1 - 4", maxPlayers: 4, minSize: 5, maxSize: 8 },
             { id: 137, name: "LEGO Marvel Super Heroes", genres: ["العاب عائلية" ,"مغامرات"], playersTxt: "1 - 2", maxPlayers: 2, minSize: 5, maxSize: 5 },
             { id: 138, name: "Lies of P", genres: ["أكشن", "مغامرات"], playersTxt: "1", maxPlayers: 1, minSize: 14, maxSize: 26 },
@@ -384,13 +383,13 @@
             { id: 172, name: "Moving Out 2", genres: ["العاب عائلية"], playersTxt: "1 - 4", maxPlayers: 4, minSize: 1, maxSize: 1 },
             { id: 173, name: "My Friend Pedro", genres: ["أكشن"], playersTxt: "1 - 2", maxPlayers: 2, minSize: 1, maxSize: 2 },
             { id: 174, name: "My Little Pony A Maretime Bay Adventure", genres: ["العاب عائلية"], playersTxt: "1 - 2", maxPlayers: 2, minSize: 2, maxSize: 2 },
-            { id: 175, name: "Naruto Shippuden Ultimate Ninja Storm 4", genres: ["أكشن"], playersTxt: "1 - 2", maxPlayers: 2, minSize: 35, maxSize: 38 }, // إصلاح 7
+            { id: 175, name: "Naruto Storm 4", genres: ["أكشن"], playersTxt: "1 - 2", maxPlayers: 2, minSize: 35, maxSize: 38 },
             { id: 176, name: "NBA 2K21", genres: ["أكشن", "رياضة"], playersTxt: "1 - 4", maxPlayers: 4, minSize: 41, maxSize: 41 },
-            { id: 177, name: "Need for Speed Heat", genres: ["أكشن", "سباق"], playersTxt: "1", maxPlayers: 1, minSize: 24, maxSize: 24 }, // إصلاح 8
-            { id: 178, name: "Need for Speed Payback", genres: ["أكشن", "سباق"], playersTxt: "1", maxPlayers: 1, minSize: 21, maxSize: 21 }, // إصلاح 9
-            { id: 179, name: "Need for Speed Most Wanted (2005)", genres: ["أكشن", "سباق"], playersTxt: "1", maxPlayers: 1, minSize: 3, maxSize: 3 }, // إصلاح 10
+            { id: 177, name: "NFS Heat", genres: ["أكشن", "سباق"], playersTxt: "1", maxPlayers: 1, minSize: 24, maxSize: 24 },
+            { id: 178, name: "NFS Payback", genres: ["أكشن", "سباق"], playersTxt: "1", maxPlayers: 1, minSize: 21, maxSize: 21 },
+            { id: 179, name: "NFS Most Wanted", genres: ["أكشن", "سباق"], playersTxt: "1", maxPlayers: 1, minSize: 3, maxSize: 3 },
             { id: 180, name: "Neighbours from Hell", genres: ["العاب عائلية"], playersTxt: "1", maxPlayers: 1, minSize: 1, maxSize: 1 },
-            { id: 181, name: "Nickelodeon All-Star Brawl 2", genres: ["العاب عائلية"], playersTxt: "1 - 4", maxPlayers: 4, minSize: 5, maxSize: 10 }, // إصلاح 11
+            { id: 181, name: "Nickelodeon Brawl 2", genres: ["العاب عائلية"], playersTxt: "1 - 4", maxPlayers: 4, minSize: 5, maxSize: 10 },
             { id: 182, name: "Overcooked! 2", genres: ["العاب عائلية"], playersTxt: "1 - 4", maxPlayers: 4, minSize: 2, maxSize: 2 },
             { id: 183, name: "P.T.", genres: ["رعب"], playersTxt: "1", maxPlayers: 1, minSize: 1, maxSize: 1 },
             { id: 184, name: "PAC-MAN 256", genres: ["العاب عائلية"], playersTxt: "1 - 4", maxPlayers: 4, minSize: 1, maxSize: 1 },
@@ -399,7 +398,7 @@
             { id: 187, name: "Persona 5", genres: ["مغامرات"], playersTxt: "1", maxPlayers: 1, minSize: 18, maxSize: 18 },
             { id: 188, name: "Poppy Playtime Chapter 1", genres: ["رعب"], playersTxt: "1", maxPlayers: 1, minSize: 3, maxSize: 5 },
             { id: 189, name: "Postal 4", genres: ["أكشن"], playersTxt: "1", maxPlayers: 1, minSize: 10, maxSize: 10 },
-            { id: 190, name: "Project CARS", genres: ["أكشن", "سباق"], playersTxt: "1", maxPlayers: 1, minSize: 22, maxSize: 22 }, // إصلاح 12
+            { id: 190, name: "Project CARS", genres: ["أكشن", "سباق"], playersTxt: "1", maxPlayers: 1, minSize: 22, maxSize: 22 },
             { id: 191, name: "Prototype 1", genres: ["أكشن", "عالم مفتوح"], playersTxt: "1", maxPlayers: 1, minSize: 7, maxSize: 7 },
             { id: 192, name: "Prototype 2", genres: ["أكشن", "عالم مفتوح"], playersTxt: "1", maxPlayers: 1, minSize: 8, maxSize: 8 },
             { id: 193, name: "Puyo Puyo Tetris", genres: ["العاب عائلية"], playersTxt: "1 - 4", maxPlayers: 4, minSize: 1, maxSize: 1 },
@@ -411,40 +410,40 @@
             { id: 199, name: "Resident Evil 4", genres: ["رعب"], playersTxt: "1", maxPlayers: 1, minSize: 24, maxSize: 36 },
             { id: 200, name: "Resident Evil 5", genres: ["رعب"], playersTxt: "1 - 2", maxPlayers: 2, minSize: 15, maxSize: 15 },
             { id: 201, name: "Resident Evil 7", genres: ["رعب"], playersTxt: "1", maxPlayers: 1, minSize: 28, maxSize: 31 },
-            { id: 202, name: "Resident Evil Revelations 2", genres: ["رعب"], playersTxt: "1 - 2", maxPlayers: 2, minSize: 5, maxSize: 11 }, // إصلاح 13
+            { id: 202, name: "RE Revelations 2", genres: ["رعب"], playersTxt: "1 - 2", maxPlayers: 2, minSize: 5, maxSize: 11 },
             { id: 203, name: "Resident Evil Village", genres: ["رعب"], playersTxt: "1", maxPlayers: 1, minSize: 26, maxSize: 26 },
-            { id: 204, name: "Rise of the Tomb Raider", genres: ["أكشن", "مغامرات"], playersTxt: "1", maxPlayers: 1, minSize: 17, maxSize: 17 }, // إصلاح 14
+            { id: 204, name: "Rise of Tomb Raider", genres: ["أكشن", "مغامرات"], playersTxt: "1", maxPlayers: 1, minSize: 17, maxSize: 17 },
             { id: 205, name: "Rise to Honor", genres: ["أكشن" ," بلايستيشن 2"], playersTxt: "1", maxPlayers: 1, minSize: 2, maxSize: 2 },
             { id: 206, name: "Road Redemption", genres: ["أكشن", "سباق"], playersTxt: "1 - 4", maxPlayers: 4, minSize: 3, maxSize: 5 },
             { id: 207, name: "Rocket League", genres: ["العاب عائلية", "رياضة"], playersTxt: "1 - 4", maxPlayers: 4, minSize: 30, maxSize: 30 },
             { id: 208, name: "Rollerdrome", genres: ["أكشن"], playersTxt: "1", maxPlayers: 1, minSize: 1, maxSize: 1 },
             { id: 209, name: "Sackboy: A Big Adventure", genres: ["العاب عائلية"], playersTxt: "1 - 4", maxPlayers: 4, minSize: 33, maxSize: 33 },
             { id: 210, name: "Saints Row", genres: ["أكشن", "عالم مفتوح"], playersTxt: "1", maxPlayers: 1, minSize: 36, maxSize: 50 },
-            { id: 211, name: "Saints Row: Gat", genres: ["أكشن", "عالم مفتوح"], playersTxt: "1", maxPlayers: 1, minSize: 6, maxSize: 6 },
+            { id: 211, name: "Saints Row: Gat Out of Hell", genres: ["أكشن", "عالم مفتوح"], playersTxt: "1", maxPlayers: 1, minSize: 6, maxSize: 6 }, // تم التعديل
             { id: 212, name: "Samurai Jack: Battle Through Time", genres: ["أكشن"], playersTxt: "1", maxPlayers: 1, minSize: 4, maxSize: 4 },
             { id: 213, name: "Sekiro", genres: ["أكشن", "مغامرات" ,"عالم مفتوح"], playersTxt: "1", maxPlayers: 1, minSize: 11, maxSize: 14 },
             { id: 214, name: "Middle-earth: Shadow of Mordor", genres: ["أكشن", "عالم مفتوح"], playersTxt: "1", maxPlayers: 1, minSize: 40, maxSize: 58 },
-            { id: 215, name: "Shadow of the Colossus", genres: ["مغامرات"], playersTxt: "1", maxPlayers: 1, minSize: 12, maxSize: 12 }, // إصلاح 15
-            { id: 216, name: "Shadow of the Tomb Raider", genres: ["أكشن", "مغامرات"], playersTxt: "1", maxPlayers: 1, minSize: 30, maxSize: 30 }, // إصلاح 16
+            { id: 215, name: "Shadow of Colossus", genres: ["مغامرات"], playersTxt: "1", maxPlayers: 1, minSize: 12, maxSize: 12 },
+            { id: 216, name: "Shadow of Tomb Raider", genres: ["أكشن", "مغامرات"], playersTxt: "1", maxPlayers: 1, minSize: 30, maxSize: 30 },
             { id: 217, name: "Shovel Knight", genres: ["أكشن"], playersTxt: "1 - 2", maxPlayers: 2, minSize: 1, maxSize: 1 },
             { id: 218, name: "Sid Meier's Civilization VII", genres: ["مغامرات"], playersTxt: "1", maxPlayers: 1, minSize: 6, maxSize: 10 },
             { id: 219, name: "Sifu", genres: ["أكشن"], playersTxt: "1", maxPlayers: 1, minSize: 7, maxSize: 21 },
             { id: 220, name: "Sky Force Anniversary", genres: ["أكشن"], playersTxt: "1 - 2", maxPlayers: 2, minSize: 1, maxSize: 1 },
             { id: 221, name: "Slaps and Beans 2", genres: ["العاب عائلية"], playersTxt: "1 - 4", maxPlayers: 4, minSize: 1, maxSize: 1 },
             { id: 222, name: "Sleeping Dogs", genres: ["أكشن", "عالم مفتوح"], playersTxt: "1", maxPlayers: 1, minSize: 16, maxSize: 16 },
-            { id: 223, name: "Slice, Dice & Rice", genres: ["أكشن"], playersTxt: "1 - 2", maxPlayers: 2, minSize: 1, maxSize: 1 }, // إصلاح 17
-            { id: 224, name: "Smoots Summer Games", genres: ["العاب عائلية"], playersTxt: "1 - 4", maxPlayers: 4, minSize: 1, maxSize: 1 }, // إصلاح 18
+            { id: 223, name: "Slice Rice", genres: ["أكشن"], playersTxt: "1 - 2", maxPlayers: 2, minSize: 1, maxSize: 1 },
+            { id: 224, name: "Smoots Games", genres: ["العاب عائلية"], playersTxt: "1 - 4", maxPlayers: 4, minSize: 1, maxSize: 1 },
             { id: 225, name: "Sniper Elite 3", genres: ["أكشن"], playersTxt: "1", maxPlayers: 1, minSize: 22, maxSize: 22 },
             { id: 226, name: "Sniper Elite 4", genres: ["أكشن"], playersTxt: "1", maxPlayers: 1, minSize: 7, maxSize: 7 },
             { id: 227, name: "Sniper Elite 5", genres: ["أكشن"], playersTxt: "1", maxPlayers: 1, minSize: 27, maxSize: 37 },
-            { id: 228, name: "Sniper Ghost Warrior 3", genres: ["أكشن"], playersTxt: "1", maxPlayers: 1, minSize: 36, maxSize: 36 }, // إصلاح 19
+            { id: 228, name: "Sniper Warrior 3", genres: ["أكشن"], playersTxt: "1", maxPlayers: 1, minSize: 36, maxSize: 36 },
             { id: 229, name: "Sociable Soccer 25", genres: ["أكشن", "رياضة"], playersTxt: "1 - 2", maxPlayers: 2, minSize: 1, maxSize: 1 },
             { id: 230, name: "Sonic Forces", genres: ["العاب عائلية"], playersTxt: "1", maxPlayers: 1, minSize: 16, maxSize: 16 },
             { id: 231, name: "Sonic Frontiers", genres: ["العاب عائلية"], playersTxt: "1", maxPlayers: 1, minSize: 17, maxSize: 27 },
             { id: 232, name: "Sonic Racing Cross", genres: ["العاب عائلية"], playersTxt: "1 - 4", maxPlayers: 4, minSize: 11, maxSize: 23 },
             { id: 233, name: "Sonic Superstars", genres: ["العاب عائلية"], playersTxt: "1 - 4", maxPlayers: 4, minSize: 4, maxSize: 4 },
             { id: 234, name: "spongebob squarepants cosmic shake", genres: ["العاب عائلية"], playersTxt: "1 - 2", maxPlayers: 2, minSize: 8, maxSize: 8 },
-            { id: 235, name: "Spyro Reignited Trilogy", genres: ["العاب عائلية"], playersTxt: "1", maxPlayers: 1, minSize: 33, maxSize: 33 }, // إصلاح 20
+            { id: 235, name: "Spyro Trilogy", genres: ["العاب عائلية"], playersTxt: "1", maxPlayers: 1, minSize: 33, maxSize: 33 },
             { id: 236, name: "Star Wars Jedi: Fallen Order", genres: ["أكشن", "مغامرات"], playersTxt: "1", maxPlayers: 1, minSize: 44, maxSize: 44 },
             { id: 237, name: "Star Wars Jedi: Survivor", genres: ["أكشن", "مغامرات"], playersTxt: "1", maxPlayers: 1, minSize: 51, maxSize: 51 },
             { id: 238, name: "Stick Fight: The Game", genres: ["العاب عائلية"], playersTxt: "1 - 4", maxPlayers: 4, minSize: 1, maxSize: 1 },
@@ -456,7 +455,7 @@
             { id: 244, name: "Super Mario 64", genres: ["العاب عائلية"], playersTxt: "1", maxPlayers: 1, minSize: 1, maxSize: 1 },
             { id: 245, name: "Taxi Chaos", genres: ["العاب عائلية"], playersTxt: "1", maxPlayers: 1, minSize: 1, maxSize: 1 },
             { id: 246, name: "Team Sonic Racing", genres: ["العاب عائلية" ,"سباق"], playersTxt: "1 - 4", maxPlayers: 4, minSize: 13, maxSize: 28 },
-            { id: 247, name: "Teenage Mutant Ninja Turtles", genres: ["أكشن"], playersTxt: "1 - 4", maxPlayers: 4, minSize: 1, maxSize: 1 },
+            { id: 247, name: "Teenage Mutant Ninja Turtles", genres: ["أكشن", "بلايستيشن 2"], playersTxt: "1 - 4", maxPlayers: 4, minSize: 1, maxSize: 1 }, // تم إضافة بلايستيشن 2 هنا
             { id: 248, name: "Tekken 7", genres: ["أكشن" ," قتال زوجي"], playersTxt: "1 - 2", maxPlayers: 2, minSize: 38, maxSize: 48 },
             { id: 249, name: "Tennis World Tour 1", genres: ["أكشن", "رياضة"], playersTxt: "1 - 2", maxPlayers: 2, minSize: 3, maxSize: 3 },
             { id: 250, name: "Tennis World Tour 2", genres: ["أكشن", "رياضة"], playersTxt: "1 - 4", maxPlayers: 4, minSize: 6, maxSize: 7 },
@@ -465,9 +464,9 @@
             { id: 253, name: "Disney Afternoon", genres: ["العاب عائلية"], playersTxt: "1 - 2", maxPlayers: 2, minSize: 1, maxSize: 1 },
             { id: 254, name: "Evil Within 1", genres: ["رعب"], playersTxt: "1", maxPlayers: 1, minSize: 33, maxSize: 33 },
             { id: 255, name: "Evil Within 2", genres: ["رعب"], playersTxt: "1", maxPlayers: 1, minSize: 27, maxSize: 27 },
-            { id: 256, name: "The House of The Dead 2", genres: ["رعب"], playersTxt: "1 - 2", maxPlayers: 2, minSize: 3, maxSize: 3 }, // إصلاح 21
-            { id: 257, name: "The Last of Us Part 1 Remastered", genres: ["رعب", "مغامرات"], playersTxt: "1", maxPlayers: 1, minSize: 43, maxSize: 43 }, // إصلاح 22
-            { id: 258, name: "The Last of Us Part 2", genres: ["رعب", "مغامرات"], playersTxt: "1", maxPlayers: 1, minSize: 86, maxSize: 86 }, // إصلاح 23
+            { id: 256, name: "House of Dead 2", genres: ["رعب"], playersTxt: "1 - 2", maxPlayers: 2, minSize: 3, maxSize: 3 },
+            { id: 257, name: "TLOU Part 1", genres: ["رعب", "مغامرات"], playersTxt: "1", maxPlayers: 1, minSize: 43, maxSize: 43 },
+            { id: 258, name: "TLOU Part 2", genres: ["رعب", "مغامرات"], playersTxt: "1", maxPlayers: 1, minSize: 86, maxSize: 86 },
             { id: 259, name: "The Order: 1886", genres: ["أكشن"], playersTxt: "1", maxPlayers: 1, minSize: 29, maxSize: 29 },
             { id: 260, name: "The Warriors", genres: ["أكشن" ," بلايستيشن 2"], playersTxt: "1 - 2", maxPlayers: 2, minSize: 2, maxSize: 2 },
             { id: 261, name: "The Witcher 3", genres: ["مغامرات", "عالم مفتوح"], playersTxt: "1", maxPlayers: 1, minSize: 37, maxSize: 37 },
@@ -479,7 +478,7 @@
             { id: 267, name: "Truck Driver", genres: ["العاب عائلية"], playersTxt: "1 - 2", maxPlayers: 2, minSize: 1, maxSize: 2 },
             { id: 268, name: "Uncharted Trilogy", genres: ["أكشن", "مغامرات"], playersTxt: "1", maxPlayers: 1, minSize: 40, maxSize: 40 },
             { id: 269, name: "Uncharted 4", genres: ["أكشن", "مغامرات"], playersTxt: "1", maxPlayers: 1, minSize: 59, maxSize: 59 },
-            { id: 270, name: "Uncharted The Lost Legacy", genres: ["أكشن", "مغامرات"], playersTxt: "1", maxPlayers: 1, minSize: 45, maxSize: 45 }, // إصلاح 24
+            { id: 270, name: "Uncharted Lost Legacy", genres: ["أكشن", "مغامرات"], playersTxt: "1", maxPlayers: 1, minSize: 45, maxSize: 45 },
             { id: 271, name: "UNO", genres: ["العاب عائلية"], playersTxt: "1 - 4", maxPlayers: 4, minSize: 1, maxSize: 1 },
             { id: 272, name: "Unravel", genres: ["العاب عائلية", "مغامرات"], playersTxt: "1 - 2", maxPlayers: 2, minSize: 2, maxSize: 2 },
             { id: 273, name: "Unravel Two", genres: ["العاب عائلية", "مغامرات"], playersTxt: "1 - 2", maxPlayers: 2, minSize: 2, maxSize: 2 },
@@ -581,17 +580,31 @@
 
                 // --- نظام الربط الذكي للصور ---
                 let imageFileName = "";
-                // تنظيف اسم اللعبة من الرموز الخاصة
                 let cleanGameName = game.name.toLowerCase().replace(/[:"/?*<>|]/g, '').trim();
                 
+                // استثناء لصورة Project CARS عشان تشتغل على طول حتى لو مغيرتش اسمها
+                if (game.id === 190) {
+                    let pcsImg = imageMap.find(img => img['اسم الصورة فقط'] === 'project-cars-pc-game-steam-cover');
+                    if(pcsImg) cleanGameName = 'project-cars-pc-game-steam-cover';
+                }
+                
                 if (typeof imageMap !== 'undefined' && imageMap.length > 0) {
-                    // البحث الذكي عن الصورة (Fuzzy Match)
-                    // الآن سيعمل بامتياز بعد إصلاح الـ 24 اسم
+                    
+                    // 1. البحث بالتطابق التام أولاً (عشان نحل مشكلة Minecraft و Saints Row)
                     let foundImg = imageMap.find(img => {
                         if (!img || !img['اسم الصورة فقط']) return false;
-                        let imgBase = img['اسم الصورة فقط'].toLowerCase();
-                        return imgBase.includes(cleanGameName) || cleanGameName.includes(imgBase);
+                        let imgBase = img['اسم الصورة فقط'].toLowerCase().replace(/[:"/?*<>|]/g, '').trim();
+                        return imgBase === cleanGameName;
                     });
+                    
+                    // 2. لو مفيش تطابق تام، نعمل بحث جزئي (كاحتياطي)
+                    if (!foundImg) {
+                        foundImg = imageMap.find(img => {
+                            if (!img || !img['اسم الصورة فقط']) return false;
+                            let imgBase = img['اسم الصورة فقط'].toLowerCase().replace(/[:"/?*<>|]/g, '').trim();
+                            return imgBase.includes(cleanGameName) || cleanGameName.includes(imgBase);
+                        });
+                    }
                     
                     if (foundImg) {
                         imageFileName = foundImg['الاسم بالكامل'];
@@ -610,7 +623,6 @@
                 let tagsHTML = game.genres.map(g => `<span class="tag">${g}</span>`).join('');
                 let sizeDisplay = (game.minSize === game.maxSize) ? `${game.minSize} GB` : `${game.minSize} - ${game.maxSize} GB`;
                 
-                // تم استخدام card-img-container لحل مشكلة الـ scale
                 grid.innerHTML += `
                     <div class="card">
                         <div class="card-img-container">
@@ -694,17 +706,8 @@
             window.open(`https://wa.me/${phone}?text=${encodeURIComponent(text)}`, '_blank');
         }
 
-        // استدعاء الدوال بعد تحميل الصفحة
-        window.onload = function() {
-            if (typeof imageMap === 'undefined') {
-                alert('تحذير Critical: ملف image_map.js لم يتم تحميله. الألعاب قد لا تظهر بشكل صحيح. تأكد من وضعه في فولدر images.');
-            }
-            renderGames(); 
-            updateCartUI();
-        };
+        renderGames(); 
+        updateCartUI();
     </script>
 </body>
 </html>
-
-
-
