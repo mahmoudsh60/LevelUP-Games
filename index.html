@@ -186,10 +186,11 @@
         </div>
     </div>
 
-    <script src="images/image_map.js" onerror="console.warn('ملف images/image_map.js غير موجود أو المسار خاطئ!')"></script>
+    <script src="image_map.js" onerror="console.warn('ملف image_map.js غير موجود أو المسار خاطئ!')"></script>
 
     <script>
-        const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbwF_iYswSvpyirHWy0PXeBUkTi6CX-vFqJRksaS3_Rz6uzfJdEXvgk-gKfaoK1NFxgX/exec';
+        // التعديل هنا: إضافة الرابط الجديد الخاص بـ Master Data مع إضافة /exec ليعمل بشكل سليم
+        const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbz_Gbc1q5mlw63yd2u2cn0hs6jnzf2gljhr486u3dkgm2y_2Ut8_Ha/exec';
 
         const rawGames = [
             [1,"3D Billiards Billiards and Snooker","العاب عائلية",2,1,1,"PS4"],
@@ -680,7 +681,7 @@
             [1222,"WWE 2K17","رياضة",4,8,8,"PS3"],
             [1223,"WWE SmackDown vs. Raw 2008","رياضة",4,5,5,"PS3"],
             [1224,"WWE SmackDown vs. Raw 2009","رياضة",4,5,5,"PS3"],
-            [1225,"X-Men Origins Wolverine","أكشن",1,7,7,"PS3"],
+            [1225,"Xenon Origins Wolverine","أكشن",1,7,7,"PS3"],
             [1226,"Yakuza 3","أكشن,مغامرات",1,16,16,"PS3"],
             [1227,"Yakuza 5","أكشن,مغامرات",1,23,23,"PS3"],
             [1228,"Pro Evolution Soccer 2023","رياضة",1,23,23,"PS3"],
@@ -782,6 +783,7 @@
                     if (foundImg) imageFileName = foundImg['الاسم بالكامل'];
                 }
 
+                // الكود ده هيجيب الصورة من مجلد images اللي موجود في الروت
                 let imagePath = encodeURI(`images/${imageFileName}`);
                 const inCart = cart.some(c => c.id === game.id);
                 const ytLink = `https://www.youtube.com/results?search_query=${encodeURIComponent(game.name + " " + game.console + " gameplay")}`;
@@ -865,6 +867,8 @@
                 });
                 let finalTotalTxt = (minTotal === maxTotal) ? `${minTotal} GB` : `من ${minTotal} إلى ${maxTotal} GB`;
                 text += `\nإجمالي المساحة المطلوبة: ${finalTotalTxt}.`;
+            } else {
+                text += `\n(لا يوجد ألعاب محددة من القائمة)`;
             }
 
             let devicesSet = new Set(cart.map(g => g.console));
