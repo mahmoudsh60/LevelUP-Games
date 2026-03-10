@@ -21,13 +21,11 @@
         .fb-link { display: inline-block; margin-top: 10px; background-color: var(--fb-color); color: white; padding: 5px 15px; border-radius: 20px; font-size: 13px; text-decoration: none; font-weight: bold; }
         .container { max-width: 1200px; margin: auto; padding: 20px 15px; }
         
-        /* تنسيق بنر الأسعار */
         .pricing-banner { background: linear-gradient(45deg, #151b2b, #0b0f19); border: 1px solid var(--primary-color); border-radius: 10px; padding: 15px; margin-bottom: 30px; display: flex; justify-content: space-around; flex-wrap: wrap; gap: 15px; text-align: center; }
         .price-card { background-color: #05080f; padding: 10px 20px; border-radius: 8px; border-right: 4px solid var(--primary-color); flex: 1; min-width: 200px; }
         .price-card span { display: block; color: var(--primary-color); font-size: 14px; margin-bottom: 5px; font-weight: bold; }
         .price-card strong { font-size: 18px; color: white; }
 
-        /* الفلاتر */
         .search-box { display: flex; gap: 10px; margin-bottom: 20px; }
         .search-box input { flex: 1; padding: 12px 15px; border-radius: 8px; border: 1px solid var(--border-color); background-color: var(--card-bg); color: white; font-family: 'Tajawal', sans-serif; font-size: 15px; }
         .search-box button { background-color: var(--primary-color); color: #000; border: none; padding: 0 20px; border-radius: 8px; font-weight: bold; font-family: 'Tajawal', sans-serif; cursor: pointer; font-size: 15px; transition: 0.2s; }
@@ -42,7 +40,6 @@
         
         .grid-layout { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 15px; }
         
-        /* الكروت */
         .card { background-color: var(--card-bg); border-radius: 10px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.3); display: flex; flex-direction: column; border: 1px solid var(--border-color); transition: transform 0.2s, box-shadow 0.2s; }
         .card:hover { transform: translateY(-5px); box-shadow: 0 6px 15px rgba(255, 153, 0, 0.2); border-color: var(--primary-color); }
         .card-img-container { width: 100%; height: 180px; background-color: #08080a; border-bottom: 1px solid var(--border-color); display: flex; justify-content: center; align-items: center; overflow: hidden; position: relative;}
@@ -65,7 +62,6 @@
         .btn-add.added { background-color: var(--danger); color: white; }
         .btn-yt { background-color: #d32f2f; color: white; }
         
-        /* السلة */
         .cart-float { position: fixed; bottom: 20px; left: 20px; background-color: var(--primary-color); color: #000; padding: 12px 25px; border-radius: 30px; font-weight: bold; font-family: 'Tajawal', sans-serif; font-size: 16px; box-shadow: 0 5px 15px rgba(255, 153, 0, 0.4); cursor: pointer; border: none; z-index: 1000; display: flex; align-items: center; gap: 10px; transition: 0.2s; }
         .cart-modal { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.85); z-index: 1001; justify-content: center; align-items: center; padding: 15px; }
         .cart-content { background-color: var(--card-bg); width: 100%; max-width: 450px; border-radius: 12px; padding: 20px; max-height: 90vh; overflow-y: auto; border: 2px solid var(--primary-color); display: flex; flex-direction: column; }
@@ -98,7 +94,6 @@
     </header>
 
     <div class="container">
-
         <div class="pricing-banner">
             <div class="price-card">
                 <span>سعر نقل الداتا</span>
@@ -196,7 +191,6 @@
     <script>
         const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbwF_iYswSvpyirHWy0PXeBUkTi6CX-vFqJRksaS3_Rz6uzfJdEXvgk-gKfaoK1NFxgX/exec';
 
-        // قائمة الألعاب المدمجة (PS4 & PS3 & PS2 Emulated)
         const rawGames = [
             [1,"3D Billiards Billiards and Snooker","العاب عائلية",2,1,1,"PS4"],
             [2,"A Plague Tale Innocence","مغامرات",1,34,34,"PS4"],
@@ -243,7 +237,6 @@
             [43,"Crash Bandicoot 4 It's About Time","العاب عائلية",4,20,20,"PS4"],
             [44,"Crash Bandicoot N. Sane Trilogy","العاب عائلية",1,21,21,"PS4"],
             [45,"Crash Team Racing Nitro-Fueled","العاب عائلية,سباق",4,12,30,"PS4"],
-            // تم تعديل هذا الكارت (PS2toPS4 والجهاز PS4)
             [46,"Crash of the Titans","العاب عائلية,PS2toPS4",2,1,1,"PS4"],
             [47,"Cuphead","أكشن,العاب عائلية",2,3,4,"PS4"],
             [48,"Cyberpunk 2077","أكشن,عالم مفتوح",1,59,99,"PS4"],
@@ -252,14 +245,12 @@
             [51,"DC League of Super-Pets","العاب عائلية",1,1,1,"PS4"],
             [52,"Dead or Alive 6","أكشن,قتال زوجي",2,26,60,"PS4"],
             [53,"Death Stranding","مغامرات",1,44,44,"PS4"],
-            // تم تعديل هذا الكارت (PS2toPS4 والجهاز PS4)
             [54,"Def Jam Fight for NY","أكشن,قتال زوجي,PS2toPS4",4,2,2,"PS4"],
             [55,"Demon Slayer Kimetsu no Yaiba","أكشن",2,21,21,"PS4"],
             [56,"Detroit Become Human","مغامرات",1,39,39,"PS4"],
             [57,"Devil May Cry 5","أكشن",1,29,40,"PS4"],
             [58,"Disney's Tarzan","العاب عائلية",1,1,1,"PS4"],
             [59,"Disney Epic Mickey Rebrushed","العاب عائلية",1,10,20,"PS4"],
-            // تم تعديل هذا الكارت (PS2toPS4 والجهاز PS4)
             [60,"Toy Story 3","العاب عائلية,PS2toPS4",1,1,1,"PS4"],
             [61,"Dolphin Spirit Ocean Mission","العاب عائلية",1,1,1,"PS4"],
             [62,"Don't Starve Together","مغامرات",2,1,1,"PS4"],
@@ -297,7 +288,6 @@
             [93,"Ghost Recon Wildlands","أكشن,عالم مفتوح",1,35,58,"PS4"],
             [94,"Ghost of Tsushima","أكشن,عالم مفتوح",1,32,47,"PS4"],
             [95,"Ghostrunner","أكشن",1,8,17,"PS4"],
-            // تم تعديل هذا الكارت (PS2toPS4 والجهاز PS4)
             [96,"God Hand","أكشن,PS2toPS4",1,1,1,"PS4"],
             [97,"God of War III Remastered","أكشن,مغامرات",1,38,38,"PS4"],
             [98,"God of War (2018)","أكشن,مغامرات",1,36,36,"PS4"],
@@ -381,7 +371,6 @@
             [176,"NBA 2K21","أكشن,رياضة",4,41,41,"PS4"],
             [177,"Need for Speed Heat","أكشن,سباق",1,24,24,"PS4"],
             [178,"Need for Speed Payback","أكشن,سباق",1,21,21,"PS4"],
-            // تم تعديل هذا الكارت (PS2toPS4 والجهاز PS4)
             [179,"Need for Speed Most Wanted (2005)","أكشن,سباق,PS2toPS4",1,3,3,"PS4"],
             [180,"Neighbours from Hell","العاب عائلية",1,1,1,"PS4"],
             [181,"Nickelodeon All-Star Brawl 2","العاب عائلية",4,5,10,"PS4"],
@@ -408,7 +397,6 @@
             [202,"Resident Evil Revelations 2","رعب",2,5,11,"PS4"],
             [203,"Resident Evil Village","رعب",1,26,26,"PS4"],
             [204,"Rise of the Tomb Raider","أكشن,مغامرات",1,17,17,"PS4"],
-            // تم تعديل هذا الكارت (PS2toPS4 والجهاز PS4)
             [205,"Rise to Honor","أكشن,PS2toPS4",1,2,2,"PS4"],
             [206,"Road Redemption","أكشن,سباق",4,3,5,"PS4"],
             [207,"Rocket League","العاب عائلية,رياضة",4,30,30,"PS4"],
@@ -451,7 +439,6 @@
             [244,"Super Mario 64","العاب عائلية",1,1,1,"PS4"],
             [245,"Taxi Chaos","العاب عائلية",1,1,1,"PS4"],
             [246,"Team Sonic Racing","العاب عائلية,سباق",4,13,28,"PS4"],
-            // تم تعديل هذا الكارت (PS2toPS4 والجهاز PS4)
             [247,"Teenage Mutant Ninja Turtles","أكشن,PS2toPS4",4,1,1,"PS4"],
             [248,"Tekken 7","أكشن,قتال زوجي",2,38,48,"PS4"],
             [249,"Tennis World Tour 1","أكشن,رياضة",2,3,3,"PS4"],
@@ -465,7 +452,6 @@
             [257,"The Last of Us Part 1 Remastered","رعب,مغامرات",1,43,43,"PS4"],
             [258,"The Last of Us Part 2","رعب,مغامرات",1,86,86,"PS4"],
             [259,"The Order 1886","أكشن",1,29,29,"PS4"],
-            // تم تعديل هذا الكارت (PS2toPS4 والجهاز PS4)
             [260,"The Warriors","أكشن,PS2toPS4",2,2,2,"PS4"],
             [261,"The Witcher 3 Wild Hunt","مغامرات,عالم مفتوح",1,37,37,"PS4"],
             [262,"Tomb Raider Definitive Edition","أكشن,مغامرات",1,18,18,"PS4"],
@@ -717,14 +703,17 @@
             [1245,"Sniper Elite III","أكشن",1,5,5,"PS3"],
             [1246,"The Evil Within","رعب",1,10,10,"PS3"],
             [1247,"Toy Story 3","العاب عائلية",2,3,3,"PS3"],
-            [1245,"W- Lucha Libre AAA Hroes del Ring","4,5,5,"PS3"],
+            [1248,"W- Lucha Libre AAA Heroes del Ring","رياضة,أكشن",4,5,5,"PS3"]
         ];
 
-        const gamesDB = rawGames.map(r => ({
+        let gamesDB = rawGames.map(r => ({
             id: r[0], name: r[1], genres: r[2].split(','), 
             playersTxt: r[3] === 1 ? "1" : `1 - ${r[3]}`, maxPlayers: r[3], 
             minSize: r[4], maxSize: r[5], console: r[6]
         }));
+
+        // ترتيب الألعاب أبجدياً عند التشغيل
+        gamesDB.sort((a, b) => a.name.localeCompare(b.name, 'en', { sensitivity: 'base' }));
 
         let cart = [];
         let activeGenres = [];
@@ -750,10 +739,6 @@
 
         function handleEnter(e) { if(e.key === 'Enter') renderGames(); }
 
-        function sortCartAlphabetically() {
-            cart.sort((a, b) => a.name.localeCompare(b.name, 'en', { sensitivity: 'base' }));
-        }
-
         function toggleCart(id) {
             const index = cart.findIndex(g => g.id === id);
             if(index > -1) { cart.splice(index, 1); } 
@@ -761,27 +746,13 @@
                 const game = gamesDB.find(g => g.id === id);
                 if (game) cart.push(game);
             }
-            sortCartAlphabetically();
+            cart.sort((a, b) => a.name.localeCompare(b.name, 'en', { sensitivity: 'base' }));
             updateCartUI();
             renderGames();
         }
 
         function clearCart() {
             cart = []; updateCartUI(); renderGames();
-        }
-
-        function addPackage(pkgId) {
-            const gameIds = packages[pkgId];
-            let addedCount = 0;
-            gameIds.forEach(id => {
-                const game = gamesDB.find(g => g.id === id);
-                if (game && !cart.some(c => c.id === id)) {
-                    cart.push(game); addedCount++;
-                }
-            });
-            sortCartAlphabetically(); updateCartUI(); renderGames();
-            if (addedCount > 0) alert(`تمت الإضافة بنجاح! تم وضع ${addedCount} لعبة في السلة.`);
-            else alert("الألعاب دي موجودة بالفعل في السلة!");
         }
 
         function renderGames() {
@@ -894,8 +865,6 @@
                 });
                 let finalTotalTxt = (minTotal === maxTotal) ? `${minTotal} GB` : `من ${minTotal} إلى ${maxTotal} GB`;
                 text += `\nإجمالي المساحة المطلوبة: ${finalTotalTxt}.`;
-            } else {
-                text += `\n(لا يوجد ألعاب محددة من القائمة)`;
             }
 
             let devicesSet = new Set(cart.map(g => g.console));
@@ -926,10 +895,3 @@
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
