@@ -49,11 +49,20 @@
         .badge-ps4 { background-color: #003791; color: white; }
         .badge-ps3 { background-color: #000000; color: white; border-color: #ff0000; }
         .badge-ps2 { background-color: #0000cc; color: white; }
+        
+        /* تصميم التصنيفات (Genres) الجديد */
+        .tags { display: flex; flex-wrap: wrap; gap: 5px; justify-content: center; margin-bottom: 10px; }
+        .tag { background: #1e293b; color: #ffcc00; padding: 3px 8px; border-radius: 12px; font-size: 11px; border: 1px solid #334155; font-weight: bold; }
+        
         .info-text { font-size: 13px; color: #ccc; margin-bottom: 6px; text-align: center; }
         .card-actions { margin-top: auto; padding-top: 12px; display: flex; gap: 8px; }
-        .btn { flex: 1; padding: 10px; border: none; border-radius: 6px; font-family: inherit; font-weight: bold; cursor: pointer; text-align: center; font-size: 13px; }
+        .btn { flex: 1; padding: 10px; border: none; border-radius: 6px; font-family: inherit; font-weight: bold; cursor: pointer; text-align: center; font-size: 13px; text-decoration: none;}
         .btn-add { background-color: var(--primary-color); color: #000; }
         .btn-add.added { background-color: var(--danger); color: white; }
+        
+        /* زرار الفيديو الأحمر */
+        .btn-yt { background-color: #e62117; color: white; }
+        .btn-yt:hover { background-color: #cc0000; }
         
         .cart-float { position: fixed; bottom: 20px; left: 20px; background-color: var(--primary-color); color: #000; padding: 12px 25px; border-radius: 30px; font-weight: bold; font-family: inherit; font-size: 16px; cursor: pointer; border: none; z-index: 1000; }
         .cart-modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 1001; justify-content: center; align-items: center; padding: 15px; }
@@ -62,6 +71,7 @@
         .user-info-section { margin-bottom: 15px; display: flex; flex-direction: column; gap: 10px; }
         .user-info-section input, .special-request-area textarea { padding: 12px; border-radius: 8px; border: 1px solid var(--border-color); background-color: #1a2235; color: white; font-family: inherit; width: 100%; box-sizing: border-box; }
         
+        /* زرار الحذف X في السلة */
         .cart-item { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; font-size: 14px; border-bottom: 1px dashed #364259; padding-bottom: 8px; }
         .remove-btn { background: var(--danger); border: none; color: white; font-size: 11px; cursor: pointer; padding: 4px 8px; border-radius: 4px; font-weight: bold; margin-right: 8px; }
         
@@ -151,7 +161,7 @@
     <script src="image_map.js" onerror="console.warn('image_map.js not found')"></script>
 
     <script>
-        // ⚠️ هام جداً: حط الرابط الجديد بتاعك هنا
+        // الرابط الجديد
         const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbzsHNi9IU8P0cE57JkWQ1ZYK8W_7D1_R9klbJe2Fo9o6WPaOmyUm227fZYMIgz7bXdD/exec';
 
         const rawGames = [
@@ -209,25 +219,17 @@
 
         function clearCart() { cart = []; updateCartUI(); renderGames(); }
 
+        // تم تعديل دالة البناء لحل مشكلة التهنيج عن طريق بناء الـ HTML مرة واحدة
         function renderGames() {
             const grid = document.getElementById('gamesGrid');
             const searchText = document.getElementById('searchInput').value.toLowerCase();
-            grid.innerHTML = '';
+            let htmlContent = '';
             
             gamesDB.forEach(game => {
                 if (searchText && !game.name.toLowerCase().includes(searchText)) return;
                 if (activeGenres.length > 0 && !game.genres.some(g => activeGenres.includes(g))) return;
                 if (activeConsoles.length > 0 && !activeConsoles.includes(game.console)) return;
-                if (activeSizes.length > 0) {
-                    const matchesSize = activeSizes.some(sizeType => {
-                        if (sizeType === 'small') return game.maxSize < 15;
-                        if (sizeType === 'medium') return game.maxSize >= 15 && game.maxSize <= 40;
-                        if (sizeType === 'large') return game.maxSize > 40;
-                        return false;
-                    });
-                    if (!matchesSize) return;
-                }
-
+                
                 let imageFileName = game.name + ".jpg"; 
                 if (typeof imageMap !== 'undefined' && imageMap.length > 0) {
                     const clean = n => n.toLowerCase().replace(/[:/]/g, '').replace(/\s+/g, ' ').trim();
@@ -244,11 +246,11 @@
                 
                 let badgeClass = game.console === 'PS4' ? 'badge-ps4' : (game.console === 'PS3' ? 'badge-ps3' : 'badge-ps2');
                 
-                grid.innerHTML += `
+                htmlContent += `
                     <div class="card">
                         <div class="card-img-container">
                             <span class="img-fallback">${game.name}</span>
-                            <img src="${imagePath}" class="card-img" onerror="this.style.display='none';">
+                            <img src="${imagePath}" class="card-img" loading="lazy" onerror="this.style.display='none';">
                         </div>
                         <div class="card-header"><h3 class="game-title">${game.name}</h3></div>
                         <div class="card-content">
@@ -263,6 +265,7 @@
                         </div>
                     </div>`;
             });
+            grid.innerHTML = htmlContent;
         }
 
         function updateCartUI() {
@@ -291,11 +294,9 @@
         function openCart() { document.getElementById('cartModal').style.display = 'flex'; }
         function closeCart() { document.getElementById('cartModal').style.display = 'none'; }
 
-        // الدالة المعدلة للإرسال بصيغة Form لمنع الحظر
         function sendToGoogle(payload) {
             const formData = new URLSearchParams();
             formData.append('data', JSON.stringify(payload));
-            
             return fetch(GOOGLE_SHEET_URL, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -342,7 +343,7 @@
 
             let payload = {
                 systemType: "Modded", name: name, phone: contact, consoleType: deviceTypeString, 
-                gamesFormatted: gamesForSheet,
+                gamesFormatted: gamesForSheet, totalPrice: "يحدد حسب الجيجات",
                 totalSize: (cart.length > 0) ? ((minTotal === maxTotal) ? `${minTotal} GB` : `من ${minTotal} إلى ${maxTotal} GB`) : "غير محدد"
             };
 
@@ -354,7 +355,7 @@
                 window.open(`https://wa.me/${phone}?text=${encodeURIComponent(text)}`, '_blank');
                 btn.innerText = originalText; btn.disabled = false;
             }).catch(e => { 
-                alert("مشكلة في الاتصال! الكود: " + e); 
+                alert("مشكلة في الاتصال!"); 
                 btn.innerText = originalText; btn.disabled = false; 
             });
         }
