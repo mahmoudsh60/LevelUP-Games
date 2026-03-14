@@ -61,7 +61,8 @@
         .cart-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 12px; margin-bottom: 15px; }
         .user-info-section { margin-bottom: 15px; display: flex; flex-direction: column; gap: 10px; }
         .user-info-section input, .special-request-area textarea { padding: 12px; border-radius: 8px; border: 1px solid var(--border-color); background-color: #1a2235; color: white; font-family: inherit; width: 100%; box-sizing: border-box; }
-        .cart-item { display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 14px; border-bottom: 1px dashed #364259; padding-bottom: 8px; }
+        .cart-item { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; font-size: 14px; border-bottom: 1px dashed #364259; padding-bottom: 8px; }
+        .remove-btn { background: none; border: none; color: var(--danger); font-size: 16px; cursor: pointer; padding: 0 5px; font-weight: bold; }
         .cart-summary { background-color: #1a2235; padding: 15px; border-radius: 8px; margin-top: 15px; text-align: center; border: 1px solid var(--border-color); }
         .btn-whatsapp { background-color: #25D366; color: white; width: 100%; padding: 12px; border: none; border-radius: 8px; font-family: inherit; font-weight: bold; font-size: 15px; cursor: pointer; margin-top: 10px; }
     </style>
@@ -194,6 +195,15 @@
             else { const game = gamesDB.find(g => g.id === id); if (game) cart.push(game); }
             sortCartAlphabetically(); updateCartUI(); renderGames();
         }
+        
+        function removeFromCart(id) {
+            const index = cart.findIndex(g => g.id === id);
+            if (index > -1) {
+                cart.splice(index, 1);
+                updateCartUI();
+                renderGames();
+            }
+        }
 
         function clearCart() { cart = []; updateCartUI(); renderGames(); }
 
@@ -265,7 +275,10 @@
                 minTotal += game.minSize; maxTotal += game.maxSize;
                 let itemSizeText = (game.minSize === game.maxSize) ? `${game.minSize} GB` : `${game.minSize}-${game.maxSize} GB`;
                 list.innerHTML += `<div class="cart-item">
-                    <span><strong style="color:var(--primary-color); font-size:11px;">[${game.console}]</strong> ${game.name}</span>
+                    <div style="display:flex; align-items:center; gap:8px;">
+                        <button class="remove-btn" onclick="removeFromCart(${game.id})">✖</button>
+                        <span><strong style="color:var(--primary-color); font-size:11px;">[${game.console}]</strong> ${game.name}</span>
+                    </div>
                     <span style="color:var(--text-muted);" dir="ltr">${itemSizeText}</span>
                 </div>`;
             });
@@ -275,7 +288,7 @@
         function openCart() { document.getElementById('cartModal').style.display = 'flex'; }
         function closeCart() { document.getElementById('cartModal').style.display = 'none'; }
 
-        // دالة الإرسال بصيغة text/plain لمنع حظر الـ CORS
+        // دالة الإرسال بصيغة text/plain لمنع حظر المتصفح
         function sendToGoogle(payload) {
             return fetch(GOOGLE_SHEET_URL, {
                 method: 'POST',
