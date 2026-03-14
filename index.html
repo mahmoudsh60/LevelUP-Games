@@ -61,8 +61,11 @@
         .cart-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 12px; margin-bottom: 15px; }
         .user-info-section { margin-bottom: 15px; display: flex; flex-direction: column; gap: 10px; }
         .user-info-section input, .special-request-area textarea { padding: 12px; border-radius: 8px; border: 1px solid var(--border-color); background-color: #1a2235; color: white; font-family: inherit; width: 100%; box-sizing: border-box; }
+        
+        /* تصميم عنصر السلة وزر الحذف الجديد */
         .cart-item { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; font-size: 14px; border-bottom: 1px dashed #364259; padding-bottom: 8px; }
-        .remove-btn { background: none; border: none; color: var(--danger); font-size: 16px; cursor: pointer; padding: 0 5px; font-weight: bold; }
+        .remove-btn { background: none; border: none; color: var(--danger); font-size: 18px; cursor: pointer; padding: 0 5px; font-weight: bold; line-height: 1; }
+        
         .cart-summary { background-color: #1a2235; padding: 15px; border-radius: 8px; margin-top: 15px; text-align: center; border: 1px solid var(--border-color); }
         .btn-whatsapp { background-color: #25D366; color: white; width: 100%; padding: 12px; border: none; border-radius: 8px; font-family: inherit; font-weight: bold; font-size: 15px; cursor: pointer; margin-top: 10px; }
     </style>
@@ -149,6 +152,7 @@
     <script src="image_map.js" onerror="console.warn('image_map.js not found')"></script>
 
     <script>
+        // الرابط بتاعك زي ما هو
         const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbyZwX2zpm3qhlmuER-k2p2lN_YddkoQQJwfseVQG6eKz2clBB_NwqNziNpxzAPl_arW/exec';
 
         const rawGames = [
@@ -195,13 +199,12 @@
             else { const game = gamesDB.find(g => g.id === id); if (game) cart.push(game); }
             sortCartAlphabetically(); updateCartUI(); renderGames();
         }
-        
+
         function removeFromCart(id) {
             const index = cart.findIndex(g => g.id === id);
             if (index > -1) {
                 cart.splice(index, 1);
-                updateCartUI();
-                renderGames();
+                updateCartUI(); renderGames();
             }
         }
 
@@ -288,10 +291,11 @@
         function openCart() { document.getElementById('cartModal').style.display = 'flex'; }
         function closeCart() { document.getElementById('cartModal').style.display = 'none'; }
 
-        // دالة الإرسال بصيغة text/plain لمنع حظر المتصفح
+        // دالة الإرسال بصيغة text/plain لتفادي حظر المتصفح
         function sendToGoogle(payload) {
             return fetch(GOOGLE_SHEET_URL, {
                 method: 'POST',
+                mode: 'no-cors',
                 headers: { 'Content-Type': 'text/plain;charset=utf-8' },
                 body: JSON.stringify(payload)
             });
