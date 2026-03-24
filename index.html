@@ -18,15 +18,19 @@
         header span { color: var(--primary-color); }
         .container { max-width: 1200px; margin: auto; padding: 20px 15px; }
         
-        .pricing-banner { background: linear-gradient(45deg, #151b2b, #0b0f19); border: 1px solid var(--primary-color); border-radius: 10px; padding: 15px; margin-bottom: 30px; display: flex; justify-content: space-around; flex-wrap: wrap; gap: 15px; text-align: center; }
+        .pricing-banner { background: linear-gradient(45deg, #151b2b, #0b0f19); border: 1px solid var(--primary-color); border-radius: 10px; padding: 15px; margin-bottom: 25px; display: flex; justify-content: space-around; flex-wrap: wrap; gap: 15px; text-align: center; }
         .price-card { background-color: #05080f; padding: 10px 20px; border-radius: 8px; border-right: 4px solid var(--primary-color); flex: 1; min-width: 200px; display: flex; flex-direction: column; justify-content: center;}
         .price-card > span { display: block; color: var(--primary-color); font-size: 14px; margin-bottom: 5px; font-weight: bold; }
         .price-card > strong { font-size: 18px; color: white; }
         
-        /* تنسيق خاص لسعر تحميل اللعبة (يمين وشمال) */
         .split-price { display: flex; justify-content: space-around; align-items: center; width: 100%; margin-top: 5px;}
         .split-price div { display: flex; flex-direction: column; color: white; font-weight: bold; font-size: 15px;}
         .split-price .divider { width: 1px; height: 30px; background-color: var(--border-color); }
+
+        /* تنسيق خطوات الاستعمال */
+        .steps-container { display: flex; justify-content: center; flex-wrap: wrap; gap: 15px; margin-bottom: 20px; text-align: center; }
+        .step-box { background-color: #0d121c; border: 1px dashed var(--primary-color); padding: 10px 15px; border-radius: 8px; font-size: 14px; font-weight: bold; color: var(--text-main); flex: 1; min-width: 180px; display: flex; align-items: center; justify-content: center; gap: 10px;}
+        .step-box span { background-color: var(--primary-color); color: #000; width: 22px; height: 22px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-weight: 900; font-size: 14px;}
 
         .search-box { display: flex; gap: 10px; margin-bottom: 20px; }
         .search-box input { flex: 1; padding: 12px 15px; border-radius: 8px; border: 1px solid var(--border-color); background-color: var(--card-bg); color: white; font-family: inherit; font-size: 15px; }
@@ -91,6 +95,7 @@
     </header>
 
     <div class="container">
+        
         <div class="pricing-banner">
             <div class="price-card">
                 <span>سعر نقل الداتا</span>
@@ -108,6 +113,12 @@
                 <span>سعر التحميل المخصوص</span>
                 <strong>1.5 جنيه للجيجا</strong>
             </div>
+        </div>
+
+        <div class="steps-container">
+            <div class="step-box"><span>1</span> اختار ألعابك</div>
+            <div class="step-box"><span>2</span> افتح العربة</div>
+            <div class="step-box"><span>3</span> أرسل الألعاب مع بياناتك</div>
         </div>
 
         <div class="search-box">
@@ -183,53 +194,10 @@
         </div>
     </div>
 
+    <script src="image_map.js"></script>
+
     <script>
         const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbzsHNi9IU8P0cE57JkWQ1ZYK8W_7D1_R9klbJe2Fo9o6WPaOmyUm227fZYMIgz7bXdD/exec';
-
-        // 🟢 قاموس الصور الخاصة (الحل السحري لمسارات الصور المختلفة بدون ملفات خارجية)
-        const customImageExtensions = {
-            "A Plague Tale Innocence": ".jpeg",
-            "Battlefield 1": ".png",
-            "Bloodborne": ".png",
-            "Cartoon Network Battle Crashers": ".png",
-            "Days Gone": ".png",
-            "Detroit Become Human": ".png",
-            "Dying Light 1": ".png",
-            "eFootball PES 2019": ".avif",
-            "eFootball 2026": ".png",
-            "Elden Ring": ".png",
-            "God of War Ragnarök": ".jpeg",
-            "Grand Theft Auto III": ".avif",
-            "Hellblade Senua's Sacrifice": ".jpg",
-            "Hello Neighbor 1": ".jpg",
-            "Hello Neighbor 2": ".avif",
-            "Horizon Forbidden West": ".avif",
-            "Little Nightmares 1": ".png",
-            "Little Nightmares 2": ".png",
-            "Marvel's Spider-Man Miles Morales": ".png",
-            "Marvel's Spider-Man 1": ".png",
-            "Metro Exodus": ".avif",
-            "Minecraft Story Mode": ".avif",
-            "Monster Blast": ".avif",
-            "Mortal Kombat 11": ".avif",
-            "P.T.": ".png",
-            "PAC-MAN 256": ".png",
-            "Poppy Playtime Chapter 1": ".avif",
-            "Resident Evil 7 Biohazard": ".avif",
-            "Shadow of the Colossus": ".png",
-            "Shovel Knight": ".avif",
-            "Sid Meier's Civilization VII": ".avif",
-            "Sonic Forces": ".avif",
-            "Sonic Racing CrossWorlds": ".avif",
-            "Streets of Rage 4": ".avif",
-            "Star Wars Jedi Survivor": ".png",
-            "Team Sonic Racing": ".avif",
-            "The Disney Afternoon Collection": ".avif",
-            "The Evil Within 2": ".avif",
-            "Uncharted The Lost Legacy": ".avif",
-            "Urban Trial Tricky": ".avif",
-            "Watch Dogs 2": ".avif"
-        };
 
         const rawGames = [
             // ====== ألعاب الـ PS4 ======
@@ -504,8 +472,6 @@
             renderGames();
         }
 
-        function handleEnter(e) { if(e.key === 'Enter') renderGames(); }
-
         function sortCartAlphabetically() { cart.sort((a, b) => a.name.localeCompare(b.name, 'en', { sensitivity: 'base' })); }
 
         function toggleCart(id) {
@@ -532,9 +498,7 @@
             
             gamesDB.forEach(game => {
                 if (searchText && !game.name.toLowerCase().includes(searchText)) return;
-                
                 if (activeGenres.length > 0 && !activeGenres.every(g => game.genres.includes(g))) return;
-
                 if (activeConsoles.length > 0 && !activeConsoles.includes(game.console)) return;
                 
                 if (activeSizes.length > 0) {
@@ -552,9 +516,16 @@
                     if (!matchesSize) return;
                 }
 
-                // 🟢 هنا بنسأل "القاموس" عن امتداد الصورة الصح للعبة دي
-                let ext = customImageExtensions[game.name] || ".jpg";
-                let imagePath = encodeURI(`images/${game.name}${ext}`);
+                // القاموس الخارجي من ملف image_map.js
+                let imageFileName = game.name + ".jpg"; 
+                if (typeof imageMap !== 'undefined' && imageMap.length > 0) {
+                    let foundImg = imageMap.find(img => img['اسم الصورة فقط'].trim().toLowerCase() === game.name.trim().toLowerCase());
+                    if (foundImg) {
+                        imageFileName = foundImg['الاسم بالكامل'];
+                    }
+                }
+
+                let imagePath = encodeURI(`images/${imageFileName}`);
 
                 const inCart = cart.some(c => c.id === game.id);
                 const ytLink = `https://www.youtube.com/results?search_query=${encodeURIComponent(game.name + " " + game.console + " gameplay")}`;
