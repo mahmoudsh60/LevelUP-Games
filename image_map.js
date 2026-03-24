@@ -1,4 +1,4 @@
-﻿const imageMap = [
+const imageMap = [
     { "اسم الصورة فقط": "007 Blood Stone", "الاسم بالكامل": "007 Blood Stone.PNG" },
     { "اسم الصورة فقط": "50 Cent Blood on the Sand", "الاسم بالكامل": "50 Cent Blood on the Sand.PNG" },
     { "اسم الصورة فقط": "Afro Samurai", "الاسم بالكامل": "Afro Samurai.PNG" },
@@ -39,7 +39,7 @@
     { "اسم الصورة فقط": "Call of Duty World at War", "الاسم بالكامل": "Call of Duty World at War.PNG" },
     { "اسم الصورة فقط": "Captain America Super Soldier", "الاسم بالكامل": "Captain America Super Soldier.PNG" },
     { "اسم الصورة فقط": "Cars 3 Driven to Win", "الاسم بالكامل": "Cars 3 Driven to Win.PNG" },
-    { "اسم الصورة فقط": "Cartoon Network Battle Crashers", "الاسم بالكامل": "Cartoon Network Battle Crashers.png" }
+    { "اسم الصورة فقط": "Cartoon Network Battle Crashers", "الاسم بالكامل": "Cartoon Network Battle Crashers.png" },
     { "اسم الصورة فقط": "Castlevania Lords of Shadow", "الاسم بالكامل": "Castlevania Lords of Shadow.PNG" },
     { "اسم الصورة فقط": "Crysis 2", "الاسم بالكامل": "Crysis 2.PNG" },
     { "اسم الصورة فقط": "Crysis 3", "الاسم بالكامل": "Crysis 3.PNG" },
@@ -47,7 +47,7 @@
     { "اسم الصورة فقط": "Dark Souls II", "الاسم بالكامل": "Dark Souls II.PNG" },
     { "اسم الصورة فقط": "Dark Souls Prepare to Die Edition", "الاسم بالكامل": "Dark Souls Prepare to Die Edition.PNG" },
     { "اسم الصورة فقط": "Darksiders II", "الاسم بالكامل": "Darksiders II.PNG" },
-    { "اسم الصورة فقط": "Darksiders", "الاسم بالكامل": "Darksiders.PNG" },
+    { "اسم الصورة ডান": "Darksiders", "الاسم بالكامل": "Darksiders.PNG" },
     { "اسم الصورة فقط": "Dead or Alive 5 Last Round", "الاسم بالكامل": "Dead or Alive 5 Last Round.PNG" },
     { "اسم الصورة فقط": "Dead Rising 2 Off the Record", "الاسم بالكامل": "Dead Rising 2 Off the Record.PNG" },
     { "اسم الصورة فقط": "Dead Space 3", "الاسم بالكامل": "Dead Space 3.PNG" },
