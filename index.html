@@ -27,7 +27,6 @@
         .split-price div { display: flex; flex-direction: column; color: white; font-weight: bold; font-size: 15px;}
         .split-price .divider { width: 1px; height: 30px; background-color: var(--border-color); }
 
-        /* تنسيق خطوات الاستعمال */
         .steps-container { display: flex; justify-content: center; flex-wrap: wrap; gap: 15px; margin-bottom: 20px; text-align: center; }
         .step-box { background-color: #0d121c; border: 1px dashed var(--primary-color); padding: 10px 15px; border-radius: 8px; font-size: 14px; font-weight: bold; color: var(--text-main); flex: 1; min-width: 180px; display: flex; align-items: center; justify-content: center; gap: 10px;}
         .step-box span { background-color: var(--primary-color); color: #000; width: 22px; height: 22px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-weight: 900; font-size: 14px;}
@@ -194,7 +193,7 @@
         </div>
     </div>
 
-    <script src="image_map.js"></script>
+    <script src="image_map.js" onerror="console.warn('image_map.js not found')"></script>
 
     <script>
         const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbzsHNi9IU8P0cE57JkWQ1ZYK8W_7D1_R9klbJe2Fo9o6WPaOmyUm227fZYMIgz7bXdD/exec';
@@ -451,6 +450,54 @@
         let activeGenres = [];
         let activeSizes = [];
         let activeConsoles = []; 
+        window.fallbackImages = {};
+
+        // دالة صياد الصور الذكي (عشان الصور المتلخبطة أو اللي بمسار مختلف)
+        function getPossibleUrls(name) {
+            let urls = [];
+            const clean = n => n.toLowerCase().replace(/[:/]/g, '').replace(/\s+/g, ' ').trim();
+            const dashed = n => clean(n).replace(/ /g, '-');
+            
+            let target1 = clean(name);
+            let target2 = dashed(name);
+
+            if (typeof imageMap !== 'undefined') {
+                let matches = imageMap.filter(img => {
+                    let imgName = clean(img['اسم الصورة فقط']);
+                    return imgName === target1 || imgName === target2;
+                });
+                matches.forEach(m => {
+                    let filename = encodeURI(m['الاسم بالكامل']);
+                    urls.push('images/' + filename);
+                    urls.push(filename);
+                });
+            }
+            
+            let rawName = encodeURI(name.replace(/[:/]/g, ''));
+            let rawDashed = encodeURI(name.replace(/[:/]/g, '').replace(/ /g, '-'));
+            
+            ['.jpg', '.png', '.jpeg', '.avif', '.JPG', '.PNG'].forEach(ext => {
+                urls.push('images/' + rawName + ext);
+                urls.push(rawName + ext);
+                urls.push('images/' + rawDashed + ext);
+                urls.push(rawDashed + ext);
+            });
+
+            return [...new Set(urls)];
+        }
+
+        // دالة تغيير الصورة عند الفشل
+        function tryNextImg(imgElement, gameId, currentIndex) {
+            let urls = window.fallbackImages[gameId];
+            let nextIndex = currentIndex + 1;
+            
+            if (urls && nextIndex < urls.length) {
+                imgElement.onerror = function() { tryNextImg(imgElement, gameId, nextIndex); };
+                imgElement.src = urls[nextIndex];
+            } else {
+                imgElement.style.display = 'none';
+            }
+        }
 
         function toggleFilter(type, value, btnElement) {
             btnElement.classList.toggle('active');
@@ -516,19 +563,14 @@
                     if (!matchesSize) return;
                 }
 
-                // القاموس الخارجي من ملف image_map.js
-                let imageFileName = game.name + ".jpg"; 
-                if (typeof imageMap !== 'undefined' && imageMap.length > 0) {
-                    let foundImg = imageMap.find(img => img['اسم الصورة فقط'].trim().toLowerCase() === game.name.trim().toLowerCase());
-                    if (foundImg) {
-                        imageFileName = foundImg['الاسم بالكامل'];
-                    }
-                }
-
-                let imagePath = encodeURI(`images/${imageFileName}`);
+                // تطبيق صياد الصور الذكي هنا 
+                let possibleUrls = getPossibleUrls(game.name);
+                window.fallbackImages[game.id] = possibleUrls;
 
                 const inCart = cart.some(c => c.id === game.id);
+                // تصليح رابط اليوتيوب
                 const ytLink = `https://www.youtube.com/results?search_query=${encodeURIComponent(game.name + " " + game.console + " gameplay")}`;
+                
                 let tagsHTML = game.genres.map(g => `<span class="tag">${g}</span>`).join('');
                 let sizeDisplay = (game.minSize === game.maxSize) ? `${game.minSize} GB` : `${game.minSize} - ${game.maxSize} GB`;
                 
@@ -541,7 +583,7 @@
                     <div class="card">
                         <div class="card-img-container">
                             <span class="img-fallback">${game.name}</span>
-                            <img src="${imagePath}" class="card-img" loading="lazy" onerror="this.style.display='none';">
+                            <img src="${possibleUrls[0]}" class="card-img" loading="lazy" onerror="tryNextImg(this, ${game.id}, 0)">
                         </div>
                         <div class="card-header"><h3 class="game-title">${game.name}</h3></div>
                         <div class="card-content">
