@@ -129,10 +129,9 @@ const imageMap = [
     { "اسم الصورة فقط": "Payday 2", "الاسم بالكامل": "Payday 2.PNG" },
     { "اسم الصورة فقط": "Planet 51 The Game", "الاسم بالكامل": "Planet 51 The Game.PNG" },
     { "اسم الصورة فقط": "Plants vs. Zombies", "الاسم بالكامل": "Plants vs. Zombies.PNG" },
-    { "اسم الصورة فقط": "PlayStation All-Stars Battle Royale", "الاسم بالكامل": "PlayStation All-Stars Battle Royale.PNG" },
     { "اسم الصورة فقط": "Portal 2", "الاسم بالكامل": "Portal 2.PNG" },
-    { "اسم الصورة فقط": "Prince of Persia Trilogy 3D", "الاسم بالكامل": "Prince of Persia Trilogy 3D.PNG" },
     { "اسم الصورة فقط": "Prince of Persia", "الاسم بالكامل": "Prince of Persia.PNG" },
+    { "اسم الصورة فقط": "Prince of Persia Trilogy 3D", "الاسم بالكامل": "Prince of Persia Trilogy 3D.PNG" },
     { "اسم الصورة فقط": "Pro Evolution Soccer 2013", "الاسم بالكامل": "Pro Evolution Soccer 2013.PNG" },
     { "اسم الصورة فقط": "Pro Evolution Soccer 2016", "الاسم بالكامل": "Pro Evolution Soccer 2016.PNG" },
     { "اسم الصورة فقط": "Prototype 2", "الاسم بالكامل": "Prototype 2.PNG" },
@@ -239,5 +238,6 @@ const imageMap = [
     { "اسم الصورة فقط": "Teenage Mutant Ninja Turtles Shredders Revenge", "الاسم بالكامل": "Teenage Mutant Ninja Turtles Shredders Revenge.png" },
     { "اسم الصورة فقط": "The Smurfs 2", "الاسم بالكامل": "The Smurfs 2.png" },
     { "اسم الصورة فقط": "TMNT Mutants Unleashed", "الاسم بالكامل": "TMNT Mutants Unleashed.png" },
-    { "اسم الصورة فقط": "Yooka Laylee", "الاسم بالكامل": "Yooka Laylee.png" }
+    { "اسم الصورة فقط": "Yooka Laylee", "الاسم بالكامل": "Yooka Laylee.png" },
+    { "اسم الصورة فقط": "Sonic X Shadow Generations", "الاسم بالكامل": "Sonic X Shadow Generations.jpg" }
 ];
