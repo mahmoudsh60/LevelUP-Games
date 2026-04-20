@@ -52,7 +52,7 @@ const imageMap = [
     { "اسم الصورة فقط": "Dead Rising 2 Off the Record", "الاسم بالكامل": "Dead Rising 2 Off the Record.PNG" },
     { "اسم الصورة فقط": "Dead Space 3", "الاسم بالكامل": "Dead Space 3.PNG" },
     { "اسم الصورة فقط": "Dead Space", "الاسم بالكامل": "Dead Space.PNG" },
-    { "اسم الصورة فقط": "Deadpool", "الاسم بالكامل": "Deadpool.PNG" },
+    { "اسم الصورة فقط": "Deadpool", "الاسم بالكامل": "Deadpool.png" },
     { "اسم الصورة فقط": "Devil May Cry 4", "الاسم بالكامل": "Devil May Cry 4.PNG" },
     { "اسم الصورة فقط": "Devil May Cry 5", "الاسم بالكامل": "Devil May Cry 5.PNG" },
     { "اسم الصورة فقط": "Dishonored", "الاسم بالكامل": "Dishonored.png" },
@@ -230,5 +230,14 @@ const imageMap = [
     { "اسم الصورة فقط": "Little Nightmares 1", "الاسم بالكامل": "Little Nightmares 1.png" },
     { "اسم الصورة فقط": "Little Nightmares 2", "الاسم بالكامل": "Little Nightmares 2.png" },
     { "اسم الصورة فقط": "Marvel's Spider-Man Miles Morales", "الاسم بالكامل": "Marvel's Spider-Man Miles Morales.png" },
-    { "اسم الصورة فقط": "Yakuza 5", "الاسم بالكامل": "Yakuza 5.PNG" }
+    { "اسم الصورة فقط": "Yakuza 5", "الاسم بالكامل": "Yakuza 5.PNG" },
+    { "اسم الصورة فقط": "Anomaly 2", "الاسم بالكامل": "Anomaly 2.png" },
+    { "اسم الصورة فقط": "Commandos Origins", "الاسم بالكامل": "Commandos Origins.png" },
+    { "اسم الصورة فقط": "Megaton Rainfall", "الاسم بالكامل": "Megaton Rainfall.png" },
+    { "اسم الصورة فقط": "Sonic Colors Ultimate", "الاسم بالكامل": "Sonic Colors Ultimate.png" },
+    { "اسم الصورة فقط": "Sonic Mania", "الاسم بالكامل": "Sonic Mania.png" },
+    { "اسم الصورة فقط": "Teenage Mutant Ninja Turtles Shredders Revenge", "الاسم بالكامل": "Teenage Mutant Ninja Turtles Shredders Revenge.png" },
+    { "اسم الصورة فقط": "The Smurfs 2", "الاسم بالكامل": "The Smurfs 2.png" },
+    { "اسم الصورة فقط": "TMNT Mutants Unleashed", "الاسم بالكامل": "TMNT Mutants Unleashed.png" },
+    { "اسم الصورة فقط": "Yooka Laylee", "الاسم بالكامل": "Yooka Laylee.png" }
 ];
