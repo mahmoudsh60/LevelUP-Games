@@ -1,243 +1,498 @@
-const imageMap = [
-    { "اسم الصورة فقط": "007 Blood Stone", "الاسم بالكامل": "007 Blood Stone.PNG" },
-    { "اسم الصورة فقط": "50 Cent Blood on the Sand", "الاسم بالكامل": "50 Cent Blood on the Sand.PNG" },
-    { "اسم الصورة فقط": "Afro Samurai", "الاسم بالكامل": "Afro Samurai.PNG" },
-    { "اسم الصورة فقط": "Alien Isolation", "الاسم بالكامل": "Alien Isolation.PNG" },
-    { "اسم الصورة فقط": "Alpha Protocol", "الاسم بالكامل": "Alpha Protocol.PNG" },
-    { "اسم الصورة فقط": "Angry Birds Trilogy", "الاسم بالكامل": "Angry Birds Trilogy.PNG" },
-    { "اسم الصورة فقط": "Army of Two The 40th Day", "الاسم بالكامل": "Army of Two The 40th Day.PNG" },
-    { "اسم الصورة فقط": "Army of Two The Devil's Cartel", "الاسم بالكامل": "Army of Two The Devil's Cartel.PNG" },
-    { "اسم الصورة فقط": "Assassin's Creed Brotherhood", "الاسم بالكامل": "Assassin's Creed Brotherhood.PNG" },
-    { "اسم الصورة فقط": "Assassin's Creed II", "الاسم بالكامل": "Assassin's Creed II.PNG" },
-    { "اسم الصورة فقط": "Assassin's Creed III", "الاسم بالكامل": "Assassin's Creed III.PNG" },
-    { "اسم الصورة فقط": "Assassin's Creed IV Black Flag", "الاسم بالكامل": "Assassin's Creed IV Black Flag.PNG" },
-    { "اسم الصورة فقط": "Avatar The Game", "الاسم بالكامل": "Avatar The Game.PNG" },
-    { "اسم الصورة فقط": "Batman Arkham City GOTY", "الاسم بالكامل": "Batman Arkham City GOTY.PNG" },
-    { "اسم الصورة فقط": "Batman Arkham Origins", "الاسم بالكامل": "Batman Arkham Origins.PNG" },
-    { "اسم الصورة فقط": "Battlefield 3", "الاسم بالكامل": "Battlefield 3.PNG" },
-    { "اسم الصورة فقط": "Battlefield Bad Company 2", "الاسم بالكامل": "Battlefield Bad Company 2.PNG" },
-    { "اسم الصورة فقط": "Battlefield IV", "الاسم بالكامل": "Battlefield IV.PNG" },
-    { "اسم الصورة فقط": "Ben 10 Galactic Racing", "الاسم بالكامل": "Ben 10 Galactic Racing.PNG" },
-    { "اسم الصورة فقط": "Ben 10 Omniverse 2", "الاسم بالكامل": "Ben 10 Omniverse 2.PNG" },
-    { "اسم الصورة فقط": "Ben 10 Omniverse", "الاسم بالكامل": "Ben 10 Omniverse.PNG" },
-    { "اسم الصورة فقط": "Ben 10 Ultimate Alien", "الاسم بالكامل": "Ben 10 Ultimate Alien.PNG" },
-    { "اسم الصورة فقط": "Biohazard Revelations 2", "الاسم بالكامل": "Biohazard Revelations 2.PNG" },
-    { "اسم الصورة فقط": "Blades of Time", "الاسم بالكامل": "Blades of Time.PNG" },
-    { "اسم الصورة فقط": "Bleach Soul Resurrección", "الاسم بالكامل": "Bleach Soul Resurrección.PNG" },
-    { "اسم الصورة فقط": "Blur", "الاسم بالكامل": "Blur.PNG" },
-    { "اسم الصورة فقط": "Borderlands 2", "الاسم بالكامل": "Borderlands 2.PNG" },
-    { "اسم الصورة فقط": "Borderlands The Pre-Sequel", "الاسم بالكامل": "Borderlands The Pre-Sequel.PNG" },
-    { "اسم الصورة فقط": "Brave", "الاسم بالكامل": "Brave.PNG" },
-    { "اسم الصورة فقط": "Brothers in Arms Hell's Highway", "الاسم بالكامل": "Brothers in Arms Hell's Highway.PNG" },
-    { "اسم الصورة فقط": "Brütal Legend", "الاسم بالكامل": "Brütal Legend.PNG" },
-    { "اسم الصورة فقط": "Cabela's African Adventures", "الاسم بالكامل": "Cabela's African Adventures.PNG" },
-    { "اسم الصورة فقط": "Cabela's Dangerous Hunts", "الاسم بالكامل": "Cabela's Dangerous Hunts.PNG" },
-    { "اسم الصورة فقط": "Call of Duty Advanced Warfare", "الاسم بالكامل": "Call of Duty Advanced Warfare.PNG" },
-    { "اسم الصورة فقط": "Call of Duty Black Ops I", "الاسم بالكامل": "Call of Duty Black Ops I.PNG" },
-    { "اسم الصورة فقط": "Call of Duty Black Ops II", "الاسم بالكامل": "Call of Duty Black Ops II.PNG" },
-    { "اسم الصورة فقط": "Call of Duty Modern Warfare 3", "الاسم بالكامل": "Call of Duty Modern Warfare 3.PNG" },
-    { "اسم الصورة فقط": "Call of Duty World at War", "الاسم بالكامل": "Call of Duty World at War.PNG" },
-    { "اسم الصورة فقط": "Captain America Super Soldier", "الاسم بالكامل": "Captain America Super Soldier.PNG" },
-    { "اسم الصورة فقط": "Cars 3 Driven to Win", "الاسم بالكامل": "Cars 3 Driven to Win.PNG" },
-    { "اسم الصورة فقط": "Cartoon Network Battle Crashers", "الاسم بالكامل": "Cartoon Network Battle Crashers.png" },
-    { "اسم الصورة فقط": "Castlevania Lords of Shadow", "الاسم بالكامل": "Castlevania Lords of Shadow.PNG" },
-    { "اسم الصورة فقط": "Crysis 2", "الاسم بالكامل": "Crysis 2.PNG" },
-    { "اسم الصورة فقط": "Crysis 3", "الاسم بالكامل": "Crysis 3.PNG" },
-    { "اسم الصورة فقط": "Dark Sector", "الاسم بالكامل": "Dark Sector.PNG" },
-    { "اسم الصورة فقط": "Dark Souls II", "الاسم بالكامل": "Dark Souls II.PNG" },
-    { "اسم الصورة فقط": "Dark Souls Prepare to Die Edition", "الاسم بالكامل": "Dark Souls Prepare to Die Edition.PNG" },
-    { "اسم الصورة فقط": "Darksiders II", "الاسم بالكامل": "Darksiders II.PNG" },
-    { "اسم الصورة فقط": "Darksiders", "الاسم بالكامل": "Darksiders.PNG" },
-    { "اسم الصورة فقط": "Dead or Alive 5 Last Round", "الاسم بالكامل": "Dead or Alive 5 Last Round.PNG" },
-    { "اسم الصورة فقط": "Dead Rising 2 Off the Record", "الاسم بالكامل": "Dead Rising 2 Off the Record.PNG" },
-    { "اسم الصورة فقط": "Dead Space 3", "الاسم بالكامل": "Dead Space 3.PNG" },
-    { "اسم الصورة فقط": "Dead Space", "الاسم بالكامل": "Dead Space.PNG" },
-    { "اسم الصورة فقط": "Deadpool", "الاسم بالكامل": "Deadpool.png" },
-    { "اسم الصورة فقط": "Devil May Cry 4", "الاسم بالكامل": "Devil May Cry 4.PNG" },
-    { "اسم الصورة فقط": "Devil May Cry 5", "الاسم بالكامل": "Devil May Cry 5.PNG" },
-    { "اسم الصورة فقط": "Dishonored", "الاسم بالكامل": "Dishonored.png" },
-    { "اسم الصورة فقط": "Dragon Ball Xenoverse", "الاسم بالكامل": "Dragon Ball Xenoverse.PNG" },
-    { "اسم الصورة فقط": "Dragon Ball Z Ultimate Tenkaichi", "الاسم بالكامل": "Dragon Ball Z Ultimate Tenkaichi.PNG" },
-    { "اسم الصورة فقط": "Driver San Francisco", "الاسم بالكامل": "Driver San Francisco.PNG" },
-    { "اسم الصورة فقط": "Duke Nukem Forever", "الاسم بالكامل": "Duke Nukem Forever.PNG" },
-    { "اسم الصورة فقط": "EA Sports MMA", "الاسم بالكامل": "EA Sports MMA.PNG" },
-    { "اسم الصورة فقط": "Enemy Front", "الاسم بالكامل": "Enemy Front.PNG" },
-    { "اسم الصورة فقط": "F.E.A.R. 3", "الاسم بالكامل": "F.E.A.R. 3.PNG" },
-    { "اسم الصورة فقط": "F1 Race Stars", "الاسم بالكامل": "F1 Race Stars.PNG" },
-    { "اسم الصورة فقط": "Far Cry 3", "الاسم بالكامل": "Far Cry 3.PNG" },
-    { "اسم الصورة فقط": "Far Cry 4", "الاسم بالكامل": "Far Cry 4.PNG" },
-    { "اسم الصورة فقط": "FIFA 19", "الاسم بالكامل": "FIFA 19.PNG" },
-    { "اسم الصورة فقط": "FIFA Street 3", "الاسم بالكامل": "FIFA Street 3.PNG" },
-    { "اسم الصورة فقط": "Fight Night Champion", "الاسم بالكامل": "Fight Night Champion.PNG" },
-    { "اسم الصورة فقط": "God of War Collection", "الاسم بالكامل": "God of War Collection.PNG" },
-    { "اسم الصورة فقط": "God of War III", "الاسم بالكامل": "God of War III.PNG" },
-    { "اسم الصورة فقط": "Gran Turismo 6", "الاسم بالكامل": "Gran Turismo 6.PNG" },
-    { "اسم الصورة فقط": "Green Lantern Rise of the Manhunters", "الاسم بالكامل": "Green Lantern Rise of the Manhunters.PNG" },
-    { "اسم الصورة فقط": "GTA IV Complete Edition", "الاسم بالكامل": "GTA IV Complete Edition.PNG" },
-    { "اسم الصورة فقط": "GTA San Andreas", "الاسم بالكامل": "GTA San Andreas.PNG" },
-    { "اسم الصورة فقط": "GTA V", "الاسم بالكامل": "GTA V.PNG" },
-    { "اسم الصورة فقط": "Heavy Rain", "الاسم بالكامل": "Heavy Rain.PNG" },
-    { "اسم الصورة فقط": "Hitman Absolution", "الاسم بالكامل": "Hitman Absolution.PNG" },
-    { "اسم الصورة فقط": "Homefront", "الاسم بالكامل": "Homefront.PNG" },
-    { "اسم الصورة فقط": "How to Train Your Dragon 2", "الاسم بالكامل": "How to Train Your Dragon 2.PNG" },
-    { "اسم الصورة فقط": "Ice Age", "الاسم بالكامل": "Ice Age.PNG" },
-    { "اسم الصورة فقط": "inFAMOUS 2", "الاسم بالكامل": "inFAMOUS 2.PNG" },
-    { "اسم الصورة فقط": "inFAMOUS", "الاسم بالكامل": "inFAMOUS.PNG" },
-    { "اسم الصورة فقط": "Injustice Gods Among Us Ultimate Edition", "الاسم بالكامل": "Injustice Gods Among Us Ultimate Edition.PNG" },
-    { "اسم الصورة فقط": "JoJo's Bizarre Adventure", "الاسم بالكامل": "JoJo's Bizarre Adventure.PNG" },
-    { "اسم الصورة فقط": "Just Cause 2", "الاسم بالكامل": "Just Cause 2.PNG" },
-    { "اسم الصورة فقط": "Just Dance 2020", "الاسم بالكامل": "Just Dance 2020.PNG" },
-    { "اسم الصورة فقط": "Kane & Lynch 2 Dog Days", "الاسم بالكامل": "Kane & Lynch 2 Dog Days.PNG" },
-    { "اسم الصورة فقط": "Kane & Lynch Dead Men", "الاسم بالكامل": "Kane & Lynch Dead Men.PNG" },
-    { "اسم الصورة فقط": "L.A. Noire Complete Edition", "الاسم بالكامل": "L.A. Noire Complete Edition.PNG" },
-    { "اسم الصورة فقط": "Legends of War Patton", "الاسم بالكامل": "Legends of War Patton.PNG" },
-    { "اسم الصورة فقط": "LEGO Harry Potter Years 5-7", "الاسم بالكامل": "LEGO Harry Potter Years 5-7.PNG" },
-    { "اسم الصورة فقط": "LEGO Indiana Jones", "الاسم بالكامل": "LEGO Indiana Jones.PNG" },
-    { "اسم الصورة فقط": "LEGO Jurassic World", "الاسم بالكامل": "LEGO Jurassic World.PNG" },
-    { "اسم الصورة فقط": "LEGO Marvel Super Heroes", "الاسم بالكامل": "LEGO Marvel Super Heroes.jpg" },
-    { "اسم الصورة فقط": "LEGO Marvel's Avengers", "الاسم بالكامل": "LEGO Marvel's Avengers.PNG" },
-    { "اسم الصورة فقط": "LEGO Movie Video Game", "الاسم بالكامل": "LEGO Movie Video Game.PNG" },
-    { "اسم الصورة فقط": "LEGO Pirates of the Caribbean", "الاسم بالكامل": "LEGO Pirates of the Caribbean.PNG" },
-    { "اسم الصورة فقط": "LEGO Star Wars III The Clone Wars", "الاسم بالكامل": "LEGO Star Wars III The Clone Wars.PNG" },
-    { "اسم الصورة فقط": "Lost Planet 3", "الاسم بالكامل": "Lost Planet 3.PNG" },
-    { "اسم الصورة فقط": "Mafia II Director's Cut", "الاسم بالكامل": "Mafia II Director's Cut.PNG" },
-    { "اسم الصورة فقط": "Marvel vs. Capcom 3", "الاسم بالكامل": "Marvel vs. Capcom 3.PNG" },
-    { "اسم الصورة فقط": "Marvel vs. Capcom Origins", "الاسم بالكامل": "Marvel vs. Capcom Origins.png" },
-    { "اسم الصورة فقط": "Mass Effect 3", "الاسم بالكامل": "Mass Effect 3.PNG" },
-    { "اسم الصورة فقط": "Medal of Honor Airborne", "الاسم بالكامل": "Medal of Honor Airborne.PNG" },
-    { "اسم الصورة فقط": "Medal of Honor Warfighter", "الاسم بالكامل": "Medal of Honor Warfighter.PNG" },
-    { "اسم الصورة فقط": "Metal Gear Solid 4", "الاسم بالكامل": "Metal Gear Solid 4.PNG" },
-    { "اسم الصورة فقط": "Metal Gear Solid V", "الاسم بالكامل": "Metal Gear Solid V.PNG" },
-    { "اسم الصورة فقط": "Metro Last Light", "الاسم بالكامل": "Metro Last Light.PNG" },
-    { "اسم الصورة فقط": "Minecraft PlayStation3 Edition", "الاسم بالكامل": "Minecraft PlayStation3 Edition.PNG" },
-    { "اسم الصورة فقط": "Monster Jam", "الاسم بالكامل": "Monster Jam.PNG" },
-    { "اسم الصورة فقط": "Mortal Kombat Komplete Edition", "الاسم بالكامل": "Mortal Kombat Komplete Edition.PNG" },
-    { "اسم الصورة فقط": "Mortal Kombat vs. DC Universe", "الاسم بالكامل": "Mortal Kombat vs. DC Universe.PNG" },
-    { "اسم الصورة فقط": "Move Fitness", "الاسم بالكامل": "Move Fitness.PNG" },
-    { "اسم الصورة فقط": "Naruto Shippuden Ultimate Ninja Storm Revolution", "الاسم بالكامل": "Naruto Shippuden Ultimate Ninja Storm Revolution.PNG" },
-    { "اسم الصورة فقط": "Need for Speed Most Wanted", "الاسم بالكامل": "Need for Speed Most Wanted.PNG" },
-    { "اسم الصورة فقط": "Need for Speed ProStreet", "الاسم بالكامل": "Need for Speed ProStreet.PNG" },
-    { "اسم الصورة فقط": "Need for Speed Rivals", "الاسم بالكامل": "Need for Speed Rivals.PNG" },
-    { "اسم الصورة فقط": "NeverDead", "الاسم بالكامل": "NeverDead.PNG" },
-    { "اسم الصورة فقط": "Ninja Gaiden 3 Razor's Edge", "الاسم بالكامل": "Ninja Gaiden 3 Razor's Edge.PNG" },
-    { "اسم الصورة فقط": "Ninja Gaiden 3", "الاسم بالكامل": "Ninja Gaiden 3.PNG" },
-    { "اسم الصورة فقط": "No More Heroes Heroes' Paradise", "الاسم بالكامل": "No More Heroes Heroes' Paradise.PNG" },
-    { "اسم الصورة فقط": "One Piece Pirate Warriors 2", "الاسم بالكامل": "One Piece Pirate Warriors 2.PNG" },
-    { "اسم الصورة فقط": "Order Up!!", "الاسم بالكامل": "Order Up!!.PNG" },
-    { "اسم الصورة فقط": "Pac-Man Championship Edition DX", "الاسم بالكامل": "Pac-Man Championship Edition DX.PNG" },
-    { "اسم الصورة فقط": "PAIN", "الاسم بالكامل": "PAIN.PNG" },
-    { "اسم الصورة فقط": "Payday 2", "الاسم بالكامل": "Payday 2.PNG" },
-    { "اسم الصورة فقط": "Planet 51 The Game", "الاسم بالكامل": "Planet 51 The Game.PNG" },
-    { "اسم الصورة فقط": "Plants vs. Zombies", "الاسم بالكامل": "Plants vs. Zombies.PNG" },
-    { "اسم الصورة فقط": "Portal 2", "الاسم بالكامل": "Portal 2.PNG" },
-    { "اسم الصورة فقط": "Prince of Persia", "الاسم بالكامل": "Prince of Persia.PNG" },
-    { "اسم الصورة فقط": "Prince of Persia Trilogy 3D", "الاسم بالكامل": "Prince of Persia Trilogy 3D.PNG" },
-    { "اسم الصورة فقط": "Pro Evolution Soccer 2013", "الاسم بالكامل": "Pro Evolution Soccer 2013.PNG" },
-    { "اسم الصورة فقط": "Pro Evolution Soccer 2016", "الاسم بالكامل": "Pro Evolution Soccer 2016.PNG" },
-    { "اسم الصورة فقط": "Prototype 2", "الاسم بالكامل": "Prototype 2.PNG" },
-    { "اسم الصورة فقط": "R.U.S.E.", "الاسم بالكامل": "R.U.S.E..PNG" },
-    { "اسم الصورة فقط": "Rambo The Video Game", "الاسم بالكامل": "Rambo The Video Game.PNG" },
-    { "اسم الصورة فقط": "Rango", "الاسم بالكامل": "Rango.PNG" },
-    { "اسم الصورة فقط": "Rayman Legends", "الاسم بالكامل": "Rayman Legends.PNG" },
-    { "اسم الصورة فقط": "Rayman Origins", "الاسم بالكامل": "Rayman Origins.PNG" },
-    { "اسم الصورة فقط": "Red Dead Redemption GOTY", "الاسم بالكامل": "Red Dead Redemption GOTY.PNG" },
-    { "اسم الصورة فقط": "Resident Evil 5", "الاسم بالكامل": "Resident Evil 5.PNG" },
-    { "اسم الصورة فقط": "Resident Evil 6", "الاسم بالكامل": "Resident Evil 6.PNG" },
-    { "اسم الصورة فقط": "Resonance of Fate", "الاسم بالكامل": "Resonance of Fate.PNG" },
-    { "اسم الصورة فقط": "Ride", "الاسم بالكامل": "Ride.PNG" },
-    { "اسم الصورة فقط": "Ridge Racer 7", "الاسم بالكامل": "Ridge Racer 7.PNG" },
-    { "اسم الصورة فقط": "Rio", "الاسم بالكامل": "Rio.PNG" },
-    { "اسم الصورة فقط": "Risen 2 Dark Waters", "الاسم بالكامل": "Risen 2 Dark Waters.PNG" },
-    { "اسم الصورة فقط": "Saints Row Gat Out of Hell", "الاسم بالكامل": "Saints Row Gat Out of Hell.PNG" },
-    { "اسم الصورة فقط": "Saints Row IV", "الاسم بالكامل": "Saints Row IV.PNG" },
-    { "اسم الصورة فقط": "Silent Hill", "الاسم بالكامل": "Silent Hill.PNG" },
-    { "اسم الصورة فقط": "Sleeping Dogs", "الاسم بالكامل": "Sleeping Dogs.PNG" },
-    { "اسم الصورة فقط": "Sniper Elite III", "الاسم بالكامل": "Sniper Elite III.PNG" },
-    { "اسم الصورة فقط": "Sniper Ghost Warrior 2", "الاسم بالكامل": "Sniper Ghost Warrior 2.png" },
-    { "اسم الصورة فقط": "Sniper Ghost Warrior", "الاسم بالكامل": "Sniper Ghost Warrior.PNG" },
-    { "اسم الصورة فقط": "Sonic & All-Stars Racing Transformed", "الاسم بالكامل": "Sonic & All-Stars Racing Transformed.PNG" },
-    { "اسم الصورة فقط": "Sonic Generations", "الاسم بالكامل": "Sonic Generations.PNG" },
-    { "اسم الصورة فقط": "Sonic the Hedgehog (2006)", "الاسم بالكامل": "Sonic the Hedgehog (2006).PNG" },
-    { "اسم الصورة فقط": "Sonic Unleashed", "الاسم بالكامل": "Sonic Unleashed.PNG" },
-    { "اسم الصورة فقط": "Spider-Man 3", "الاسم بالكامل": "Spider-Man 3.PNG" },
-    { "اسم الصورة فقط": "Spider-Man Shattered Dimensions", "الاسم بالكامل": "Spider-Man Shattered Dimensions.PNG" },
-    { "اسم الصورة فقط": "Spider-Man Web of Shadows", "الاسم بالكامل": "Spider-Man Web of Shadows.PNG" },
-    { "اسم الصورة فقط": "Splatterhouse", "الاسم بالكامل": "Splatterhouse.PNG" },
-    { "اسم الصورة فقط": "Sports Champions 2", "الاسم بالكامل": "Sports Champions 2.PNG" },
-    { "اسم الصورة فقط": "Start the Party!", "الاسم بالكامل": "Start the Party!.PNG" },
-    { "اسم الصورة فقط": "Tekken 6", "الاسم بالكامل": "Tekken 6.PNG" },
-    { "اسم الصورة فقط": "Tekken Tag Tournament 2", "الاسم بالكامل": "Tekken Tag Tournament 2.PNG" },
-    { "اسم الصورة فقط": "The Amazing Spider-Man 2", "الاسم بالكامل": "The Amazing Spider-Man 2.PNG" },
-    { "اسم الصورة فقط": "The Amazing Spider-Man", "الاسم بالكامل": "The Amazing Spider-Man.PNG" },
-    { "اسم الصورة فقط": "The Bourne Conspiracy", "الاسم بالكامل": "The Bourne Conspiracy.PNG" },
-    { "اسم الصورة فقط": "The Darkness II", "الاسم بالكامل": "The Darkness II.PNG" },
-    { "اسم الصورة فقط": "The Evil Within", "الاسم بالكامل": "The Evil Within.PNG" },
-    { "اسم الصورة فقط": "The Fight Lights Out", "الاسم بالكامل": "The Fight Lights Out.PNG" },
-    { "اسم الصورة فقط": "The House of the Dead III", "الاسم بالكامل": "The House of the Dead III.PNG" },
-    { "اسم الصورة فقط": "The Incredible Hulk", "الاسم بالكامل": "The Incredible Hulk.PNG" },
-    { "اسم الصورة فقط": "The Saboteur", "الاسم بالكامل": "The Saboteur.PNG" },
-    { "اسم الصورة فقط": "The Sims 3 Pets", "الاسم بالكامل": "The Sims 3 Pets.PNG" },
-    { "اسم الصورة فقط": "The Sims 3", "الاسم بالكامل": "The Sims 3.PNG" },
-    { "اسم الصورة فقط": "The Smurfs 2", "الاسم بالكامل": "The Smurfs 2.PNG" },
-    { "اسم الصورة فقط": "The Testament of Sherlock Holmes", "الاسم بالكامل": "The Testament of Sherlock Holmes.PNG" },
-    { "اسم الصورة فقط": "The Walking Dead Season 1", "الاسم بالكامل": "The Walking Dead Season 1.PNG" },
-    { "اسم الصورة فقط": "The Walking Dead Season 2", "الاسم بالكامل": "The Walking Dead Season 2.PNG" },
-    { "اسم الصورة فقط": "Thief", "الاسم بالكامل": "Thief.PNG" },
-    { "اسم الصورة فقط": "Thor God of Thunder", "الاسم بالكامل": "Thor God of Thunder.PNG" },
-    { "اسم الصورة فقط": "TMNT Danger of the Ooze", "الاسم بالكامل": "TMNT Danger of the Ooze.PNG" },
-    { "اسم الصورة فقط": "TMNT Mutants in Manhattan", "الاسم بالكامل": "TMNT Mutants in Manhattan.PNG" },
-    { "اسم الصورة فقط": "TMNT Turtles in time Re-Shelled", "الاسم بالكامل": "TMNT Turtles in time Re-Shelled.PNG" },
-    { "اسم الصورة فقط": "Tom Clancy's Splinter Cell Blacklist", "الاسم بالكامل": "Tom Clancy's Splinter Cell Blacklist.PNG" },
-    { "اسم الصورة فقط": "Tomb Raider", "الاسم بالكامل": "Tomb Raider.PNG" },
-    { "اسم الصورة فقط": "Tony Hawk Shred", "الاسم بالكامل": "Tony Hawk Shred.PNG" },
-    { "اسم الصورة فقط": "Tony Hawk's Project 8", "الاسم بالكامل": "Tony Hawk's Project 8.PNG" },
-    { "اسم الصورة فقط": "Toy Story 3", "الاسم بالكامل": "Toy Story 3.PNG" },
-    { "اسم الصورة فقط": "Toy Story Mania!", "الاسم بالكامل": "Toy Story Mania!.PNG" },
-    { "اسم الصورة فقط": "Transformers Devastation", "الاسم بالكامل": "Transformers Devastation.PNG" },
-    { "اسم الصورة فقط": "Trinity Souls of Zill O'll", "الاسم بالكامل": "Trinity Souls of Zill O'll.PNG" },
-    { "اسم الصورة فقط": "Turok", "الاسم بالكامل": "Turok.PNG" },
-    { "اسم الصورة فقط": "UFC 2009 Undisputed", "الاسم بالكامل": "UFC 2009 Undisputed.PNG" },
-    { "اسم الصورة فقط": "Ultra Street Fighter IV", "الاسم بالكامل": "Ultra Street Fighter IV.PNG" },
-    { "اسم الصورة فقط": "Uncharted 2 Among Thieves", "الاسم بالكامل": "Uncharted 2 Among Thieves.PNG" },
-    { "اسم الصورة فقط": "Uncharted 3 Drake's Deception", "الاسم بالكامل": "Uncharted 3 Drake's Deception.PNG" },
-    { "اسم الصورة فقط": "Uncharted Drake's Fortune", "الاسم بالكامل": "Uncharted Drake's Fortune.PNG" },
-    { "اسم الصورة فقط": "Up", "الاسم بالكامل": "Up.PNG" },
-    { "اسم الصورة فقط": "Vanquish", "الاسم بالكامل": "Vanquish.PNG" },
-    { "اسم الصورة فقط": "W- Lucha Libre AAA Hroes del Ring", "الاسم بالكامل": "W- Lucha Libre AAA Hroes del Ring.PNG" },
-    { "اسم الصورة فقط": "Warriors Orochi 3", "الاسم بالكامل": "Warriors Orochi 3.PNG" },
-    { "اسم الصورة فقط": "Watch Dogs", "الاسم بالكامل": "Watch Dogs.PNG" },
-    { "اسم الصورة فقط": "Watchmen The End Is Nigh", "الاسم بالكامل": "Watchmen The End Is Nigh.PNG" },
-    { "اسم الصورة فقط": "WET", "الاسم بالكامل": "WET.PNG" },
-    { "اسم الصورة فقط": "White Knight Chronicles II", "الاسم بالكامل": "White Knight Chronicles II.PNG" },
-    { "اسم الصورة فقط": "Wolfenstein The New Order", "الاسم بالكامل": "Wolfenstein The New Order.PNG" },
-    { "اسم الصورة فقط": "WWE '13", "الاسم بالكامل": "WWE '13.PNG" },
-    { "اسم الصورة فقط": "WWE 2K17", "الاسم بالكامل": "WWE 2K17.PNG" },
-    { "اسم الصورة فقط": "WWE SmackDown vs. Raw 2008", "الاسم بالكامل": "WWE SmackDown vs. Raw 2008.PNG" },
-    { "اسم الصورة فقط": "WWE SmackDown vs. Raw 2009", "الاسم بالكامل": "WWE SmackDown vs. Raw 2009.PNG" },
-    { "اسم الصورة فقط": "X-Men Origins Wolverine", "الاسم بالكامل": "X-Men Origins Wolverine.PNG" },
-    { "اسم الصورة فقط": "Yakuza 3", "الاسم بالكامل": "Yakuza 3.PNG" },
-    { "اسم الصورة فقط": "Bloodborne", "الاسم بالكامل": "Bloodborne.png" },
-    { "اسم الصورة فقط": "Days Gone", "الاسم بالكامل": "Days Gone.png" },
-    { "اسم الصورة فقط": "Detroit Become Human", "الاسم بالكامل": "Detroit Become Human.png" },
-    { "اسم الصورة فقط": "Dying Light 1", "الاسم بالكامل": "Dying Light 1.png" },
-    { "اسم الصورة فقط": "eFootball PES 2019", "الاسم بالكامل": "eFootball PES 2019.avif" },
-    { "اسم الصورة فقط": "eFootball 2026", "الاسم بالكامل": "eFootball 2026.png" },
-    { "اسم الصورة فقط": "Elden Ring", "الاسم بالكامل": "Elden Ring.png" },
-    { "اسم الصورة فقط": "God of War Ragnarök", "الاسم بالكامل": "God of War Ragnarök.jpeg" },
-    { "اسم الصورة فقط": "Grand Theft Auto III", "الاسم بالكامل": "Grand Theft Auto III.avif" },
-    { "اسم الصورة فقط": "Horizon Forbidden West", "الاسم بالكامل": "Horizon Forbidden West.avif" },
-    { "اسم الصورة فقط": "Little Nightmares 1", "الاسم بالكامل": "Little Nightmares 1.png" },
-    { "اسم الصورة فقط": "Little Nightmares 2", "الاسم بالكامل": "Little Nightmares 2.png" },
-    { "اسم الصورة فقط": "Marvel's Spider-Man Miles Morales", "الاسم بالكامل": "Marvel's Spider-Man Miles Morales.png" },
-    { "اسم الصورة فقط": "Yakuza 5", "الاسم بالكامل": "Yakuza 5.PNG" },
-    { "اسم الصورة فقط": "Anomaly 2", "الاسم بالكامل": "Anomaly 2.png" },
-    { "اسم الصورة فقط": "Commandos Origins", "الاسم بالكامل": "Commandos Origins.png" },
-    { "اسم الصورة فقط": "Megaton Rainfall", "الاسم بالكامل": "Megaton Rainfall.png" },
-    { "اسم الصورة فقط": "Sonic Colors Ultimate", "الاسم بالكامل": "Sonic Colors Ultimate.png" },
-    { "اسم الصورة فقط": "Sonic Mania", "الاسم بالكامل": "Sonic Mania.png" },
-    { "اسم الصورة فقط": "Teenage Mutant Ninja Turtles Shredders Revenge", "الاسم بالكامل": "Teenage Mutant Ninja Turtles Shredders Revenge.png" },
-    { "اسم الصورة فقط": "The Smurfs 2", "الاسم بالكامل": "The Smurfs 2.png" },
-    { "اسم الصورة فقط": "TMNT Mutants Unleashed", "الاسم بالكامل": "TMNT Mutants Unleashed.png" },
-    { "اسم الصورة فقط": "Yooka Laylee", "الاسم بالكامل": "Yooka Laylee.png" },
-    { "اسم الصورة فقط": "Sonic X Shadow Generations", "الاسم بالكامل": "Sonic X Shadow Generations.jpg" }
-];
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LevelUP Mod Games - ألعاب الأجهزة المعدلة</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0b0f19; --card-bg: #151b2b; --primary-color: #ff9900; 
+            --primary-hover: #e68a00; --accent-color: #ffcc00; --text-main: #ffffff;
+            --text-muted: #a0aabf; --danger: #ff4757; --border-color: #2a3441;
+        }
+        body { background-color: var(--bg-color); color: var(--text-main); font-family: 'Tajawal', sans-serif; margin: 0; padding: 0; padding-bottom: 100px; }
+        .top-info-bar { background-color: #05080f; color: var(--primary-color); padding: 8px 15px; display: flex; justify-content: space-between; align-items: center; font-size: 13px; border-bottom: 1px solid var(--border-color); }
+        header { background-color: #0a0d14; padding: 20px 15px; text-align: center; border-bottom: 2px solid var(--primary-color); position: sticky; top: 0; z-index: 100; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
+        header h1 { margin: 0; font-size: 28px; font-weight: 900; text-transform: uppercase; }
+        header span { color: var(--primary-color); }
+        .container { max-width: 1200px; margin: auto; padding: 20px 15px; }
+
+        /* ===== زراير الأجهزة (الجديدة) ===== */
+        .console-tabs { display: flex; justify-content: center; flex-wrap: wrap; gap: 15px; margin-bottom: 30px; }
+        .console-tab-btn { background-color: #1a2235; color: var(--text-main); border: 2px solid var(--border-color); padding: 18px 30px; border-radius: 12px; cursor: pointer; font-family: inherit; font-size: 22px; font-weight: 900; transition: 0.3s; flex: 1; min-width: 160px; text-transform: uppercase; box-shadow: 0 4px 10px rgba(0,0,0,0.3);}
+        .console-tab-btn:hover { border-color: var(--primary-color); transform: translateY(-3px); }
+        .console-tab-btn.active { background-color: var(--primary-color); color: #000; border-color: var(--primary-color); box-shadow: 0 6px 20px rgba(255, 153, 0, 0.4); transform: translateY(-3px);}
+        /* =================================== */
+        
+        .pricing-banner { background: linear-gradient(45deg, #151b2b, #0b0f19); border: 1px solid var(--primary-color); border-radius: 10px; padding: 15px; margin-bottom: 25px; display: flex; justify-content: space-around; flex-wrap: wrap; gap: 15px; text-align: center; }
+        .price-card { background-color: #05080f; padding: 10px 20px; border-radius: 8px; border-right: 4px solid var(--primary-color); flex: 1; min-width: 200px; display: flex; flex-direction: column; justify-content: center;}
+        .price-card > span { display: block; color: var(--primary-color); font-size: 14px; margin-bottom: 5px; font-weight: bold; }
+        .price-card > strong { font-size: 18px; color: white; }
+        
+        .split-price { display: flex; justify-content: space-around; align-items: center; width: 100%; margin-top: 5px;}
+        .split-price div { display: flex; flex-direction: column; color: white; font-weight: bold; font-size: 15px;}
+        .split-price .divider { width: 1px; height: 30px; background-color: var(--border-color); }
+
+        .steps-container { display: flex; justify-content: center; flex-wrap: wrap; gap: 15px; margin-bottom: 20px; text-align: center; }
+        .step-box { background-color: #0d121c; border: 1px dashed var(--primary-color); padding: 10px 15px; border-radius: 8px; font-size: 14px; font-weight: bold; color: var(--text-main); flex: 1; min-width: 180px; display: flex; align-items: center; justify-content: center; gap: 10px;}
+        .step-box span { background-color: var(--primary-color); color: #000; width: 22px; height: 22px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-weight: 900; font-size: 14px;}
+
+        .search-box { display: flex; gap: 10px; margin-bottom: 20px; }
+        .search-box input { flex: 1; padding: 12px 15px; border-radius: 8px; border: 1px solid var(--border-color); background-color: var(--card-bg); color: white; font-family: inherit; font-size: 15px; }
+        
+        .filter-section { margin-bottom: 25px; background: var(--card-bg); padding: 15px; border-radius: 8px; border: 1px solid var(--border-color); }
+        .filter-title { font-size: 14px; color: var(--primary-color); margin-bottom: 10px; font-weight: bold; }
+        .filter-group { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 15px; }
+        .filter-group:last-child { margin-bottom: 0; }
+        .filter-btn { background-color: #1a2235; color: var(--text-main); border: 1px solid var(--border-color); padding: 6px 14px; border-radius: 20px; cursor: pointer; font-family: inherit; font-size: 13px; transition: 0.2s; }
+        .filter-btn.active { background-color: var(--primary-color); color: #000; border-color: var(--primary-color); font-weight: bold; }
+        
+        .grid-layout { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 15px; }
+        
+        .card { background-color: var(--card-bg); border-radius: 10px; overflow: hidden; display: flex; flex-direction: column; border: 1px solid var(--border-color); transition: 0.2s; }
+        .card:hover { transform: translateY(-5px); border-color: var(--primary-color); }
+        .card-img-container { width: 100%; height: 180px; background-color: #08080a; border-bottom: 1px solid var(--border-color); display: flex; justify-content: center; align-items: center; overflow: hidden; position: relative;}
+        .card-img { max-width: 100%; max-height: 100%; object-fit: contain; position: absolute; z-index: 2;}
+        .img-fallback { position: absolute; z-index: 1; color: #475569; font-weight: 900; font-size: 18px; text-align: center; padding: 10px;}
+        .card-header { background-color: #10141f; padding: 12px 10px; text-align: center; }
+        .game-title { color: var(--primary-color); font-size: 15px; font-weight: 700; margin: 0; direction: ltr; }
+        .card-content { padding: 12px; flex: 1; display: flex; flex-direction: column; }
+        .console-badge { display: inline-block; font-size: 11px; font-weight: bold; padding: 4px 8px; border-radius: 6px; margin-bottom: 8px; text-align: center; border: 1px solid #fff; }
+        .badge-ps4 { background-color: #003791; color: white; }
+        .badge-ps3 { background-color: #000000; color: white; border-color: #ff0000; }
+        .badge-ps2 { background-color: #0000cc; color: white; }
+        .badge-psp { background-color: #555555; color: white; border-color: #cccccc; }
+        
+        .tags { display: flex; flex-wrap: wrap; gap: 4px; justify-content: center; margin-bottom: 10px; }
+        .tag { background: #1e293b; color: #ffcc00; padding: 2px 8px; border-radius: 10px; font-size: 10px; border: 1px solid #334155; font-weight: bold; }
+        
+        .info-text { font-size: 13px; color: #ccc; margin-bottom: 6px; text-align: center; }
+        .card-actions { margin-top: auto; padding-top: 12px; display: flex; gap: 8px; }
+        .btn { flex: 1; padding: 10px; border: none; border-radius: 6px; font-family: inherit; font-weight: bold; cursor: pointer; text-align: center; font-size: 13px; text-decoration: none;}
+        .btn-add { background-color: var(--primary-color); color: #000; }
+        .btn-add.added { background-color: var(--danger); color: white; }
+        .btn-yt { background-color: #e62117; color: white; }
+        .btn-yt:hover { background-color: #cc0000; }
+        
+        /* زرار السلة بحجم أضخم 50% */
+        .cart-float { position: fixed; bottom: 25px; left: 25px; background-color: var(--primary-color); color: #000; padding: 18px 38px; border-radius: 40px; font-weight: 900; font-family: inherit; font-size: 22px; cursor: pointer; border: none; z-index: 1000; box-shadow: 0 6px 15px rgba(0,0,0,0.6); transition: 0.2s;}
+        .cart-float:hover { transform: scale(1.05); }
+
+        .cart-modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 1001; justify-content: center; align-items: center; padding: 15px; }
+        .cart-content { background-color: var(--card-bg); width: 100%; max-width: 450px; border-radius: 12px; padding: 20px; max-height: 90vh; overflow-y: auto; border: 2px solid var(--primary-color); }
+        .cart-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 12px; margin-bottom: 15px; }
+        .user-info-section { margin-bottom: 15px; display: flex; flex-direction: column; gap: 10px; }
+        .user-info-section input, .special-request-area textarea { padding: 12px; border-radius: 8px; border: 1px solid var(--border-color); background-color: #1a2235; color: white; font-family: inherit; width: 100%; box-sizing: border-box; }
+        
+        .cart-item { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; font-size: 14px; border-bottom: 1px dashed #364259; padding-bottom: 8px; }
+        .remove-btn { background: var(--danger); border: none; color: white; font-size: 11px; cursor: pointer; padding: 4px 8px; border-radius: 4px; font-weight: bold; margin-right: 8px; }
+        
+        .cart-summary { background-color: #1a2235; padding: 15px; border-radius: 8px; margin-top: 15px; text-align: center; border: 1px solid var(--border-color); }
+        .btn-whatsapp { background-color: #25D366; color: white; width: 100%; padding: 12px; border: none; border-radius: 8px; font-family: inherit; font-weight: bold; font-size: 15px; cursor: pointer; margin-top: 10px; }
+    </style>
+</head>
+<body>
+
+    <div class="top-info-bar">
+        <div class="phones">📞 01555886990 - 01010763503</div>
+        <div class="address">📍 الإسماعيلية - أرض الجمعيات</div>
+    </div>
+
+    <header>
+        <h1>Level<span>UP</span> Mod Games</h1>
+    </header>
+
+    <div class="container">
+        
+        <div class="console-tabs">
+            <button class="console-tab-btn active" onclick="switchConsole('PS4', this)">PS4</button>
+            <button class="console-tab-btn" onclick="switchConsole('PS3', this)">PS3</button>
+            <button class="console-tab-btn" onclick="switchConsole('PS2', this)">PS2</button>
+            <button class="console-tab-btn" onclick="switchConsole('PSP', this)">PSP</button>
+        </div>
+
+        <div class="pricing-banner">
+            <div class="price-card">
+                <span>سعر نقل الداتا</span>
+                <strong>نص جنيه للجيجا</strong>
+            </div>
+            <div class="price-card">
+                <span>سعر تحميل اللعبة</span>
+                <div class="split-price">
+                    <div><span>PS4 / PS3</span><span style="color: var(--primary-color);">30 جنيه</span></div>
+                    <div class="divider"></div>
+                    <div><span>PS2 / PSP</span><span style="color: var(--primary-color);">10 جنيه</span></div>
+                </div>
+            </div>
+            <div class="price-card">
+                <span>سعر التحميل المخصوص</span>
+                <strong>1.5 جنيه للجيجا</strong>
+            </div>
+        </div>
+
+        <div class="steps-container">
+            <div class="step-box"><span>1</span> اختار ألعابك</div>
+            <div class="step-box"><span>2</span> افتح العربة</div>
+            <div class="step-box"><span>3</span> أرسل الألعاب مع بياناتك</div>
+        </div>
+
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="ابحث عن لعبة (مثال: GTA, Crash)..." onkeyup="renderGames()">
+        </div>
+
+        <div class="filter-section">
+            <div class="filter-title">📌 تصنيف اللعبة:</div>
+            <div class="filter-group" id="genreFilters">
+                <button class="filter-btn" onclick="toggleFilter('genre', 'أكشن', this)">أكشن</button>
+                <button class="filter-btn" onclick="toggleFilter('genre', 'مغامرات', this)">مغامرات</button>
+                <button class="filter-btn" onclick="toggleFilter('genre', 'عالم مفتوح', this)">عالم مفتوح</button>
+                <button class="filter-btn" onclick="toggleFilter('genre', 'رعب', this)">رعب</button>
+                <button class="filter-btn" onclick="toggleFilter('genre', 'العاب عائلية', this)">ألعاب عائلية</button>
+                <button class="filter-btn" onclick="toggleFilter('genre', 'سباق', this)">سباق</button>
+                <button class="filter-btn" onclick="toggleFilter('genre', 'رياضة', this)">رياضة</button>
+                <button class="filter-btn" onclick="toggleFilter('genre', 'VR', this)" style="border-color: #00ffcc; color: #00ffcc;">👓 ألعاب VR</button>
+                <button class="filter-btn" onclick="toggleFilter('genre', 'PS2toPS4', this)">PS2toPS4</button>
+                <button class="filter-btn" onclick="toggleFilter('genre', 'يدعم الأسهم', this)" style="border-color: var(--accent-color);">🎮 بدون أنالوج (يدعم الأسهم)</button>
+            </div>
+
+            <div class="filter-title">💾 المساحة:</div>
+            <div class="filter-group" id="sizeFilters">
+                <button class="filter-btn" onclick="toggleSizeFilter('<10', this)">أقل من 10 جيجا</button>
+                <button class="filter-btn" onclick="toggleSizeFilter('<20', this)">أقل من 20 جيجا</button>
+                <button class="filter-btn" onclick="toggleSizeFilter('<30', this)">أقل من 30 جيجا</button>
+                <button class="filter-btn" onclick="toggleSizeFilter('<40', this)">أقل من 40 جيجا</button>
+                <button class="filter-btn" onclick="toggleSizeFilter('<50', this)">أقل من 50 جيجا</button>
+                <button class="filter-btn" onclick="toggleSizeFilter('<100', this)">أقل من 100 جيجا</button>
+                <button class="filter-btn" onclick="toggleSizeFilter('>100', this)">أكثر من 100 جيجا</button>
+            </div>
+        </div>
+
+        <div class="grid-layout" id="gamesGrid"></div>
+    </div>
+
+    <button class="cart-float" onclick="openCart()">🛒 الألعاب المختارة (<span id="cartCount">0</span>)</button>
+
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-content">
+            <div class="cart-header">
+                <h2 style="margin: 0;">سلة الألعاب</h2>
+                <button onclick="closeCart()" style="background: none; border: none; color: white; font-size: 24px; cursor: pointer;">✖</button>
+            </div>
+            
+            <div class="user-info-section">
+                <input type="text" id="userName" placeholder="اسمك الثنائي...">
+                <input type="tel" id="userPhone" placeholder="رقم الموبايل...">
+            </div>
+
+            <div class="special-request-area">
+                <textarea id="specialRequestInput" placeholder="لو عايز لعبة معينة مش موجودة اكتب اسمها هنا..."></textarea>
+            </div>
+
+            <button onclick="clearCart()" style="background: none; color: var(--danger); border: 1px solid var(--danger); padding: 5px 10px; border-radius: 4px; font-family: inherit; margin-bottom: 10px;">🗑️ إفراغ السلة</button>
+
+            <div id="cartItemsList"></div>
+
+            <div class="cart-summary">
+                <h3>إجمالي المساحة التقديرية</h3>
+                <h2 dir="ltr" id="totalSizeUI" style="color: var(--primary-color); margin: 0;">0 GB</h2>
+            </div>
+
+            <button id="btnWA1" class="btn-whatsapp" onclick="sendWhatsApp('201555886990', 'btnWA1')">إرسال واتساب (محمود شوقي)</button>
+            <button id="btnWA2" class="btn-whatsapp" onclick="sendWhatsApp('201010763503', 'btnWA2')">إرسال واتساب (احمد يسري)</button>
+        </div>
+    </div>
+
+    <script src="image_map.js" onerror="console.warn('image_map.js not found')"></script>
+
+    <script>
+        const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbzsHNi9IU8P0cE57JkWQ1ZYK8W_7D1_R9klbJe2Fo9o6WPaOmyUm227fZYMIgz7bXdD/exec';
+
+        const rawGames = [
+            [1,"3D Billiards Billiards and Snooker","العاب عائلية",2,1,1,"PS4"],[2,"A Plague Tale Innocence","مغامرات",1,34,34,"PS4"],[3,"A Way Out","مغامرات",2,15,15,"PS4"],[4,"Aladdin and The Lion King","العاب عائلية,يدعم الأسهم",2,1,1,"PS4"],[5,"Amazing Spider-Man 2","أكشن,عالم مفتوح",1,8,8,"PS4"],[6,"Angry Birds Star Wars","العاب عائلية,يدعم الأسهم",1,1,1,"PS4"],[7,"Assassin's Creed IV Black Flag","أكشن,عالم مفتوح",1,17,17,"PS4"],[8,"Assassin's Creed Origins","مغامرات,عالم مفتوح",1,39,46,"PS4"],[9,"Assassin's Creed Mirage","مغامرات,عالم مفتوح",1,21,31,"PS4"],[10,"Assassin's Creed Odyssey","مغامرات,عالم مفتوح",1,41,41,"PS4"],[11,"Assassin's Creed Unity","مغامرات,عالم مفتوح",1,38,38,"PS4"],[12,"Assassin's Creed Syndicate","مغامرات,عالم مفتوح",1,37,37,"PS4"],[13,"Assassin's Creed Freedom Cry","أكشن,مغامرات",1,6,6,"PS4"],[14,"Asterix & Obelix Slap them All!","أكشن,العاب عائلية",2,1,1,"PS4"],[15,"Attack of the Toy Tanks","أكشن",2,1,1,"PS4"],[16,"Baby Shark Sing and Swim","العاب عائلية",4,1,1,"PS4"],[17,"Batman Return to Arkham (Asylum & City)","أكشن,عالم مفتوح",1,18,52,"PS4"],[18,"Batman Arkham Knight","أكشن,عالم مفتوح",1,45,45,"PS4"],[19,"Battlefield 1","أكشن",1,38,38,"PS4"],[20,"Battlefield 4","أكشن",1,30,33,"PS4"],[21,"Battlefield V","أكشن",1,31,31,"PS4"],[22,"Ben 10 Power Trip","العاب عائلية",2,1,1,"PS4"],[23,"Big Rumble Boxing Creed Champions","أكشن,يدعم الأسهم",2,6,6,"PS4"],[24,"Call of Duty Black Ops 3","أكشن",4,64,96,"PS4"],[25,"Call of Duty Black Ops 4","أكشن",4,87,87,"PS4"],[26,"Call of Duty Black Ops 6","أكشن",2,54,306,"PS4"],[27,"Call of Duty Cold War","أكشن",2,94,147,"PS4"],[28,"Call of Duty Modern Warfare (2019)","أكشن",2,72,157,"PS4"],[29,"Call of Duty Modern Warfare Remastered","أكشن",2,45,45,"PS4"],[30,"Call of Duty Vanguard","أكشن",2,45,70,"PS4"],[31,"Call of Duty Advanced Warfare","أكشن",2,38,63,"PS4"],[32,"Bloodborne","أكشن,رعب",1,29,29,"PS4"],[33,"Blue Estate","أكشن",2,2,2,"PS4"],[34,"Bramble The Mountain King","رعب,مغامرات",1,5,11,"PS4"],[35,"Brothers A Tale of Two Sons","مغامرات",2,3,3,"PS4"],[36,"The Callisto Protocol","رعب",1,27,53,"PS4"],[37,"Cartoon Network Battle Crashers","العاب عائلية",4,1,1,"PS4"],[38,"Castle Crashers Remastered","أكشن,يدعم الأسهم",4,1,1,"PS4"],[39,"Cat Rescue Story","العاب عائلية",1,1,1,"PS4"],[40,"Circus Electrique","مغامرات",1,3,3,"PS4"],[41,"Construction Simulator 2","العاب عائلية",1,1,1,"PS4"],[42,"Control","أكشن,مغامرات",1,22,35,"PS4"],[43,"Crash Bandicoot 4 It's About Time","العاب عائلية,يدعم الأسهم",4,20,20,"PS4"],[44,"Crash Bandicoot N. Sane Trilogy","العاب عائلية,يدعم الأسهم",1,21,21,"PS4"],[45,"Crash Team Racing Nitro-Fueled","العاب عائلية,سباق",4,12,30,"PS4"],[46,"Crash of the Titans","العاب عائلية,PS2toPS4",2,1,1,"PS4"],[47,"Cuphead","أكشن,العاب عائلية,يدعم الأسهم",2,3,4,"PS4"],[48,"Cyberpunk 2077","أكشن,عالم مفتوح",1,59,99,"PS4"],[49,"Darksiders II Deathinitive Edition","أكشن,مغامرات,عالم مفتوح",1,14,14,"PS4"],[50,"Days Gone","رعب,عالم مفتوح",1,33,39,"PS4"],[51,"DC League of Super-Pets","العاب عائلية",1,1,1,"PS4"],[52,"Dead or Alive 6","أكشن,قتال زوجي,يدعم الأسهم",2,26,60,"PS4"],[53,"Death Stranding","مغامرات",1,44,44,"PS4"],[54,"Def Jam Fight for NY","أكشن,قتال زوجي,PS2toPS4,يدعم الأسهم",4,2,2,"PS4"],[55,"Demon Slayer Kimetsu no Yaiba","أكشن",2,21,21,"PS4"],[56,"Detroit Become Human","مغامرات",1,39,39,"PS4"],[57,"Devil May Cry 5","أكشن",1,29,40,"PS4"],[58,"Disney's Tarzan","العاب عائلية",1,1,1,"PS4"],[59,"Disney Epic Mickey Rebrushed","العاب عائلية",1,10,20,"PS4"],[60,"Toy Story 3","العاب عائلية,PS2toPS4",1,1,1,"PS4"],[61,"Dolphin Spirit Ocean Mission","العاب عائلية",1,1,1,"PS4"],[62,"Don't Starve Together","مغامرات",2,1,1,"PS4"],[63,"DreamWorks Dragons Legends","العاب عائلية",1,3,3,"PS4"],[64,"Dying Light 1","رعب,عالم مفتوح",1,14,20,"PS4"],[65,"Dying Light 2","رعب,عالم مفتوح",1,19,59,"PS4"],[66,"EA SPORTS FC 24","أكشن,رياضة,يدعم الأسهم",4,41,53,"PS4"],[67,"EA SPORTS FC 25","أكشن,رياضة,يدعم الأسهم",4,41,47,"PS4"],[68,"EA SPORTS FC 26","أكشن,رياضة,يدعم الأسهم",4,14,74,"PS4"],[69,"EA SPORTS UFC 3","أكشن,رياضة,يدعم الأسهم",2,17,17,"PS4"],[70,"EA SPORTS UFC 4","أكشن,رياضة,يدعم الأسهم",2,22,30,"PS4"],[71,"eFootball  PES 2018","أكشن,رياضة,يدعم الأسهم",4,17,17,"PS4"],[72,"eFootball PES 2019","أكشن,رياضة,يدعم الأسهم",4,19,25,"PS4"],[73,"eFootball PES 2021","أكشن,رياضة,يدعم الأسهم",4,30,38,"PS4"],[74,"eFootball 2022","أكشن,رياضة,يدعم الأسهم",4,34,34,"PS4"],[75,"eFootball 2023","أكشن,رياضة,يدعم الأسهم",4,34,59,"PS4"],[76,"eFootball 2024","أكشن,رياضة,يدعم الأسهم",4,34,61,"PS4"],[77,"eFootball 2025","أكشن,رياضة,يدعم الأسهم",4,11,68,"PS4"],[300,"eFootball 2026","أكشن,رياضة,يدعم الأسهم",4,45,55,"PS4"],[78,"Elden Ring","أكشن,عالم مفتوح",1,29,60,"PS4"],[79,"Evil West","أكشن",1,25,25,"PS4"],[80,"Far Cry 5","أكشن,عالم مفتوح",1,29,41,"PS4"],[81,"Far Cry 6","أكشن,عالم مفتوح",1,33,89,"PS4"],[82,"Far Cry New Dawn","أكشن,عالم مفتوح",1,19,19,"PS4"],[83,"Far Cry Primal","أكشن,عالم مفتوح",1,10,10,"PS4"],[84,"Farming Simulator 22","العاب عائلية",1,11,17,"PS4"],[85,"FIFA 23","أكشن,رياضة,يدعم الأسهم",4,37,44,"PS4"],[86,"Final Fantasy XV","أكشن,مغامرات",1,40,67,"PS4"],[87,"Five Nights at Freddy's Security Breach","رعب",1,9,23,"PS4"],[88,"Flame Over","أكشن",1,1,1,"PS4"],[89,"FullBlast","أكشن",2,1,1,"PS4"],[90,"Gang Beasts","العاب عائلية",4,1,2,"PS4"],[91,"Garfield Lasagna Party","العاب عائلية",4,1,1,"PS4"],[92,"Get Even","رعب",1,15,15,"PS4"],[93,"Ghost Recon Wildlands","أكشن,عالم مفتوح",1,35,58,"PS4"],[94,"Ghost of Tsushima","أكشن,عالم مفتوح",1,32,47,"PS4"],[95,"Ghostrunner","أكشن",1,8,17,"PS4"],[96,"God Hand","أكشن,PS2toPS4",1,1,1,"PS4"],[97,"God of War III Remastered","أكشن,مغامرات",1,38,38,"PS4"],[98,"God of War (2018)","أكشن,مغامرات",1,36,36,"PS4"],[99,"God of War Ragnarök","أكشن,مغامرات",1,84,114,"PS4"],[100,"Gran Turismo 7","أكشن,سباق",2,79,121,"PS4"],[101,"Gran Turismo Sport","أكشن,سباق,VR",2,40,90,"PS4"],[102,"Grand Theft Auto III","أكشن,عالم مفتوح",1,4,4,"PS4"],[103,"Grand Theft Auto V (GTA 5)","أكشن,عالم مفتوح",1,49,49,"PS4"],[104,"Grand Theft Auto San Andreas","أكشن,عالم مفتوح",2,21,21,"PS4"],[105,"Grand Theft Auto Vice City","أكشن,عالم مفتوح",1,10,10,"PS4"],[106,"GRIP","أكشن,سباق",4,3,3,"PS4"],[107,"Guilty Gear -Strive-","أكشن,قتال زوجي,يدعم الأسهم",2,10,24,"PS4"],[108,"Handball 17","أكشن,رياضة,يدعم الأسهم",2,1,1,"PS4"],[109,"Hasbro Family Fun Pack","العاب عائلية,يدعم الأسهم",4,3,3,"PS4"],[110,"Hellblade Senua's Sacrifice","رعب,مغامرات",1,13,21,"PS4"],[111,"Helldivers","أكشن",4,3,3,"PS4"],[112,"Hello Neighbor 1","رعب,مغامرات",1,1,1,"PS4"],[113,"Hello Neighbor 2","رعب,مغامرات",1,4,8,"PS4"],[114,"Hitman 2","أكشن,مغامرات",1,29,29,"PS4"],[115,"Hitman 3","أكشن,مغامرات,VR",1,21,21,"PS4"],[116,"Hitman Absolution HD","أكشن,مغامرات",1,25,25,"PS4"],[117,"HitmanBlood Money HD","أكشن,مغامرات",1,5,6,"PS4"],[118,"Hogwarts Legacy","مغامرات,عالم مفتوح",1,36,65,"PS4"],[119,"Hollow Knight","مغامرات,يدعم الأسهم",1,1,1,"PS4"],[120,"Hollow Knight Silksong","مغامرات,يدعم الأسهم",1,2,2,"PS4"],[121,"Horizon Forbidden West","أكشن,عالم مفتوح",1,80,81,"PS4"],[122,"Horizon Zero Dawn","أكشن,عالم مفتوح",1,43,43,"PS4"],[123,"Hot Wheels Unleashed 2","العاب عائلية",2,10,36,"PS4"],[124,"Hotel Transylvania Scary-Tale","العاب عائلية",1,2,2,"PS4"],[125,"Human Fall Flat","العاب عائلية",2,2,6,"PS4"],[126,"I Am Bread","العاب عائلية",1,1,1,"PS4"],[127,"inFAMOUS Second Son","أكشن,عالم مفتوح",1,22,22,"PS4"],[128,"inFAMOUS First Light","أكشن,عالم مفتوح",1,8,10,"PS4"],[129,"Injustice 2","أكشن,قتال زوجي,يدعم الأسهم",2,30,30,"PS4"],[130,"It Takes Two","العاب عائلية,مغامرات",2,34,34,"PS4"],[131,"Kingdom Come Deliverance","مغامرات,عالم مفتوح",1,41,41,"PS4"],[132,"L.A. Noire","مغامرات,عالم مفتوح",1,15,15,"PS4"],[133,"Lara Croft GO","مغامرات",1,1,1,"PS4"],[134,"LEGO Worlds","العاب عائلية",2,1,1,"PS4"],[135,"LEGO DC Super-Villains","العاب عائلية,مغامرات",2,15,15,"PS4"],[136,"LEGO Party","العاب عائلية",4,5,8,"PS4"],[137,"LEGO Marvel Super Heroes","العاب عائلية,مغامرات",2,5,5,"PS4"],[138,"Lies of P","أكشن,مغامرات",1,14,26,"PS4"],[139,"Life is Strange 2","مغامرات",1,9,23,"PS4"],[140,"Life is Strange Before the Storm","مغامرات",1,19,32,"PS4"],[141,"Like A Dragon Gaiden","أكشن,مغامرات",1,41,58,"PS4"],[142,"Little Nightmares 1","رعب,يدعم الأسهم",1,3,3,"PS4"],[143,"Little Nightmares 2","رعب,يدعم الأسهم",1,3,3,"PS4"],[144,"Little Nightmares 3","رعب,يدعم الأسهم",1,11,20,"PS4"],[145,"Lonely Mountains Downhill","العاب عائلية",1,1,1,"PS4"],[146,"Lords of the Fallen","أكشن,مغامرات",1,5,5,"PS4"],[147,"Lost Judgment","أكشن,مغامرات",1,38,38,"PS4"],[148,"Mad Max","أكشن,عالم مفتوح",1,30,30,"PS4"],[149,"Mafia 3","أكشن,عالم مفتوح",1,44,44,"PS4"],[150,"Mafia Definitive Edition","أكشن,عالم مفتوح",1,34,40,"PS4"],[151,"Maneater","أكشن",1,5,5,"PS4"],[152,"Maria The Witch","العاب عائلية",1,1,1,"PS4"],[153,"Marsupilami Hoobadventure","العاب عائلية",1,1,2,"PS4"],[154,"Marvel's Avengers","أكشن",1,43,61,"PS4"],[155,"Marvel's Guardians of the Galaxy","أكشن,مغامرات",1,41,41,"PS4"],[156,"Marvel's Spider-Man 1","أكشن,عالم مفتوح",1,44,50,"PS4"],[157,"Marvel's Spider-Man Miles Morales","أكشن,عالم مفتوح",1,18,18,"PS4"],[158,"Metal Gear Solid V","أكشن,عالم مفتوح",1,30,30,"PS4"],[159,"Metro Exodus","رعب,أكشن",1,44,51,"PS4"],[160,"Mighty Morphin Power Rangers Rita's Rewind","أكشن",4,1,1,"PS4"],[161,"Minecraft","العاب عائلية,VR",4,1,1,"PS4"],[162,"Minecraft Dungeons","العاب عائلية",4,1,3,"PS4"],[163,"Minecraft Legends","العاب عائلية",4,6,8,"PS4"],[164,"Minecraft Story Mode","العاب عائلية",1,7,7,"PS4"],[165,"Miraculous Rise of the Sphinx","العاب عائلية",2,3,4,"PS4"],[166,"Monster Blast","أكشن",1,1,1,"PS4"],[167,"Monster Jam Showdown","العاب عائلية",2,9,29,"PS4"],[168,"Mortal Kombat X","أكشن,قتال زوجي,يدعم الأسهم",2,37,39,"PS4"],[169,"Mortal Kombat 11","أكشن,قتال زوجي,يدعم الأسهم",2,63,69,"PS4"],[170,"Moto Racer 4","أكشن,سباق",2,2,2,"PS4"],[171,"MotoGP 17","أكشن,سباق",1,10,10,"PS4"],[172,"Moving Out 2","العاب عائلية",4,1,1,"PS4"],[173,"My Friend Pedro","أكشن",2,1,2,"PS4"],[174,"My Little Pony A Maretime Bay Adventure","العاب عائلية",2,2,2,"PS4"],[175,"Naruto Shippuden Ultimate Ninja Storm 4","أكشن,يدعم الأسهم",2,35,38,"PS4"],[176,"NBA 2K21","أكشن,رياضة,يدعم الأسهم",4,41,41,"PS4"],[177,"Need for Speed Heat","أكشن,سباق",1,24,24,"PS4"],[178,"Need for Speed Payback","أكشن,سباق",1,21,21,"PS4"],[179,"Need for Speed Most Wanted (2005)","أكشن,سباق,PS2toPS4,يدعم الأسهم",1,3,3,"PS4"],[180,"Neighbours from Hell","العاب عائلية",1,1,1,"PS4"],[181,"Nickelodeon All-Star Brawl 2","العاب عائلية",4,5,10,"PS4"],[182,"Overcooked! 2","العاب عائلية",4,2,2,"PS4"],[183,"P.T.","رعب",1,1,1,"PS4"],[184,"PAC-MAN 256","العاب عائلية,يدعم الأسهم",4,1,1,"PS4"],[185,"PAW Patrol World","العاب عائلية",2,4,4,"PS4"],[186,"Pepsiman","أكشن,يدعم الأسهم",1,1,1,"PS4"],[187,"Persona 5","مغامرات",1,18,18,"PS4"],[188,"Poppy Playtime Chapter 1","رعب",1,3,5,"PS4"],[189,"Postal 4 No Regerts","أكشن",1,10,10,"PS4"],[190,"Project CARS","أكشن,سباق",1,22,22,"PS4"],[191,"Prototype 1","أكشن,عالم مفتوح",1,7,7,"PS4"],[192,"Prototype 2","أكشن,عالم مفتوح",1,8,8,"PS4"],[193,"Puyo Puyo Tetris","العاب عائلية,يدعم الأسهم",4,1,1,"PS4"],[194,"Rabbids Party of Legends","العاب عائلية",4,4,4,"PS4"],[195,"Rayman Legends","العاب عائلية,يدعم الأسهم",4,7,7,"PS4"],[196,"Red Dead Redemption 2","مغامرات,عالم مفتوح",1,79,98,"PS4"],[197,"Resident Evil 2 Remake","رعب",1,21,22,"PS4"],[198,"Resident Evil 3 Remake","رعب",1,20,20,"PS4"],[199,"Resident Evil 4 Remake","رعب",1,24,36,"PS4"],[200,"Resident Evil 5","رعب",2,15,15,"PS4"],[201,"Resident Evil 7 Biohazard","رعب,VR",1,28,31,"PS4"],[202,"Resident Evil Revelations 2","رعب",2,5,11,"PS4"],[203,"Resident Evil Village","رعب",1,26,26,"PS4"],[204,"Rise of the Tomb Raider","أكشن,مغامرات",1,17,17,"PS4"],[205,"Rise to Honor","أكشن,PS2toPS4",1,2,2,"PS4"],[206,"Road Redemption","أكشن,سباق",4,3,5,"PS4"],[207,"Rocket League","العاب عائلية,رياضة",4,30,30,"PS4"],[208,"Rollerdrome","أكشن",1,1,1,"PS4"],[209,"Sackboy A Big Adventure","العاب عائلية",4,33,33,"PS4"],[210,"Saints Row","أكشن,عالم مفتوح",1,36,50,"PS4"],[211,"Saints Row Gat out of Hell","أكشن,عالم مفتوح",1,6,6,"PS4"],[212,"Samurai Jack Battle Through Time","أكشن",1,4,4,"PS4"],[213,"Sekiro Shadows Die Twice","أكشن,مغامرات,عالم مفتوح",1,11,14,"PS4"],[214,"Middle-earth Shadow of Mordor","أكشن,عالم مفتوح",1,40,58,"PS4"],[215,"Shadow of the Colossus","مغامرات",1,12,12,"PS4"],[216,"Shadow of the Tomb Raider","أكشن,مغامرات",1,30,30,"PS4"],[217,"Shovel Knight","أكشن,يدعم الأسهم",2,1,1,"PS4"],[218,"Sid Meier's Civilization VII","مغامرات",1,6,10,"PS4"],[219,"Sifu","أكشن",1,7,21,"PS4"],[220,"Sky Force Anniversary","أكشن,يدعم الأسهم",2,1,1,"PS4"],[221,"Slaps and Beans 2","العاب عائلية",4,1,1,"PS4"],[222,"Sleeping Dogs Definitive Edition","أكشن,عالم مفتوح",1,16,16,"PS4"],[223,"Slice, Dice & Rice","أكشن",2,1,1,"PS4"],[224,"Smoots Summer Games","العاب عائلية",4,1,1,"PS4"],[225,"Sniper Elite 3","أكشن",1,22,22,"PS4"],[226,"Sniper Elite 4","أكشن",1,7,7,"PS4"],[227,"Sniper Elite 5","أكشن",1,27,37,"PS4"],[228,"Sniper Ghost Warrior 3","أكشن",1,36,36,"PS4"],[229,"Sociable Soccer 25","أكشن,رياضة,يدعم الأسهم",2,1,1,"PS4"],[230,"Sonic Forces","العاب عائلية,يدعم الأسهم",1,16,16,"PS4"],[231,"Sonic Frontiers","العاب عائلية",1,17,27,"PS4"],[232,"Sonic Racing CrossWorlds","العاب عائلية",4,11,23,"PS4"],[233,"Sonic Superstars","العاب عائلية,يدعم الأسهم",4,4,4,"PS4"],[234,"SpongeBob SquarePants","العاب عائلية",2,8,8,"PS4"],[235,"Spyro Reignited Trilogy","العاب عائلية",1,33,33,"PS4"],[236,"Star Wars Jedi Fallen Order","أكشن,مغامرات",1,44,44,"PS4"],[237,"Star Wars Jedi Survivor","أكشن,مغامرات",1,51,51,"PS4"],[238,"Stick Fight The Game","العاب عائلية",4,1,1,"PS4"],[239,"Stikbold! A Dodgeball Adventure","العاب عائلية",4,1,1,"PS4"],[240,"Stray","مغامرات",1,6,18,"PS4"],[241,"Street Fighter V","أكشن,قتال زوجي,يدعم الأسهم",2,27,67,"PS4"],[242,"Streets of Rage 4","أكشن,يدعم الأسهم",4,5,8,"PS4"],[243,"Super Bomberman R 2","العاب عائلية,يدعم الأسهم",4,4,4,"PS4"],[244,"Super Mario 64","العاب عائلية,يدعم الأسهم",1,1,1,"PS4"],[245,"Taxi Chaos","العاب عائلية",1,1,1,"PS4"],[246,"Team Sonic Racing","العاب عائلية,سباق",4,13,28,"PS4"],[247,"Teenage Mutant Ninja Turtles","أكشن,PS2toPS4,يدعم الأسهم",4,1,1,"PS4"],[248,"Tekken 7","أكشن,قتال زوجي,يدعم الأسهم",2,38,48,"PS4"],[249,"Tennis World Tour 1","أكشن,رياضة",2,3,3,"PS4"],[250,"Tennis World Tour 2","أكشن,رياضة",4,6,7,"PS4"],[251,"The Dark Pictures House of Ashes","رعب",5,28,28,"PS4"],[252,"The Dark Pictures Little Hope","رعب",5,32,59,"PS4"],[253,"The Disney Afternoon Collection","العاب عائلية,يدعم الأسهم",2,1,1,"PS4"],[254,"The Evil Within 1","رعب",1,33,33,"PS4"],[255,"The Evil Within 2","رعب",1,27,27,"PS4"],[256,"The House of The Dead 2","رعب",2,3,3,"PS4"],[257,"The Last of Us Part 1 Remastered","رعب,مغامرات",1,43,43,"PS4"],[258,"The Last of Us Part 2","رعب,مغامرات",1,86,86,"PS4"],[259,"The Order 1886","أكشن",1,29,29,"PS4"],[260,"The Warriors","أكشن,PS2toPS4",2,2,2,"PS4"],[261,"The Witcher 3 Wild Hunt","مغامرات,عالم مفتوح",1,37,37,"PS4"],[262,"Tomb Raider Definitive Edition","أكشن,مغامرات",1,18,18,"PS4"],[263,"Trackmania Turbo","أكشن,سباق",4,3,3,"PS4"],[264,"Trek to Yomi","أكشن",1,5,5,"PS4"],[265,"Tricky Towers","العاب عائلية,يدعم الأسهم",4,1,1,"PS4"],[266,"Tropico 6","مغامرات",1,6,10,"PS4"],[267,"Truck Driver","العاب عائلية",2,1,2,"PS4"],[268,"Uncharted Trilogy","أكشن,مغامرات",1,40,40,"PS4"],[269,"Uncharted 4 A Thief's End","أكشن,مغامرات",1,59,59,"PS4"],[270,"Uncharted The Lost Legacy","أكشن,مغامرات",1,45,45,"PS4"],[271,"UNO","العاب عائلية,يدعم الأسهم",4,1,1,"PS4"],[272,"Unravel","العاب عائلية,مغامرات",2,2,2,"PS4"],[273,"Unravel Two","العاب عائلية,مغامرات",2,2,2,"PS4"],[274,"Until Dawn","رعب",1,35,35,"PS4"],[275,"Urban Trial Tricky","أكشن",1,1,1,"PS4"],[276,"Virtua Fighter V","أكشن,قتال زوجي,يدعم الأسهم",2,10,14,"PS4"],[277,"Wanted Dead","أكشن",1,19,34,"PS4"],[278,"Watch Dogs 1","أكشن,عالم مفتوح",1,17,17,"PS4"],[279,"Watch Dogs 2","أكشن,عالم مفتوح",1,26,35,"PS4"],[280,"Watch Dogs Legion","أكشن,عالم مفتوح",1,28,29,"PS4"],[281,"Worms W.M.D","العاب عائلية,يدعم الأسهم",6,1,1,"PS4"],[282,"WWE 2K23","أكشن,رياضة,يدعم الأسهم",4,44,59,"PS4"],[283,"WWE 2K24","أكشن,رياضة,يدعم الأسهم",4,44,71,"PS4"],[284,"WWE 2K25","أكشن,رياضة,يدعم الأسهم",4,38,82,"PS4"],[285,"Xenon Racer","أكشن,سباق",2,3,3,"PS4"],[286,"Xeodrifter","أكشن,يدعم الأسهم",1,1,1,"PS4"],
+
+            [301,"Anomaly 2","أكشن",1,2,2,"PS4"],[302,"Commandos Origins","أكشن",1,13,13,"PS4"],[303,"Deadpool","أكشن",1,6,6,"PS4"],[304,"Megaton Rainfall","أكشن,VR",1,2,2,"PS4"],[305,"Sonic Colors Ultimate","العاب عائلية,مغامرات",1,6,6,"PS4"],[306,"Sonic Mania","العاب عائلية,يدعم الأسهم",4,1,1,"PS4"],[307,"Teenage Mutant Ninja Turtles Shredders Revenge","أكشن,العاب عائلية,يدعم الأسهم",6,10,10,"PS4"],[308,"The Smurfs 2","مغامرات,العاب عائلية",2,5,5,"PS4"],[309,"TMNT Mutants Unleashed","أكشن,مغامرات",2,16,16,"PS4"],[310,"Yooka Laylee","مغامرات,العاب عائلية",1,6,6,"PS4"],
+            [311,"Sonic X Shadow Generations","مغامرات,العاب عائلية",1,25,25,"PS4"],
+
+            [1001,"007 Blood Stone","أكشن",1,5,5,"PS3"],[1002,"50 Cent Blood on the Sand","أكشن",2,6,6,"PS3"],[1003,"Black OPS 2 DLC","أكشن",1,1,7,"PS3"],[1004,"Assassin's Creed Brotherhood","أكشن,عالم مفتوح",1,8,8,"PS3"],[1005,"Afro Samurai","أكشن",1,4,4,"PS3"],[1006,"Alien Isolation","رعب",1,15,15,"PS3"],[1007,"PlayStation All-Stars Battle Royale","العاب عائلية,أكشن,يدعم الأسهم",4,6,6,"PS3"],[1008,"Alpha Protocol","أكشن,مغامرات",1,6,6,"PS3"],[1009,"Angry Birds Trilogy","العاب عائلية,يدعم الأسهم",1,2,2,"PS3"],[1010,"Army of Two The 40th Day","أكشن",2,5,5,"PS3"],[1011,"Army of Two The Devil's Cartel","أكشن",2,7,7,"PS3"],[1013,"Assassin's Creed II","أكشن,عالم مفتوح",1,8,8,"PS3"],[1014,"Assassin's Creed III","أكشن,عالم مفتوح",1,12,12,"PS3"],[1015,"Avatar The Game","أكشن,مغامرات",1,4,4,"PS3"],[1016,"Batman Arkham City GOTY","أكشن,عالم مفتوح",1,8,8,"PS3"],[1017,"Batman Arkham Origins","أكشن,عالم مفتوح",1,15,15,"PS3"],[1018,"Battlefield 3","أكشن",1,10,10,"PS3"],[1019,"Battlefield Bad Company 2","أكشن",1,6,6,"PS3"],[1021,"Gran Turismo 6","سباق",2,15,15,"PS3"],[1022,"Ben 10 Galactic Racing","سباق,العاب عائلية",4,2,2,"PS3"],[1023,"Ben 10 Omniverse","أكشن,العاب عائلية",2,3,3,"PS3"],[1024,"Ben 10 Omniverse 2","أكشن,العاب عائلية",2,3,3,"PS3"],[1025,"Ben 10 Ultimate Alien","أكشن,العاب عائلية",2,3,3,"PS3"],[1027,"Blades of Time","أكشن",1,3,3,"PS3"],[1028,"Bleach Soul Resurrección","أكشن",1,4,4,"PS3"],[1029,"R.U.S.E.","مغامرات",1,6,6,"PS3"],[1030,"Warriors Orochi 3","أكشن",2,10,10,"PS3"],[1031,"Legends of War Patton","أكشن",1,2,2,"PS3"],[1032,"Dragon Ball Xenoverse","أكشن,يدعم الأسهم",2,8,8,"PS3"],[1033,"LEGO Jurassic World","العاب عائلية",2,6,6,"PS3"],[1034,"Blur","سباق",4,6,6,"PS3"],[1035,"Resonance of Fate","مغامرات",1,7,7,"PS3"],[1036,"Trinity Souls of Zill O'll","أكشن,مغامرات",1,13,13,"PS3"],[1037,"White Knight Chronicles II","مغامرات",1,18,18,"PS3"],[1038,"Medal of Honor Warfighter","أكشن",1,12,12,"PS3"],[1039,"Need for Speed Most Wanted","سباق",1,5,5,"PS3"],[1040,"Dead Space 3","رعب",1,11,11,"PS3"],[1041,"Deadpool","أكشن",1,6,6,"PS3"],[1043,"Ultra Street Fighter IV","أكشن,قتال زوجي,يدعم الأسهم",2,15,15,"PS3"],[1044,"Pro Evolution Soccer 2016","رياضة,يدعم الأسهم",4,8,8,"PS3"],[1047,"Borderlands 2","أكشن,مغامرات",2,6,6,"PS3"],[1048,"Borderlands The Pre-Sequel","أكشن,مغامرات",2,6,6,"PS3"],[1049,"Brave","العاب عائلية,مغامرات",1,3,3,"PS3"],[1050,"Brothers in Arms Hell's Highway","أكشن",1,5,5,"PS3"],[1051,"Brütal Legend","أكشن,مغامرات",1,7,7,"PS3"],[1052,"Cabela's African Adventures","أكشن,رياضة",1,3,3,"PS3"],[1053,"Cabela's Dangerous Hunts","أكشن,رياضة",1,4,4,"PS3"],[1054,"Call of Duty World at War","أكشن",2,11,11,"PS3"],[1056,"Call of Duty Black Ops I","أكشن",4,18,18,"PS3"],[1057,"Call of Duty Black Ops II","أكشن",4,15,15,"PS3"],[1058,"Call of Duty Modern Warfare 3","أكشن",4,9,9,"PS3"],[1059,"Captain America Super Soldier","أكشن",1,6,6,"PS3"],[1060,"Cars 3 Driven to Win","سباق,العاب عائلية",4,4,4,"PS3"],[1061,"Castlevania Lords of Shadow","أكشن,مغامرات",1,12,12,"PS3"],[1062,"Crysis 2","أكشن",1,6,6,"PS3"],[1063,"Crysis 3","أكشن",1,6,6,"PS3"],[1064,"Dark Sector","أكشن",1,2,2,"PS3"],[1065,"Dark Souls Prepare to Die Edition","أكشن,مغامرات",1,6,6,"PS3"],[1066,"Dark Souls II","أكشن,مغامرات",1,6,6,"PS3"],[1067,"Darksiders","أكشن,مغامرات",1,10,10,"PS3"],[1069,"Dead or Alive 5 Last Round","أكشن,قتال زوجي,يدعم الأسهم",2,10,10,"PS3"],[1070,"Dead Rising 2 Off the Record","أكشن,رعب",2,6,6,"PS3"],[1071,"Dead Space","رعب",1,8,8,"PS3"],[1072,"Devil May Cry 4","أكشن",1,5,5,"PS3"],[1073,"Dishonored","أكشن,مغامرات",1,6,6,"PS3"],[1074,"Dragon Ball Z Ultimate Tenkaichi","أكشن,قتال زوجي,يدعم الأسهم",2,6,6,"PS3"],[1075,"Driver San Francisco","سباق,أكشن",2,8,8,"PS3"],[1076,"Duke Nukem Forever","أكشن",1,4,4,"PS3"],[1077,"EA Sports MMA","رياضة,يدعم الأسهم",2,6,6,"PS3"],[1078,"Enemy Front","أكشن",1,4,4,"PS3"],[1079,"F.E.A.R. 3","أكشن,رعب",2,5,5,"PS3"],[1080,"F1 Race Stars","سباق",4,2,2,"PS3"],[1082,"Far Cry 4","أكشن,عالم مفتوح",1,10,10,"PS3"],[1083,"FIFA 19","رياضة,يدعم الأسهم",4,10,10,"PS3"],[1084,"FIFA Street 3","رياضة,يدعم الأسهم",4,4,4,"PS3"],[1085,"Fight Night Champion","رياضة,يدعم الأسهم",2,6,6,"PS3"],[1086,"God of War Collection","أكشن,مغامرات",1,19,19,"PS3"],[1087,"God of War III","أكشن,مغامرات",1,40,40,"PS3"],[1088,"God of War Ascension","أكشن,مغامرات",1,35,35,"PS3"],[1089,"GTA IV Complete Edition","أكشن,عالم مفتوح",1,18,18,"PS3"],[1090,"GTA V","أكشن,عالم مفتوح",1,18,18,"PS3"],[1091,"Green Lantern Rise of the Manhunters","أكشن",2,4,4,"PS3"],[1092,"Heavy Rain","مغامرات",1,22,22,"PS3"],[1093,"Hitman Absolution","أكشن,مغامرات",1,17,17,"PS3"],[1094,"Homefront","أكشن",1,5,5,"PS3"],[1095,"How to Train Your Dragon 2","العاب عائلية",2,2,2,"PS3"],[1096,"The Incredible Hulk","أكشن,عالم مفتوح",1,5,5,"PS3"],[1097,"Ice Age","العاب عائلية",1,3,3,"PS3"],[1098,"inFAMOUS","أكشن,عالم مفتوح",1,7,7,"PS3"],[1099,"inFAMOUS 2","أكشن,عالم مفتوح",1,15,15,"PS3"],[1100,"Injustice Gods Among Us Ultimate Edition","أكشن,قتال زوجي,يدعم الأسهم",2,10,10,"PS3"],[1101,"JoJo's Bizarre Adventure","أكشن,يدعم الأسهم",2,3,3,"PS3"],[1102,"Just Cause 2","أكشن,عالم مفتوح",1,5,5,"PS3"],[1103,"Just Dance 2020","العاب عائلية,رياضة",4,17,17,"PS3"],[1104,"Kane & Lynch 2 Dog Days","أكشن",2,5,5,"PS3"],[1105,"Kane & Lynch Dead Men","أكشن",2,7,7,"PS3"],[1106,"L.A. Noire Complete Edition","مغامرات,عالم مفتوح",1,24,24,"PS3"],[1107,"LEGO Harry Potter Years 5-7","العاب عائلية,يدعم الأسهم",2,8,8,"PS3"],[1108,"LEGO Indiana Jones","العاب عائلية,يدعم الأسهم",2,5,5,"PS3"],[1109,"LEGO Marvel's Avengers","العاب عائلية,يدعم الأسهم",2,8,8,"PS3"],[1110,"The LEGO Movie Videogame","العاب عائلية,يدعم الأسهم",2,6,6,"PS3"],[1111,"LEGO Pirates of the Caribbean","العاب عائلية,يدعم الأسهم",2,6,6,"PS3"],[1112,"LEGO Star Wars III The Clone Wars","العاب عائلية,يدعم الأسهم",2,7,7,"PS3"],[1113,"Lost Planet 3","أكشن",2,15,15,"PS3"],[1114,"Mafia II Director's Cut","أكشن,عالم مفتوح",1,10,10,"PS3"],[1115,"Marvel vs. Capcom 3","أكشن,قتال زوجي,يدعم الأسهم",2,3,3,"PS3"],[1116,"Marvel vs. Capcom Origins","أكشن,قتال زوجي,يدعم الأسهم",2,1,1,"PS3"],[1117,"Mass Effect 3","أكشن,مغامرات",1,14,14,"PS3"],[1118,"Medal of Honor Airborne","أكشن",1,5,5,"PS3"],[1119,"Medal of Honor (2010)","أكشن",1,8,8,"PS3"],[1120,"Metal Gear Rising Revengeance","أكشن",1,18,18,"PS3"],[1121,"Metal Gear Solid 4","أكشن,مغامرات",1,30,30,"PS3"],[1123,"Metro Last Light","أكشن,رعب",1,6,6,"PS3"],[1125,"Monster Jam","سباق,العاب عائلية",2,5,5,"PS3"],[1126,"Mortal Kombat Komplete Edition","أكشن,قتال زوجي,يدعم الأسهم",4,10,10,"PS3"],[1127,"Mortal Kombat vs. DC Universe","أكشن,قتال زوجي,يدعم الأسهم",2,6,6,"PS3"],[1128,"Move Fitness","رياضة",4,2,2,"PS3"],[1129,"Naruto Shippuden Ultimate Ninja Storm Revolution","أكشن,يدعم الأسهم",2,7,7,"PS3"],[1130,"Need for Speed ProStreet","سباق",2,5,5,"PS3"],[1131,"Need for Speed Rivals","سباق",1,8,8,"PS3"],[1132,"NeverDead","أكشن",1,5,5,"PS3"],[1133,"Ninja Gaiden Sigma","أكشن",1,12,12,"PS3"],[1134,"Ninja Gaiden Sigma 2","أكشن",1,4,4,"PS3"],[1135,"Ninja Gaiden 3","أكشن",1,4,4,"PS3"],[1136,"Ninja Gaiden 3 Razor's Edge","أكشن",1,3,3,"PS3"],[1137,"No More Heroes Heroes' Paradise","أكشن",1,4,4,"PS3"],[1138,"One Piece Pirate Warriors 2","أكشن",2,10,10,"PS3"],[1139,"Order Up!!","العاب عائلية",2,1,1,"PS3"],[1140,"Pac-Man Championship Edition DX","العاب عائلية,يدعم الأسهم",1,1,1,"PS3"],[1141,"PAIN","أكشن",4,1,1,"PS3"],[1142,"Jurassic Park The Game","مغامرات",1,2,2,"PS3"],[1143,"Payday 2","أكشن",1,4,4,"PS3"],[1144,"Planet 51 The Game","العاب عائلية,سباق",2,3,3,"PS3"],[1145,"Plants vs. Zombies","أكشن,العاب عائلية,يدعم الأسهم",2,1,1,"PS3"],[1146,"Portal 2","مغامرات",2,5,5,"PS3"],[1147,"Prince of Persia","أكشن,مغامرات",1,6,6,"PS3"],[1148,"Prince of Persia Trilogy 3D","أكشن,مغامرات",1,11,11,"PS3"],[1149,"Pro Evolution Soccer 2013","رياضة,يدعم الأسهم",4,6,6,"PS3"],[1151,"Rambo The Video Game","أكشن",2,2,2,"PS3"],[1152,"Rango","العاب عائلية,أكشن",1,3,3,"PS3"],[1154,"Rayman Origins","العاب عائلية,يدعم الأسهم",4,2,2,"PS3"],[1155,"Red Dead Redemption GOTY","أكشن,عالم مفتوح",1,9,9,"PS3"],[1157,"Resident Evil 6","رعب",2,10,10,"PS3"],[1159,"Ridge Racer 7","سباق",2,6,6,"PS3"],[1160,"Rio","العاب عائلية",4,1,1,"PS3"],[1161,"Risen 2 Dark Waters","مغامرات,عالم مفتوح",1,6,6,"PS3"],[1163,"Saints Row IV","أكشن,عالم مفتوح",1,7,7,"PS3"],[1164,"Silent Hill","رعب",1,5,5,"PS3"],[1165,"Sleeping Dogs","أكشن,عالم مفتوح",1,7,7,"PS3"],[1166,"Sniper Ghost Warrior","أكشن",1,4,4,"PS3"],[1167,"Sniper Ghost Warrior 2","أكشن",1,5,5,"PS3"],[1169,"Sonic & All-Stars Racing Transformed","سباق,العاب عائلية",4,5,5,"PS3"],[1170,"Sonic the Hedgehog (2006)","العاب عائلية,يدعم الأسهم",2,5,5,"PS3"],[1171,"Sonic Unleashed","العاب عائلية,يدعم الأسهم",1,8,8,"PS3"],[1172,"Sonic Generations","العاب عائلية,يدعم الأسهم",1,8,8,"PS3"],[1173,"Spider-Man 3","أكشن,عالم مفتوح",1,5,5,"PS3"],[1174,"Spider-Man Shattered Dimensions","أكشن",1,11,11,"PS3"],[1175,"Spider-Man Web of Shadows","أكشن,عالم مفتوح",1,7,7,"PS3"],[1176,"Splatterhouse","أكشن,رعب",1,6,6,"PS3"],[1177,"Sports Champions 2","رياضة,العاب عائلية",4,6,6,"PS3"],[1178,"Start the Party!","العاب عائلية",4,1,1,"PS3"],[1179,"TMNT Mutants in Manhattan","أكشن",4,5,5,"PS3"],[1180,"TMNT Danger of the Ooze","أكشن",1,1,1,"PS3"],[1181,"Tekken 6","أكشن,قتال زوجي,يدعم الأسهم",2,11,11,"PS3"],[1182,"Tekken Tag Tournament 2","أكشن,قتال زوجي,يدعم الأسهم",4,17,17,"PS3"],[1183,"The Amazing Spider-Man","أكشن,عالم مفتوح",1,8,8,"PS3"],[1184,"The Bourne Conspiracy","أكشن",1,7,7,"PS3"],[1185,"The Chronicles of Riddick","أكشن,مغامرات",1,9,9,"PS3"],[1186,"The Darkness II","أكشن,رعب",4,6,6,"PS3"],[1187,"The Fight Lights Out","أكشن,رياضة",2,4,4,"PS3"],[1188,"The House of the Dead III","أكشن",2,2,2,"PS3"],[1189,"The Saboteur","أكشن,عالم مفتوح",1,6,6,"PS3"],[1190,"The Sims 3","العاب عائلية",1,5,5,"PS3"],[1191,"The Sims 3 Pets","العاب عائلية",1,5,5,"PS3"],[1192,"The Smurfs 2","العاب عائلية",4,1,1,"PS3"],[1193,"The Testament of Sherlock Holmes","مغامرات",1,10,10,"PS3"],[1194,"The Walking Dead Season 1","مغامرات,رعب",1,3,3,"PS3"],[1195,"The Walking Dead Season 2","مغامرات,رعب",1,3,3,"PS3"],[1197,"Thief","أكشن,مغامرات",1,7,7,"PS3"],[1198,"Thor God of Thunder","أكشن",1,6,6,"PS3"],[1199,"TimeShift","أكشن",1,5,5,"PS3"],[1200,"Tom Clancy's Splinter Cell Blacklist","أكشن,مغامرات",2,13,13,"PS3"],[1201,"Tomb Raider","أكشن,مغامرات",1,10,10,"PS3"],[1202,"Tony Hawk Shred","رياضة",4,5,5,"PS3"],[1203,"Tony Hawk's Project 8","رياضة",2,5,5,"PS3"],[1205,"Toy Story Mania!","العاب عائلية",4,3,3,"PS3"],[1206,"Transformers Devastation","أكشن",1,6,6,"PS3"],[1207,"Turok","أكشن",1,6,6,"PS3"],[1208,"UFC 2009 Undisputed","رياضة,أكشن,يدعم الأسهم",2,13,13,"PS3"],[1209,"Uncharted 2 Among Thieves","أكشن,مغامرات",1,22,22,"PS3"],[1210,"Uncharted 3 Drake's Deception","أكشن,مغامرات",1,33,33,"PS3"],[1211,"Uncharted Drake's Fortune","أكشن,مغامرات",1,20,20,"PS3"],[1212,"WWE SmackDown vs. Raw 2011","رياضة,أكشن,يدعم الأسهم",4,6,6,"PS3"],[1213,"Up","العاب عائلية",2,2,2,"PS3"],[1214,"Vanquish","أكشن",1,12,12,"PS3"],[1215,"Virtua Tennis 4","رياضة,يدعم الأسهم",4,4,4,"PS3"],[1216,"Lucha Libre AAA Héroes del Ring","رياضة,أكشن",4,5,5,"PS3"],[1217,"Watchmen The End Is Nigh","أكشن",2,2,2,"PS3"],[1218,"Watch Dogs","أكشن,عالم مفتوح",1,14,14,"PS3"],[1219,"WET","أكشن",1,6,6,"PS3"],[1220,"Wolfenstein The New Order","أكشن",1,18,18,"PS3"],[1221,"WWE '13","رياضة,يدعم الأسهم",4,8,8,"PS3"],[1222,"WWE 2K17","رياضة,يدعم الأسهم",4,8,8,"PS3"],[1223,"WWE SmackDown vs. Raw 2008","رياضة,يدعم الأسهم",4,5,5,"PS3"],[1224,"WWE SmackDown vs. Raw 2009","رياضة,يدعم الأسهم",4,5,5,"PS3"],[1225,"X-Men Origins Wolverine","أكشن",1,7,7,"PS3"],[1226,"Yakuza 3","أكشن,مغامرات",1,16,16,"PS3"],[1227,"Yakuza 5","أكشن,مغامرات",1,23,23,"PS3"],[1228,"Pro Evolution Soccer 2023","رياضة,يدعم الأسهم",1,23,23,"PS3"],[1229,"Sorcery","مغامرات",1,13,13,"PS3"],
+
+            [2001,"Aladdin in Nasira's Revenge","مغامرات,العاب عائلية,يدعم الأسهم",1,1,1,"PS2"],[2002,"Astro Boy: The Video Game","أكشن,مغامرات",1,2,2,"PS2"],[2003,"Batman Begins","أكشن,مغامرات",1,2,2,"PS2"],[2004,"Batman: Vengeance","أكشن,مغامرات",1,1,1,"PS2"],[2005,"Black","أكشن",1,2,2,"PS2"],[2006,"Blade II","أكشن",1,2,2,"PS2"],[2007,"Bully","عالم مفتوح,مغامرات",1,3,3,"PS2"],[2008,"Chaos Legion","أكشن",1,2,2,"PS2"],[2009,"Conan","أكشن,مغامرات",1,3,3,"PS2"],[2010,"Crash Bandicoot: The Wrath of Cortex","مغامرات,العاب عائلية,يدعم الأسهم",1,1,1,"PS2"],[2011,"Curse: The Eye of Isis","رعب,أكشن",1,1,1,"PS2"],[2012,"Dead to Rights","أكشن",1,2,2,"PS2"],[2013,"Despicable Me: The Game","العاب عائلية,مغامرات",1,2,2,"PS2"],[2014,"Devil May Cry 3","أكشن,مغامرات",1,4,4,"PS2"],[2015,"Dino Crisis","رعب,أكشن",1,2,2,"PS2"],[2016,"Dora Saves the Crystal Kingdom","العاب عائلية",1,1,1,"PS2"],[2017,"Driver 3","أكشن,عالم مفتوح",1,3,3,"PS2"],[2018,"Evil Dead: Regeneration","أكشن,رعب",1,2,2,"PS2"],[2019,"Finding Nemo","العاب عائلية,مغامرات",1,1,1,"PS2"],[2020,"Fugitive Hunter: War on Terror","أكشن",1,2,2,"PS2"],[2021,"God Hand","أكشن",1,2,2,"PS2"],[2022,"God of War I","أكشن,مغامرات",1,4,4,"PS2"],[2023,"God of War II","أكشن,مغامرات",1,8,8,"PS2"],[2024,"Ghost Rider","أكشن",1,2,2,"PS2"],[2025,"Grand Theft Auto III","عالم مفتوح,أكشن",1,2,2,"PS2"],[2026,"GTA: Liberty City Stories","عالم مفتوح,أكشن",1,2,2,"PS2"],[2027,"GTA: Vice City","عالم مفتوح,أكشن",1,3,3,"PS2"],[2028,"Harry Potter and the Sorcerer's Stone","مغامرات,العاب عائلية",1,1,1,"PS2"],[2029,"Harry Potter and the Prisoner of Azkaban","مغامرات,العاب عائلية",1,2,2,"PS2"],[2030,"Hitman: Contracts","أكشن,مغامرات",1,2,2,"PS2"],[2031,"Hitman: Blood Money","أكشن,مغامرات",1,4,4,"PS2"],[2032,"Jackie Chan Adventures","أكشن,مغامرات",1,2,2,"PS2"],[2033,"Jumper: Griffin's Story","أكشن",1,2,2,"PS2"],[2034,"Just Cause","أكشن,عالم مفتوح",1,3,3,"PS2"],[2035,"Kaan: Barbarian's Blade","أكشن,مغامرات",1,1,1,"PS2"],[2036,"kill.switch","أكشن",1,1,1,"PS2"],[2037,"Luxor: Pharaoh's Challenge","العاب عائلية,يدعم الأسهم",1,1,1,"PS2"],[2038,"Madagascar","العاب عائلية,مغامرات",1,2,2,"PS2"],[2039,"Made Man","أكشن",1,2,2,"PS2"],[2040,"Mafia","أكشن,عالم مفتوح",1,3,3,"PS2"],[2041,"Max Payne 2: The Fall of Max Payne","أكشن",1,2,2,"PS2"],[2042,"Mission: Impossible - Operation Surma","أكشن,مغامرات",1,2,2,"PS2"],[2043,"Monster World Complete Collection","مغامرات,يدعم الأسهم",1,1,1,"PS2"],[2044,"NARC","أكشن",1,2,2,"PS2"],[2045,"Onimusha 3: Demon Siege","أكشن,مغامرات,يدعم الأسهم",1,4,4,"PS2"],[2046,"Pirates: Legend of the Black Buccaneer","مغامرات",1,1,1,"PS2"],[2047,"Prince of Persia: The Sands of Time","أكشن,مغامرات",1,2,2,"PS2"],[2048,"Resident Evil: Dead Aim","رعب,أكشن",1,2,2,"PS2"],[2049,"Resident Evil - Code: Veronica X","رعب,مغامرات,يدعم الأسهم",1,2,2,"PS2"],[2050,"Rise to Honor","أكشن",1,3,3,"PS2"],[2051,"Shadow of the Colossus","مغامرات,أكشن",1,3,3,"PS2"],[2052,"Silent Hill 3","رعب,مغامرات",1,3,3,"PS2"],[2053,"Silent Hill 4: The Room","رعب,مغامرات",1,3,3,"PS2"],[2054,"Silent Hill: Origins","رعب,مغامرات",1,3,3,"PS2"],[2055,"Silent Hill: Shattered Memories","رعب,مغامرات",1,2,2,"PS2"],[2056,"Spider-Man: The Movie","أكشن,مغامرات",1,2,2,"PS2"],[2057,"Spider-Man 2","أكشن,عالم مفتوح",1,2,2,"PS2"],[2058,"Spider-Man 3","أكشن,عالم مفتوح",1,3,3,"PS2"],[2059,"Taz: Wanted","العاب عائلية,مغامرات",1,1,1,"PS2"],[2060,"Terminator 3: The Redemption","أكشن",1,2,2,"PS2"],[2061,"The Godfather: The Game","أكشن,عالم مفتوح",1,3,3,"PS2"],[2062,"The Incredible Hulk: Ultimate Destruction","أكشن,عالم مفتوح",1,2,2,"PS2"],[2063,"The Punisher","أكشن",1,2,2,"PS2"],[2064,"Tom Clancy's Splinter Cell","أكشن,مغامرات",1,3,3,"PS2"],[2065,"Tomb Raider: Underworld","مغامرات,أكشن",1,3,3,"PS2"],[2066,"Total Overdose","أكشن,عالم مفتوح",1,2,2,"PS2"],[2067,"Transformers: The Game","أكشن",1,2,2,"PS2"],[2068,"Van Helsing","أكشن",1,2,2,"PS2"],[2069,"Burnout","سباق",2,1,1,"PS2"],[2070,"Burnout 2: Point of Impact","سباق",2,2,2,"PS2"],[2071,"Burnout 3: Takedown","سباق",2,3,3,"PS2"],[2072,"Burnout Dominator","سباق",2,3,3,"PS2"],[2073,"Cars Mater-National Championship","سباق,العاب عائلية",2,2,2,"PS2"],[2074,"Cars Race-O-Rama","سباق,العاب عائلية",2,2,2,"PS2"],[2075,"Crazy Frog Racer","سباق,العاب عائلية",4,1,1,"PS2"],[2076,"Crazy Taxi","سباق,يدعم الأسهم",1,1,1,"PS2"],[2077,"Gran Turismo 3: A-Spec","سباق,يدعم الأسهم",2,4,4,"PS2"],[2078,"Midnight Club: Street Racing","سباق",2,1,1,"PS2"],[2079,"MX Unleashed","سباق",2,2,2,"PS2"],[2080,"Need for Speed: Underground","سباق,يدعم الأسهم",2,2,2,"PS2"],[2081,"Need for Speed: Underground 2","سباق,يدعم الأسهم",2,3,3,"PS2"],[2082,"Need for Speed: Most Wanted - Black Edition","سباق,يدعم الأسهم",2,4,4,"PS2"],[2083,"Need for Speed: Carbon","سباق,يدعم الأسهم",2,4,4,"PS2"],[2084,"Need for Speed: ProStreet","سباق,يدعم الأسهم",2,4,4,"PS2"],[2085,"Need for Speed: Undercover","سباق,يدعم الأسهم",2,3,3,"PS2"],[2086,"Need for Speed: Hot Pursuit 2","سباق,يدعم الأسهم",2,1,1,"PS2"],[2087,"Rumble Racing","سباق,يدعم الأسهم",2,1,1,"PS2"],[2088,"Sonic Riders","سباق,العاب عائلية",4,3,3,"PS2"],[2089,"Suzuki TT Superbikes","سباق",2,2,2,"PS2"],[2090,"Crash Nitro Kart","سباق,العاب عائلية,يدعم الأسهم",4,2,2,"PS2"],[2091,"Super Mario Kart (SNES Emulator)","سباق,العاب عائلية,يدعم الأسهم",2,1,1,"PS2"],[2092,"Bloody Roar 4","أكشن,يدعم الأسهم",2,2,2,"PS2"],[2093,"Capcom vs. SNK 2","أكشن,يدعم الأسهم",2,1,1,"PS2"],[2094,"Def Jam: Fight for NY","أكشن,يدعم الأسهم",4,3,3,"PS2"],[2095,"Dragon Ball Z: Budokai 3","أكشن,يدعم الأسهم",2,2,2,"PS2"],[2096,"Marvel vs. Capcom 2","أكشن,يدعم الأسهم",2,1,1,"PS2"],[2097,"Mike Tyson Heavyweight Boxing","رياضة,أكشن,يدعم الأسهم",2,1,1,"PS2"],[2098,"Mortal Kombat: Deception","أكشن,يدعم الأسهم",2,3,3,"PS2"],[2099,"Mortal Kombat: Shaolin Monks","أكشن,مغامرات,يدعم الأسهم",2,3,3,"PS2"],[2100,"Naruto: Ultimate Ninja 3","أكشن,يدعم الأسهم",2,2,2,"PS2"],[2101,"Naruto Shippuden: Ultimate Ninja 5","أكشن,يدعم الأسهم",2,3,3,"PS2"],[2102,"Soulcalibur II","أكشن,يدعم الأسهم",2,2,2,"PS2"],[2103,"Street Fighter Anniversary Collection","أكشن,يدعم الأسهم",2,3,3,"PS2"],[2104,"Tekken 4","أكشن,يدعم الأسهم",2,3,3,"PS2"],[2105,"Tekken 5","أكشن,يدعم الأسهم",2,4,4,"PS2"],[2106,"Tekken Tag Tournament","أكشن,يدعم الأسهم",4,1,1,"PS2"],[2107,"The King of Fighters: Maximum Impact","أكشن,يدعم الأسهم",2,2,2,"PS2"],[2108,"FIFA 14","رياضة,يدعم الأسهم",4,3,3,"PS2"],[2109,"NBA 2K10","رياضة,يدعم الأسهم",4,3,3,"PS2"],[2110,"NBA Street V3","رياضة,يدعم الأسهم",4,2,2,"PS2"],[2111,"PES 2008 to 2017 (Collection)","رياضة,يدعم الأسهم",4,15,15,"PS2"],[2112,"PES 2019 / 2020 / 2021 (Patches)","رياضة,يدعم الأسهم",4,5,5,"PS2"],[2113,"Winning Eleven (WE) Mods","رياضة,يدعم الأسهم",4,5,5,"PS2"],[2114,"Pro Beach Soccer","رياضة,يدعم الأسهم",4,1,1,"PS2"],[2115,"Harry Potter: Quidditch World Cup","رياضة,مغامرات",2,1,1,"PS2"],[2116,"International Pool Championship","رياضة,يدعم الأسهم",2,1,1,"PS2"],[2117,"Slam Tennis","رياضة,يدعم الأسهم",4,1,1,"PS2"],[2118,"Virtua Tennis 2","رياضة,يدعم الأسهم",4,1,1,"PS2"],[2119,"Urban Freestyle Soccer","رياضة,يدعم الأسهم",4,1,1,"PS2"],[2120,"WWE SmackDown! Shut Your Mouth (4)","رياضة,أكشن,يدعم الأسهم",6,2,2,"PS2"],[2121,"WWE SmackDown! Here Comes the Pain (5)","رياضة,أكشن,يدعم الأسهم",6,3,3,"PS2"],[2122,"WWE SmackDown! vs. Raw (6)","رياضة,أكشن,يدعم الأسهم",6,3,3,"PS2"],[2123,"WWE SvR Collection","رياضة,أكشن,يدعم الأسهم",6,12,12,"PS2"],[2124,"WWE 12 to 2K15 Mods","رياضة,أكشن,يدعم الأسهم",6,12,12,"PS2"],[2125,"Bad Boys: Miami Takedown","أكشن",2,2,2,"PS2"],[2126,"Battlefield 2: Modern Combat","أكشن",4,3,3,"PS2"],[2127,"Call of Duty: World at War - Final Fronts","أكشن",4,3,3,"PS2"],[2128,"Cold Winter","أكشن",4,2,2,"PS2"],[2129,"James Bond 007: Agent Under Fire","أكشن",4,2,2,"PS2"],[2130,"James Bond 007: Everything or Nothing","أكشن",4,3,3,"PS2"],[2131,"Medal of Honor: European Assault","أكشن",4,3,3,"PS2"],[2132,"Medal of Honor: Vanguard","أكشن",4,3,3,"PS2"],[2133,"Metal Slug Anthology","أكشن,العاب عائلية,يدعم الأسهم",2,2,2,"PS2"],[2134,"Time Crisis 3","أكشن",2,2,2,"PS2"],[2135,"Bakugan Battle Brawlers","العاب عائلية",4,2,2,"PS2"],[2136,"Barbie as the Island Princess","العاب عائلية",2,2,2,"PS2"],[2137,"Barbie Horse Adventures: Riding Camp","العاب عائلية",2,1,1,"PS2"],[2138,"Barbie in the 12 Dancing Princesses","العاب عائلية",2,1,1,"PS2"],[2139,"Bee Movie Game","العاب عائلية,مغامرات",2,2,2,"PS2"],[2140,"Ben 10: Protector of Earth","العاب عائلية,أكشن",2,2,2,"PS2"],[2141,"Ben 10: Alien Force","العاب عائلية,أكشن",2,2,2,"PS2"],[2142,"Bomberman Hardball","العاب عائلية,يدعم الأسهم",4,1,1,"PS2"],[2143,"Buffy the Vampire Slayer: Chaos Bleeds","رعب,مغامرات",4,2,2,"PS2"],[2144,"Crash: Mind over Mutant","العاب عائلية,مغامرات",2,3,3,"PS2"],[2145,"Disney's Tarzan Untamed","العاب عائلية,مغامرات",1,1,1,"PS2"],[2146,"Hannah Montana: Spotlight World Tour","العاب عائلية",2,2,2,"PS2"],[2147,"Hello Kitty: Roller Rescue","العاب عائلية",2,1,1,"PS2"],[2148,"Justice League Heroes","أكشن,العاب عائلية",2,3,3,"PS2"],[2149,"King Arthur","أكشن,مغامرات",2,2,2,"PS2"],[2150,"Minecraft PS2 Edition (Beta)","العاب عائلية,عالم مفتوح",1,1,1,"PS2"],[2151,"Ni Hao, Kai-Lan: Super Game Day","العاب عائلية",2,1,1,"PS2"],[2152,"Power Rangers Dino Thunder","العاب عائلية,أكشن",2,1,1,"PS2"],[2153,"Shrek 2","العاب عائلية,مغامرات",4,2,2,"PS2"],[2154,"SpongeBob's Atlantis SquarePantis","العاب عائلية,مغامرات",2,2,2,"PS2"],[2155,"Teenage Mutant Ninja Turtles 1","العاب عائلية,أكشن",2,2,2,"PS2"],[2156,"Teenage Mutant Ninja Turtles 2: Battle Nexus","العاب عائلية,أكشن",4,3,3,"PS2"],[2157,"Tom and Jerry in War of the Whiskers","العاب عائلية,أكشن",4,1,1,"PS2"],[2158,"Toy Story 3","العاب عائلية,مغامرات",2,2,2,"PS2"],[2159,"Yu-Gi-Oh! The Duelists of the Roses","العاب عائلية,يدعم الأسهم",2,1,1,"PS2"],
+            
+            [3001,"007 - From Russia with Love","أكشن",1,1,1,"PSP"],[3002,"FIFA World Cup South Africa 2010","رياضة,يدعم الأسهم",1,2,2,"PSP"],[3003,"300 - March to Glory","أكشن",1,1,1,"PSP"],[3004,"50 Cent - Bulletproof - G-Unit Edition","أكشن",1,2,2,"PSP"],[3005,"7 Wonders of the Ancient World","العاب عائلية,يدعم الأسهم",1,1,1,"PSP"],[3006,"A la croisee des mondes - La Boussole d'or","مغامرات",1,2,2,"PSP"],[3007,"AFL Challenge","رياضة",1,1,1,"PSP"],[3008,"ATV Offroad Fury - Blazin Trails","سباق",1,1,1,"PSP"],[3009,"ATV Offroad Fury Pro","سباق",1,1,1,"PSP"],[3010,"Ace Combat - Joint Assault","أكشن",1,2,2,"PSP"],[3011,"Ace Combat X - Skies of Deception","أكشن",1,1,1,"PSP"],[3012,"Aces of War","أكشن",1,1,1,"PSP"],[3013,"Activision Hits Remixed","العاب عائلية,يدعم الأسهم",1,1,1,"PSP"],[3014,"Adventures to Go!","مغامرات",1,1,1,"PSP"],[3015,"After Burner - Black Falcon","أكشن",1,1,1,"PSP"],[3016,"Alien Syndrome","أكشن",1,1,1,"PSP"],[3017,"Aliens vs Predator - Requiem","أكشن,رعب",1,1,1,"PSP"],[3018,"Ape Academy","العاب عائلية",1,1,1,"PSP"],[3019,"Ape Academy 2","العاب عائلية",1,1,1,"PSP"],[3020,"Ape Escape","العاب عائلية,مغامرات",1,1,1,"PSP"],[3021,"Archer Maclean Mercury","العاب عائلية",1,1,1,"PSP"],[3022,"Armored Core - Formula Front Extreme Battle","أكشن",1,1,1,"PSP"],[3023,"Army of Two - The 40th Day","أكشن",1,1,1,"PSP"],[3024,"Arthur and the Invisibles","مغامرات",1,2,2,"PSP"],[3025,"Arthur and the Minimoys","مغامرات",1,2,2,"PSP"],[3026,"Asphalt - Urban GT 2","سباق",1,1,1,"PSP"],[3027,"Assassins Creed - Bloodlines","أكشن,مغامرات",1,1,1,"PSP"],[3028,"Asterix and Obelix XXL 2","مغامرات",1,1,1,"PSP"],[3029,"Astonishia Story","مغامرات",1,1,1,"PSP"],[3030,"Astro Boy - The Video Game","أكشن",1,2,2,"PSP"],[3031,"Autoescuela Aprueba Conmigo","سباق",1,1,1,"PSP"],[3032,"B-Boy","رياضة,يدعم الأسهم",1,2,2,"PSP"],[3033,"Bakugan - Defenders of the Core","أكشن",1,1,1,"PSP"],[3034,"Battle Royal","أكشن,يدعم الأسهم",1,1,1,"PSP"],[3035,"BattleZone","أكشن",1,1,1,"PSP"],[3036,"Beaterator","العاب عائلية",1,1,1,"PSP"],[3037,"Ben 10 - Alien Force","أكشن",1,2,2,"PSP"],[3038,"Ben 10 - Alien Force - Vilgax Attacks","أكشن",1,2,2,"PSP"],[3039,"Ben 10 - Protector of Earth","أكشن",1,1,1,"PSP"],[3040,"Ben 10 - Ultimate Alien - Cosmic Destruction","أكشن",1,2,2,"PSP"],[3041,"Beowulf - The Game","أكشن",1,2,2,"PSP"],[3042,"Beta Bloc","العاب عائلية,يدعم الأسهم",1,1,1,"PSP"],[3043,"Blade Dancer - Lineage of Light","مغامرات",1,2,2,"PSP"],[3044,"BlazBlue - Calamity Trigger","أكشن,يدعم الأسهم",1,2,2,"PSP"],[3045,"BlazBlue - Continuum Shift 2","أكشن,يدعم الأسهم",1,2,2,"PSP"],[3046,"Blazing Souls Accelate","مغامرات",1,1,1,"PSP"],[3047,"Bliss Island","العاب عائلية",1,1,1,"PSP"],[3048,"Blokus Portable - Steambot Championship","العاب عائلية,يدعم الأسهم",1,1,1,"PSP"],[3049,"Blood Bowl","رياضة",1,1,1,"PSP"],[3050,"Bomberman","العاب عائلية,يدعم الأسهم",1,1,1,"PSP"],[3051,"Bomberman Land","العاب عائلية,يدعم الأسهم",1,1,1,"PSP"],[3052,"Breath of Fire 3","مغامرات,يدعم الأسهم",1,1,1,"PSP"],[3053,"Brian Lara 2007 - Pressure Play","رياضة",1,1,1,"PSP"],[3054,"Brothers in Arms - D-Day","أكشن",1,2,2,"PSP"],[3055,"Brunswick Pro Bowling","رياضة",1,1,1,"PSP"],[3056,"Bubble Bobble Evolution","العاب عائلية,يدعم الأسهم",1,1,1,"PSP"],[3057,"Burnout Dominator","سباق,يدعم الأسهم",1,1,1,"PSP"],[3058,"Burnout Legends","سباق,يدعم الأسهم",1,1,1,"PSP"],[3059,"Bust-A-Move Ghost","العاب عائلية,يدعم الأسهم",1,1,1,"PSP"],[3060,"Buzz! Games Collection","العاب عائلية",1,2,2,"PSP"],[3061,"CID the Dummy","مغامرات",1,1,1,"PSP"],[3062,"Cabelas Dangerous Hunts - Ultimate Challenge","رياضة",1,1,1,"PSP"],[3063,"Call of Duty - Roads to Victory","أكشن",1,1,1,"PSP"],[3064,"Capcom Classics Collection","أكشن,العاب عائلية,يدعم الأسهم",1,1,1,"PSP"],[3065,"Capcom Puzzle World","العاب عائلية,يدعم الأسهم",1,1,1,"PSP"],[3066,"Carnivores Dinosaur Hunter","أكشن",1,1,1,"PSP"],[3067,"Carol Vorderman Sudoku","العاب عائلية,يدعم الأسهم",1,1,1,"PSP"],[3068,"Cart Kings","سباق",1,1,1,"PSP"],[3069,"Castlevania - The Dracula X Chronicles","أكشن,مغامرات,يدعم الأسهم",1,2,2,"PSP"],[3070,"Championship Manager Series","رياضة,يدعم الأسهم",1,1,1,"PSP"],[3071,"Chandragupta - Warrior Prince","أكشن",1,1,1,"PSP"],[3072,"Chessmaster - The Art of Learning","العاب عائلية,يدعم الأسهم",1,1,1,"PSP"],[3073,"Chi Vuol Essere Milionario","العاب عائلية",1,1,1,"PSP"],[3074,"Chili Con Carnage","أكشن",1,1,1,"PSP"],[3075,"Cloudy with a Chance of Meatballs","مغامرات,العاب عائلية",1,1,1,"PSP"],[3076,"Code Lyoko - Quest for Infinity","مغامرات",1,1,1,"PSP"],[3077,"Coded Arms","أكشن",1,1,1,"PSP"],[3078,"Coded Arms - Contagion","أكشن",1,1,1,"PSP"],[3079,"Colin McRae - DiRT 2","سباق",1,1,1,"PSP"],[3080,"Colin McRae Rally 2005 Plus","سباق",1,2,2,"PSP"],[3081,"Cover Girl","العاب عائلية",1,1,1,"PSP"],[3082,"Crash - Mind over Mutant","مغامرات,العاب عائلية",1,2,2,"PSP"],[3083,"Crash Tag Team Racing","سباق,العاب عائلية",1,2,2,"PSP"],[3084,"Crash of the Titans","مغامرات,العاب عائلية",1,1,1,"PSP"],[3085,"Crazy Taxi - Fare Wars","سباق,يدعم الأسهم",1,1,1,"PSP"],[3086,"Crisis Core - Final Fantasy 7","أكشن,مغامرات",1,2,2,"PSP"],[3087,"Crush","مغامرات",1,1,1,"PSP"],[3088,"Cube","العاب عائلية",1,1,1,"PSP"],[3089,"DTM Race Driver 2 & 3","سباق",1,2,2,"PSP"],[3090,"Dantes Inferno","أكشن,مغامرات",1,2,2,"PSP"],[3091,"Darkstalkers Chronicle - The Chaos Tower","أكشن,يدعم الأسهم",1,1,1,"PSP"],[3092,"Dave Mirra BMX Challenge","رياضة",1,1,1,"PSP"],[3093,"Daxter","مغامرات",1,2,2,"PSP"],[3094,"Dead Head Fred","أكشن,مغامرات",1,2,2,"PSP"],[3095,"Dead or Alive - Paradise","العاب عائلية",1,1,1,"PSP"],[3096,"Dead to Rights - Reckoning","أكشن",1,1,1,"PSP"],[3097,"Death Jr. 1 & 2","أكشن",1,2,2,"PSP"],[3098,"Def Jam - Fight for NY - The Takeover","أكشن,يدعم الأسهم",1,2,2,"PSP"],[3099,"Der Herr der Ringe - Taktiken","أكشن",1,1,1,"PSP"],[3100,"Desi Adda - Games of India","العاب عائلية",1,1,1,"PSP"],[3101,"Despicable Me","مغامرات,العاب عائلية",1,1,1,"PSP"],[3102,"Diabolik - The Original Sin","مغامرات",1,2,2,"PSP"],[3103,"Diner Dash","العاب عائلية,يدعم الأسهم",1,1,1,"PSP"],[3104,"Disgaea - Afternoon of Darkness & Dark Hero Days","مغامرات,يدعم الأسهم",1,2,2,"PSP"],[3105,"Disney G-Force","أكشن,العاب عائلية",1,2,2,"PSP"],[3106,"Disney Phineas and Ferb","مغامرات,العاب عائلية",1,2,2,"PSP"],[3107,"Disney Pirates of the Caribbean - At Worlds End","أكشن,مغامرات",1,2,2,"PSP"],[3108,"Disney TRON - Evolution","أكشن",1,1,1,"PSP"],[3109,"Disney-Pixar Cars 1, 2 & Race-O-Rama","سباق,العاب عائلية",1,2,2,"PSP"],[3110,"Disney-Pixar Ratatouille","مغامرات,العاب عائلية",1,1,1,"PSP"],[3111,"Disney-Pixar Toy Story 3","مغامرات,العاب عائلية",1,1,1,"PSP"],[3112,"Disney-Pixar Up","مغامرات,العاب عائلية",1,1,1,"PSP"],[3113,"Disney-Pixar WALL-E","مغامرات,العاب عائلية",1,1,1,"PSP"],[3114,"Dissidia Final Fantasy Series","أكشن,يدعم الأسهم",1,2,2,"PSP"],[3115,"Don 2 - The Game","أكشن",1,1,1,"PSP"],[3116,"Donkey Xote","مغامرات",1,1,1,"PSP"],[3117,"Dragon Ball Z - Shin Budokai 1 & 2","أكشن,يدعم الأسهم",1,1,1,"PSP"],[3118,"Dragon Ball Z - Tenkaichi Tag Team","أكشن,يدعم الأسهم",1,2,2,"PSP"],[3119,"Dragonball - Evolution","أكشن,يدعم الأسهم",1,1,1,"PSP"],[3120,"DreamWorks Megamind - The Blue Defender","أكشن",1,1,1,"PSP"],[3121,"DreamWorks Over the Hedge","مغامرات,العاب عائلية",1,1,1,"PSP"],[3122,"DreamWorks Shrek Series","مغامرات,العاب عائلية",1,2,2,"PSP"],[3123,"Driver 76","أكشن,سباق",1,2,2,"PSP"],[3124,"Dungeon Explorer & Siege","أكشن,مغامرات",1,2,2,"PSP"],[3125,"Dynasty Warriors Series","أكشن",1,2,2,"PSP"],[3126,"Echochrome & Echoshift","العاب عائلية,يدعم الأسهم",1,1,1,"PSP"],[3127,"El Padrino (The Godfather)","أكشن,عالم مفتوح",1,2,2,"PSP"],[3128,"Eragon","أكشن,مغامرات",1,1,1,"PSP"],[3129,"Everybody Golf & Tennis","رياضة,يدعم الأسهم",1,2,2,"PSP"],[3130,"Exit 1 & 2","مغامرات,يدعم الأسهم",1,1,1,"PSP"],[3131,"EyePet Series","العاب عائلية",1,2,2,"PSP"],[3132,"F1 2009 & Grand Prix","سباق",1,1,1,"PSP"],[3133,"FIFA 06 to 14 (Collection)","رياضة,يدعم الأسهم",1,15,15,"PSP"],[3134,"FIFA Street 2","رياضة,يدعم الأسهم",1,1,1,"PSP"],[3135,"Family Guy - Video Game!","العاب عائلية",1,2,2,"PSP"],[3136,"Fat Princess - Fistful of Cake","أكشن",1,1,1,"PSP"],[3137,"Fight Night Round 3","رياضة,يدعم الأسهم",1,2,2,"PSP"],[3138,"Final Fantasy Series (1 to 4 & Tactics)","مغامرات,يدعم الأسهم",1,3,3,"PSP"],[3139,"FlatOut - Head On","سباق",1,1,1,"PSP"],[3140,"Football Manager Handheld Series","رياضة,يدعم الأسهم",1,2,2,"PSP"],[3141,"Ford Street Racing - L.A. Duel","سباق",1,1,1,"PSP"],[3142,"Formula One 06","سباق",1,2,2,"PSP"],[3143,"Free Running","رياضة",1,1,1,"PSP"],[3144,"Frogger - Helmet Chaos","العاب عائلية,يدعم الأسهم",1,1,1,"PSP"],[3145,"Full Auto 2 - Battlelines","أكشن,سباق",1,1,1,"PSP"],[3146,"G.I. Joe - The Rise of Cobra","أكشن",1,2,2,"PSP"],[3147,"Gangs of London","أكشن,عالم مفتوح",1,1,1,"PSP"],[3148,"Geronimo Stilton Series","العاب عائلية,مغامرات",1,2,2,"PSP"],[3149,"Ghost Rider","أكشن",1,1,1,"PSP"],[3150,"Ghostbusters - The Video Game","أكشن,مغامرات",1,2,2,"PSP"],[3151,"God of War - Chains of Olympus & Ghost of Sparta","أكشن,مغامرات",1,4,4,"PSP"],[3152,"Gods Eater Burst","أكشن,مغامرات",1,2,2,"PSP"],[3153,"Gran Turismo","سباق,يدعم الأسهم",1,2,2,"PSP"],[3154,"Grand Theft Auto - Chinatown Wars","أكشن,عالم مفتوح",1,1,1,"PSP"],[3155,"Grand Theft Auto - Liberty City Stories","أكشن,عالم مفتوح",1,2,2,"PSP"],[3156,"Grand Theft Auto - Vice City Stories","أكشن,عالم مفتوح",1,2,2,"PSP"],[3157,"Gun Showdown","أكشن",1,1,1,"PSP"],[3158,"Hannah Montana - Rock Out the Show","العاب عائلية",1,1,1,"PSP"],[3159,"Harry Potter Series (Goblet to Half-Blood)","مغامرات,العاب عائلية",1,3,3,"PSP"],[3160,"Harvest Moon - Hero of Leaf Valley","مغامرات",1,1,1,"PSP"],[3161,"Hellboy - The Science of Evil","أكشن",1,1,1,"PSP"],[3162,"IL-2 Sturmovik - Birds of Prey","أكشن",1,1,1,"PSP"],[3163,"Indiana Jones and the Staff of Kings","أكشن,مغامرات",1,1,1,"PSP"],[3164,"Iron Man 1 & 2","أكشن",1,2,2,"PSP"],[3165,"Jackass - The Game","أكشن,رياضة",1,2,2,"PSP"],[3166,"Jak and Daxter - The Lost Frontier","مغامرات",1,2,2,"PSP"],[3167,"James Cameron Avatar - The Game","أكشن,مغامرات",1,1,1,"PSP"],[3168,"Juiced Series","سباق",1,2,2,"PSP"],[3169,"Justice League Heroes","أكشن",1,2,2,"PSP"],[3170,"Killzone - Liberation","أكشن",1,1,1,"PSP"],[3171,"Kingdom Hearts - Birth by Sleep","أكشن,مغامرات",1,2,2,"PSP"],[3172,"LEGO Batman - The Videogame","العاب عائلية,يدعم الأسهم",1,2,2,"PSP"],[3173,"LEGO Harry Potter Series","العاب عائلية,يدعم الأسهم",1,3,3,"PSP"],[3174,"LEGO Indiana Jones Series","العاب عائلية,يدعم الأسهم",1,2,2,"PSP"],[3175,"LEGO Pirates & Star Wars Series","العاب عائلية,يدعم الأسهم",1,3,3,"PSP"],[3176,"Lara Croft Tomb Raider Series","أكشن,مغامرات",1,3,3,"PSP"],[3177,"LittleBigPlanet","مغامرات,العاب عائلية",1,2,2,"PSP"],[3178,"LocoRoco 1 & 2","العاب عائلية,يدعم الأسهم",1,3,3,"PSP"],[3179,"Madden NFL Series","رياضة,يدعم الأسهم",1,5,5,"PSP"],[3180,"Manhunt 2","أكشن,رعب",1,2,2,"PSP"],[3181,"Marvel - Ultimate Alliance 1 & 2","أكشن",1,4,4,"PSP"],[3182,"Marvel Nemesis - Rise of the Imperfects","أكشن,يدعم الأسهم",1,1,1,"PSP"],[3183,"Medal of Honor - Heroes 1 & 2","أكشن",1,3,3,"PSP"],[3184,"Mega Man Series","أكشن,يدعم الأسهم",1,1,1,"PSP"],[3185,"Metal Gear Solid Series","أكشن,مغامرات",1,6,6,"PSP"],[3186,"Metal Slug Anthology & XX","أكشن,العاب عائلية,يدعم الأسهم",1,2,2,"PSP"],[3187,"Midnight Club 3 & L.A Remix","سباق,يدعم الأسهم",1,3,3,"PSP"],[3188,"ModNation Racers","سباق,العاب عائلية,يدعم الأسهم",1,2,2,"PSP"],[3189,"Monster Hunter Freedom Series","أكشن,مغامرات",1,3,3,"PSP"],[3190,"Mortal Kombat - Unchained","أكشن,يدعم الأسهم",1,2,2,"PSP"],[3191,"MotorStorm - Arctic Edge","سباق",1,1,1,"PSP"],[3192,"NBA 2K & Live Series","رياضة,يدعم الأسهم",1,15,15,"PSP"],[3193,"Need for Speed Series (Carbon, MW, Shift, Undercover)","سباق,يدعم الأسهم",1,6,6,"PSP"],[3194,"Nickelodeon SpongeBob & Avatar Series","العاب عائلية,مغامرات",1,3,3,"PSP"],[3195,"OutRun 2006 - Coast 2 Coast","سباق,يدعم الأسهم",1,1,1,"PSP"],[3196,"PES Series (2008 to 2014)","رياضة,يدعم الأسهم",1,10,10,"PSP"],[3197,"Pac-Man World 3","العاب عائلية,يدعم الأسهم",1,1,1,"PSP"],[3198,"Patapon 1, 2 & 3","مغامرات,العاب عائلية,يدعم الأسهم",1,2,2,"PSP"],[3199,"Prince of Persia Series","أكشن,مغامرات",1,4,4,"PSP"],[3200,"Pro Evolution Soccer 5 & 6","رياضة,يدعم الأسهم",1,3,3,"PSP"],[3201,"Pursuit Force Series","أكشن,سباق",1,3,3,"PSP"],[3202,"Ratchet and Clank - Size Matters","أكشن,مغامرات",1,1,1,"PSP"],[3203,"Resistance - Retribution","أكشن",1,2,2,"PSP"],[3204,"SOCOM - U.S Navy SEALs Series","أكشن",1,6,6,"PSP"],[3205,"SSX On Tour","رياضة,يدعم الأسهم",1,2,2,"PSP"],[3206,"Secret Agent Clank","أكشن,مغامرات",1,2,2,"PSP"],[3207,"Silent Hill - Origins & Shattered Memories","رعب,مغامرات",1,2,2,"PSP"],[3208,"Spider-Man Series (2, 3, Friend or Foe, Web of Shadows)","أكشن,عالم مفتوح",1,5,5,"PSP"],[3209,"SpongeBob SquarePants","العاب عائلية",1,2,2,"PSP"],[3210,"Star Wars Battlefront & Force Unleashed Series","أكشن",1,5,5,"PSP"],[3211,"Street Fighter Alpha 3 Max","أكشن,يدعم الأسهم",1,1,1,"PSP"],[3212,"Syphon Filter - Dark Mirror & Logan Shadow","أكشن",1,4,4,"PSP"],[3213,"TMNT - Teenage Mutant Ninja Turtles","أكشن,العاب عائلية,يدعم الأسهم",1,2,2,"PSP"],[3214,"Tekken - Dark Resurrection & Tekken 6","أكشن,يدعم الأسهم",1,3,3,"PSP"],[3215,"Test Drive Unlimited","سباق",1,2,2,"PSP"],[3216,"The Godfather","أكشن,عالم مفتوح",1,2,2,"PSP"],[3217,"The Simpsons Game","مغامرات,العاب عائلية",1,1,1,"PSP"],[3218,"The Warriors","أكشن,يدعم الأسهم",1,2,2,"PSP"],[3219,"Tiger Woods PGA Tour Series","رياضة,يدعم الأسهم",1,6,6,"PSP"],[3220,"Tom Clancy Ghost Recon & Rainbow Six Series","أكشن",1,3,3,"PSP"],[3221,"Tomb Raider Anniversary & Legend","أكشن,مغامرات",1,3,3,"PSP"],[3222,"Tony Hawks Underground 2 & Project 8","رياضة,يدعم الأسهم",1,3,3,"PSP"],[3223,"Transformers - The Game & Revenge of the Fallen","أكشن",1,4,4,"PSP"],[3224,"UFC Undisputed 2010","رياضة,يدعم الأسهم",1,2,2,"PSP"],[3225,"WRC - FIA World Rally Championship","سباق",1,2,2,"PSP"],[3226,"WWE SmackDown vs Raw Series (2006 to 2011)","رياضة,يدعم الأسهم",1,10,10,"PSP"],[3227,"Worms - Open Warfare 1 & 2","العاب عائلية,يدعم الأسهم",1,1,1,"PSP"],[3228,"X-Men Legends 2 & Origins Wolverine","أكشن",1,3,3,"PSP"],[3229,"Yu-Gi-Oh! GX Tag Force Series (1 to 6)","العاب عائلية,يدعم الأسهم",1,10,10,"PSP"]
+        ];
+
+        const gamesDB = rawGames.map(r => ({
+            id: r[0], name: r[1], genres: r[2].split(','), 
+            playersTxt: r[3] === 1 ? "1" : `1 - ${r[3]}`, maxPlayers: r[3], 
+            minSize: r[4], maxSize: r[5], console: r[6]
+        }));
+
+        // ترتيب الألعاب أبجدياً
+        gamesDB.sort((a, b) => a.name.localeCompare(b.name, 'en', { sensitivity: 'base' }));
+
+        let cart = [];
+        let activeGenres = [];
+        let activeSizes = [];
+        
+        let currentConsole = 'PS4'; 
+        
+        window.fallbackImages = {};
+
+        function getPossibleUrls(name) {
+            let urls = [];
+            const clean = n => (n ? n.toString().toLowerCase().replace(/[:/]/g, '').replace(/\s+/g, ' ').trim() : "");
+            const dashed = n => clean(n).replace(/ /g, '-');
+            
+            let target1 = clean(name);
+            let target2 = dashed(name);
+
+            if (typeof imageMap !== 'undefined' && Array.isArray(imageMap)) {
+                let matches = imageMap.filter(img => {
+                    let imgName = clean(img['اسم الصورة فقط'] || "");
+                    return imgName === target1 || imgName === target2;
+                });
+                matches.forEach(m => {
+                    let filename = encodeURI(m['الاسم بالكامل']);
+                    urls.push('images/' + filename);
+                    urls.push(filename);
+                });
+            }
+            
+            let rawName = encodeURI(name.replace(/[:/]/g, ''));
+            let rawDashed = encodeURI(name.replace(/[:/]/g, '').replace(/ /g, '-'));
+            
+            ['.jpg', '.png', '.jpeg', '.avif', '.JPG', '.PNG'].forEach(ext => {
+                urls.push('images/' + rawName + ext);
+                urls.push(rawName + ext);
+                urls.push('images/' + rawDashed + ext);
+                urls.push(rawDashed + ext);
+            });
+
+            return [...new Set(urls)];
+        }
+
+        function tryNextImg(imgElement, gameId, currentIndex) {
+            let urls = window.fallbackImages[gameId];
+            let nextIndex = currentIndex + 1;
+            
+            imgElement.onerror = null;
+
+            if (urls && nextIndex < urls.length) {
+                imgElement.onerror = function() { tryNextImg(imgElement, gameId, nextIndex); };
+                imgElement.src = urls[nextIndex];
+            } else {
+                imgElement.style.display = 'none';
+            }
+        }
+
+        function switchConsole(consoleName, btnElement) {
+            currentConsole = consoleName;
+            const tabs = document.querySelectorAll('.console-tab-btn');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            btnElement.classList.add('active');
+            renderGames();
+        }
+
+        function toggleFilter(type, value, btnElement) {
+            btnElement.classList.toggle('active');
+            if(type === 'genre') {
+                if(activeGenres.includes(value)) activeGenres = activeGenres.filter(g => g !== value);
+                else activeGenres.push(value);
+            } 
+            renderGames();
+        }
+
+        function toggleSizeFilter(value, btnElement) {
+            btnElement.classList.toggle('active');
+            if(activeSizes.includes(value)) activeSizes = activeSizes.filter(s => s !== value);
+            else activeSizes.push(value);
+            renderGames();
+        }
+
+        function sortCartAlphabetically() { cart.sort((a, b) => a.name.localeCompare(b.name, 'en', { sensitivity: 'base' })); }
+
+        function toggleCart(id) {
+            const index = cart.findIndex(g => g.id === id);
+            if(index > -1) { cart.splice(index, 1); } 
+            else { const game = gamesDB.find(g => g.id === id); if (game) cart.push(game); }
+            sortCartAlphabetically(); updateCartUI(); renderGames();
+        }
+
+        function removeFromCart(id) {
+            const index = cart.findIndex(g => g.id === id);
+            if (index > -1) {
+                cart.splice(index, 1);
+                updateCartUI(); renderGames();
+            }
+        }
+
+        function clearCart() { cart = []; updateCartUI(); renderGames(); }
+
+        function renderGames() {
+            try {
+                const grid = document.getElementById('gamesGrid');
+                const searchText = document.getElementById('searchInput').value.toLowerCase();
+                let htmlContent = '';
+                
+                gamesDB.forEach(game => {
+                    try {
+                        if (game.console !== currentConsole) return;
+
+                        if (searchText && !game.name.toLowerCase().includes(searchText)) return;
+                        if (activeGenres.length > 0 && !activeGenres.every(g => game.genres.includes(g))) return;
+                        
+                        if (activeSizes.length > 0) {
+                            const matchesSize = activeSizes.some(sizeType => {
+                                let max = game.maxSize;
+                                if (sizeType === '<10') return max < 10;
+                                if (sizeType === '<20') return max < 20;
+                                if (sizeType === '<30') return max < 30;
+                                if (sizeType === '<40') return max < 40;
+                                if (sizeType === '<50') return max < 50;
+                                if (sizeType === '<100') return max < 100;
+                                if (sizeType === '>100') return max >= 100;
+                                return false;
+                            });
+                            if (!matchesSize) return;
+                        }
+
+                        let possibleUrls = getPossibleUrls(game.name);
+                        window.fallbackImages[game.id] = possibleUrls;
+
+                        const inCart = cart.some(c => c.id === game.id);
+                        
+                        const ytLink = `https://www.youtube.com/results?search_query=${encodeURIComponent(game.name + " " + game.console + " gameplay")}`;
+                        
+                        let tagsHTML = game.genres.map(g => `<span class="tag">${g}</span>`).join('');
+                        let sizeDisplay = (game.minSize === game.maxSize) ? `${game.minSize} GB` : `${game.minSize} - ${game.maxSize} GB`;
+                        
+                        let badgeClass = 'badge-ps4';
+                        if(game.console === 'PS3') badgeClass = 'badge-ps3';
+                        if(game.console === 'PS2') badgeClass = 'badge-ps2';
+                        if(game.console === 'PSP') badgeClass = 'badge-psp';
+                        
+                        htmlContent += `
+                            <div class="card">
+                                <div class="card-img-container">
+                                    <span class="img-fallback">${game.name}</span>
+                                    <img src="${possibleUrls[0]}" class="card-img" loading="lazy" onerror="tryNextImg(this, ${game.id}, 0)">
+                                </div>
+                                <div class="card-header"><h3 class="game-title">${game.name}</h3></div>
+                                <div class="card-content">
+                                    <div style="text-align:center;"><span class="console-badge ${badgeClass}">${game.console}</span></div>
+                                    <div class="tags">${tagsHTML}</div>
+                                    <div class="info-text">🎮 اللاعبين: ${game.playersTxt}</div>
+                                    <div class="info-text">💾 المساحة: <span dir="ltr">${sizeDisplay}</span></div>
+                                    <div class="card-actions">
+                                        <button class="btn ${inCart ? 'btn-add added' : 'btn-add'}" onclick="toggleCart(${game.id})">${inCart ? '❌ إزالة' : '➕ إضافة'}</button>
+                                        <a href="${ytLink}" target="_blank" class="btn btn-yt">▶ فيديو</a>
+                                    </div>
+                                </div>
+                            </div>`;
+                    } catch(err) {
+                        console.error('خطأ في تحميل لعبة:', game.name, err);
+                    }
+                });
+                grid.innerHTML = htmlContent;
+            } catch (globalError) {
+                console.error("خطأ عام في ريندر الألعاب:", globalError);
+            }
+        }
+
+        function updateCartUI() {
+            document.getElementById('cartCount').innerText = cart.length;
+            const list = document.getElementById('cartItemsList');
+            list.innerHTML = '';
+            let minTotal = 0, maxTotal = 0;
+            
+            if(cart.length === 0) { list.innerHTML = '<p style="text-align:center; color:#aaa; font-size:14px;">السلة فارغة حالياً</p>'; }
+            
+            cart.forEach(game => {
+                minTotal += game.minSize; maxTotal += game.maxSize;
+                let itemSizeText = (game.minSize === game.maxSize) ? `${game.minSize} GB` : `${game.minSize}-${game.maxSize} GB`;
+                list.innerHTML += `
+                <div class="cart-item">
+                    <div style="display:flex; align-items:center; gap:8px;">
+                        <button class="remove-btn" onclick="removeFromCart(${game.id})" title="إزالة من السلة">✖</button>
+                        <span><strong style="color:var(--primary-color); font-size:11px;">[${game.console}]</strong> <span dir="ltr">${game.name}</span></span>
+                    </div>
+                    <span style="color:var(--text-muted);" dir="ltr">${itemSizeText}</span>
+                </div>`;
+            });
+            document.getElementById('totalSizeUI').innerText = (minTotal === maxTotal) ? `${minTotal} GB` : `${minTotal} - ${maxTotal} GB`;
+        }
+
+        function openCart() { document.getElementById('cartModal').style.display = 'flex'; }
+        function closeCart() { document.getElementById('cartModal').style.display = 'none'; }
+
+        function sendToGoogle(payload) {
+            const formData = new URLSearchParams();
+            formData.append('data', JSON.stringify(payload));
+            
+            return fetch(GOOGLE_SHEET_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: formData.toString()
+            });
+        }
+
+        function sendWhatsApp(phone, btnId) {
+            const name = document.getElementById('userName').value.trim();
+            const contact = document.getElementById('userPhone').value.trim();
+            const specialRequest = document.getElementById('specialRequestInput').value.trim();
+            
+            if(!name || !contact) return alert("من فضلك اكتب اسمك ورقم تليفونك أولاً!");
+            if(cart.length === 0 && !specialRequest) return alert("يرجى اختيار ألعاب أولاً أو كتابة طلب مخصوص!");
+
+            let btn = document.getElementById(btnId);
+            let originalText = btn.innerText;
+            btn.innerText = "⏳ جاري التسجيل...";
+            btn.disabled = true;
+
+            let minTotal = 0, maxTotal = 0, text = `مرحباً LevelUP،\nأنا ${name} (رقمي: ${contact})\n`, gamesForSheet = ""; 
+
+            if (specialRequest) {
+                text += `\n🔴 طلب مخصوص:\n${specialRequest}\n`;
+                gamesForSheet += `طلب مخصوص: ${specialRequest}\n---\n`;
+            }
+
+            if (cart.length > 0) {
+                text += `\nأود تثبيت هذه الألعاب على جهازي:\n`;
+                cart.forEach((game, index) => {
+                    let sizeTxt = (game.minSize === game.maxSize) ? `${game.minSize} GB` : `${game.minSize}-${game.maxSize} GB`;
+                    text += ` ${index + 1}. [${game.console}] ${game.name} (${sizeTxt})\n`;
+                    gamesForSheet += `${index + 1}. [${game.console}] ${game.name}\n`;
+                    minTotal += game.minSize; maxTotal += game.maxSize;
+                });
+                let finalTotalTxt = (minTotal === maxTotal) ? `${minTotal} GB` : `من ${minTotal} إلى ${maxTotal} GB`;
+                text += `\nإجمالي المساحة المطلوبة: ${finalTotalTxt}.`;
+            } else {
+                text += `\n(لا يوجد ألعاب محددة من القائمة)`;
+            }
+
+            let devicesSet = new Set(cart.map(g => g.console));
+            let deviceTypeString = Array.from(devicesSet).join(' / ') || "غير محدد";
+
+            let payload = {
+                systemType: "Modded", name: name, phone: contact, consoleType: deviceTypeString, 
+                gamesFormatted: gamesForSheet, totalPrice: "يحدد حسب الجيجات",
+                totalSize: (cart.length > 0) ? ((minTotal === maxTotal) ? `${minTotal} GB` : `من ${minTotal} إلى ${maxTotal} GB`) : "غير محدد"
+            };
+
+            sendToGoogle(payload)
+            .then(response => response.text())
+            .then(result => {
+                alert("تم تسجيل طلبك بنجاح في الشيت! جاري تحويلك للواتساب وتأكيده...");
+                clearCart(); document.getElementById('specialRequestInput').value = ''; closeCart();
+                window.open(`https://wa.me/${phone}?text=${encodeURIComponent(text)}`, '_blank');
+                btn.innerText = originalText; btn.disabled = false;
+            }).catch(e => { 
+                alert("مشكلة في الاتصال! الكود: " + e); 
+                btn.innerText = originalText; btn.disabled = false; 
+            });
+        }
+
+        renderGames(); updateCartUI();
+    </script>
+</body>
+</html>
